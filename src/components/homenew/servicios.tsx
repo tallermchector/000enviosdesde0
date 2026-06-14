@@ -39,7 +39,7 @@ export default function ServiciosSection() {
             className="group relative flex flex-col justify-between p-8 rounded-2xl border border-border/40 bg-card/30 hover:bg-card/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden"
           >
             {/* Glowing top line */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-[#0084ff] opacity-70 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-[#001de0] opacity-70 group-hover:opacity-100 transition-opacity" />
 
             <div>
               <div className="flex items-center justify-between mb-6">
@@ -80,7 +80,7 @@ export default function ServiciosSection() {
             className="group relative flex flex-col justify-between p-8 rounded-2xl border border-border/40 bg-card/30 hover:bg-card/50 hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300 overflow-hidden"
           >
             {/* Glowing top line */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary to-[#ffcd75] opacity-70 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary to-[#e9c400] opacity-70 group-hover:opacity-100 transition-opacity" />
 
             <div>
               <div className="flex items-center justify-between mb-6">

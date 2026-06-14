@@ -25,7 +25,7 @@ export default function CTAFinalSection() {
           className="relative max-w-4xl mx-auto p-12 md:p-16 rounded-3xl border border-primary/20 bg-card/30 backdrop-blur-sm overflow-hidden text-center flex flex-col items-center shadow-xl"
         >
           {/* Border glowing accent */}
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-[#0084ff] to-primary/30" />
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-[#001de0] to-primary/30" />
 
           {/* Badge */}
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-primary/10 border border-primary/20 text-primary mb-6 font-orbitron">

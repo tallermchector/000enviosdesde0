@@ -74,7 +74,7 @@ export default function HeroPrincipal() {
                 {/* H1 Title */}
                 <h1 className="mt-2 text-balance text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold font-orbitron tracking-tight leading-[1.1] text-foreground">
                   Mensajería y Logística{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#0084ff] dark:from-primary dark:to-[#4fa3ff]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#001de0] dark:from-primary dark:to-[#3b53ff]">
                     E-Commerce
                   </span>{" "}
                   en Mar del Plata
@@ -136,7 +136,7 @@ export default function HeroPrincipal() {
                         <span className="text-foreground font-bold">98.4%</span>
                       </div>
                       <div className="h-2 w-full overflow-hidden rounded-full bg-primary/10">
-                        <div className="h-full w-[98.4%] rounded-full bg-gradient-to-r from-primary to-[#0084ff]" />
+                        <div className="h-full w-[98.4%] rounded-full bg-gradient-to-r from-primary to-[#001de0]" />
                       </div>
                     </div>
 
