@@ -65,6 +65,7 @@ async function main() {
       const distanciaMinKm = parseFloat(row[3]);
       const isActive = row[4] === "true";
       const precioRango = parseFloat(row[5]);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const serviceType = row[6] as any; // Typecasted to match ServiceTypeEnum
       const updatedAt = new Date(row[7]);
 
@@ -113,6 +114,7 @@ async function main() {
       const imageHint = row[4] || null;
       const imageUrl = row[5] || null;
       const likes = row[6] ? parseInt(row[6]) : null;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const platform = row[7] as any; // Typecasted to match SocialPlatformEnum
       const postUrl = row[8];
       const shares = row[9] ? parseInt(row[9]) : null;

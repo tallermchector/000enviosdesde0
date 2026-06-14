@@ -171,6 +171,7 @@ const RippleButton: React.FC<RippleButtonProps> = ({
           style={{
             left: ripple.x, top: ripple.y, width: ripple.size, height: ripple.size,
             backgroundColor: ripple.color,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             ['--ripple-duration' as any]: `${rippleDuration}ms`,
           } as CSSProperties}
         />

@@ -5,63 +5,176 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
-import { ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ChevronRight, Target, ShieldCheck, Clock, Users } from "lucide-react";
+
+// --- CUSTOM E-COMMERCE BRAND ICONS ---
+
+const ShopifyIcon: React.FC = () => (
+  <svg viewBox="0 0 256 292" className="h-6 w-auto fill-current text-foreground opacity-60 hover:opacity-100 hover:text-[#96bf48] transition-all duration-300" xmlns="http://www.w3.org/2000/svg">
+    <path d="M223.774 57.34c-.201-1.46-1.48-2.268-2.537-2.357-1.055-.088-23.383-1.743-23.383-1.743s-15.507-15.395-17.209-17.099c-1.703-1.703-5.029-1.185-6.32-.805-.19.056-3.388 1.043-8.678 2.68-5.18-14.906-14.322-28.604-30.405-28.604-.444 0-.901.018-1.358.044C129.31 3.407 123.644.779 118.75.779c-37.465 0-55.364 46.835-60.976 70.635-14.558 4.511-24.9 7.718-26.221 8.133-8.126 2.549-8.383 2.805-9.45 10.462C21.3 95.806.038 260.235.038 260.235l165.678 31.042 89.77-19.42S223.973 58.8 223.775 57.34zM156.49 40.848l-14.019 4.339c.005-.988.01-1.96.01-3.023 0-9.264-1.286-16.723-3.349-22.636 8.287 1.04 13.806 10.469 17.358 21.32zm-27.638-19.483c2.304 5.773 3.802 14.058 3.802 25.238 0 .572-.005 1.095-.01 1.624-9.117 2.824-19.024 5.89-28.953 8.966 5.575-21.516 16.025-31.908 25.161-35.828zm-11.131-10.537c1.617 0 3.246.549 4.805 1.622-12.007 5.65-24.877 19.88-30.312 48.297l-22.886 7.088C75.694 46.16 90.81 10.828 117.72 10.828z" fill="currentColor"/>
+  </svg>
+);
+
+const MercadoLibreIcon: React.FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 150 104" className="h-6 w-auto text-foreground opacity-60 hover:opacity-100 hover:text-[#ffe600] transition-all duration-300">
+    <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M114.082 56.274c-.186-.186-23.263-20.44-28.474-24.342-2.978-2.23-4.653-2.788-6.514-3.16-.93-.185-2.233 0-3.163.372-2.42.744-5.584 2.788-8.375 5.017-2.978 2.416-5.77 4.46-8.189 5.017-3.163.93-7.258 0-9.119-1.114-.744-.558-1.303-1.115-1.489-1.673-.744-1.486.559-2.787.745-2.973l6.327-6.875 2.233-2.23c-2.047.186-3.908.743-5.769 1.3-2.233.558-4.466 1.302-6.7 1.302-.93 0-5.955-.744-6.885-1.115-5.77-1.487-10.794-3.16-18.425-6.69C11.166 25.8 5.211 34.161 3.536 43.452c1.303.372 3.35.93 4.28 1.115 20.472 4.46 26.8 9.291 28.102 10.22 1.303-1.3 2.978-2.23 5.025-2.23 2.233 0 4.28 1.115 5.583 2.974 1.117-.93 2.792-1.673 4.839-1.673.93 0 1.86.186 2.977.558a6.83 6.83 0 0 1 4.095 3.716c.744-.372 1.675-.557 2.791-.557 1.117 0 2.233.185 3.35.743 3.722 1.672 4.28 5.389 4.094 8.176h.745c4.466 0 8.189 3.716 8.189 8.176 0 1.3-.373 2.601-.931 3.902 1.303.743 4.28 2.23 7.072 1.858 2.233-.186 2.978-.929 3.35-1.486.186-.372.372-.558.186-.93l-5.77-6.503s-.93-.93-.558-1.3c.373-.372.93.185 1.303.557 2.978 2.415 6.514 6.132 6.514 6.132s.372.557 1.675.743c1.116.186 3.163 0 4.652-1.115.373-.372.745-.743.93-1.115 1.49-1.858-.185-3.716-.185-3.716l-6.7-7.619s-.93-.929-.558-1.3c.372-.372.93.185 1.302.557a253.206 253.206 0 0 1 8.003 7.619c.558.371 3.164 2.044 6.513-.186 2.048-1.301 2.42-2.973 2.42-4.274-.186-1.672-1.489-2.787-1.489-2.787l-9.305-9.291s-.93-.744-.558-1.301c.372-.372.93.186 1.302.557 2.978 2.416 10.98 9.663 10.98 9.663.186 0 2.792 2.044 6.328-.186 1.303-.743 2.047-1.858 2.047-3.345-.372-2.044-2.047-3.53-2.047-3.53Z"/>
+  </svg>
+);
+
+const TiendanubeIcon: React.FC = () => (
+  <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-all duration-300 font-semibold font-orbitron text-sm text-foreground">
+    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-[#00b4ff]" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2v8M17 5v5M7 5v5M4 10h16c1.1 0 2 .9 2 2s-.9 2-2 2h-1c-.55 0-1 .45-1 1v2c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4v-2c0-.55-.45-1-1-1H2c-1.1 0-2-.9-2-2s.9-2 2-2z" />
+    </svg>
+    <span>Tiendanube</span>
+  </div>
+);
+
+const WooCommerceIcon: React.FC = () => (
+  <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-all duration-300 font-semibold font-orbitron text-sm text-foreground">
+    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-[#96588a]" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" />
+    </svg>
+    <span>WooCommerce</span>
+  </div>
+);
+
+const TiendaWebIcon: React.FC = () => (
+  <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-all duration-300 font-semibold font-orbitron text-sm text-foreground">
+    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-primary" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
+    </svg>
+    <span>Tiendas Web</span>
+  </div>
+);
+
+// --- MAIN COMPONENT ---
 
 export default function HeroPrincipal() {
   return (
     <main className="overflow-x-hidden bg-background text-foreground transition-colors duration-300">
       <section className="relative">
-        <div className="py-20 md:pb-28 lg:pb-32 lg:pt-48">
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col px-6 lg:block lg:px-12">
-            <div className="mx-auto max-w-lg text-center lg:ml-0 lg:max-w-full lg:text-left flex flex-col items-center lg:items-start z-10 relative">
-              {/* Badge with micro-ping */}
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-primary/10 border border-primary/20 text-primary mb-8 font-orbitron">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        <div className="py-20 md:pb-28 lg:pb-36 lg:pt-44">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+              
+              {/* Left Column: Headline and CTAs */}
+              <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-10 relative">
+                {/* Badge with micro-ping */}
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-primary/10 border border-primary/20 text-primary mb-8 font-orbitron">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                  </span>
+                  LOGÍSTICA EXTREMA // MAR DEL PLATA
                 </span>
-                LOGÍSTICA EXTREMA // MAR DEL PLATA
-              </span>
 
-              {/* H1 Title */}
-              <h1 className="mt-2 max-w-2xl text-balance text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold font-orbitron tracking-tight leading-[1.1] text-foreground">
-                Mensajería y Logística{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#0084ff] dark:from-primary dark:to-[#4fa3ff]">
-                  E-Commerce
-                </span>{" "}
-                en Mar del Plata
-              </h1>
+                {/* H1 Title */}
+                <h1 className="mt-2 text-balance text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold font-orbitron tracking-tight leading-[1.1] text-foreground">
+                  Mensajería y Logística{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#0084ff] dark:from-primary dark:to-[#4fa3ff]">
+                    E-Commerce
+                  </span>{" "}
+                  en Mar del Plata
+                </h1>
 
-              {/* Párrafo Descriptivo */}
-              <p className="mt-6 max-w-2xl text-pretty text-base sm:text-lg text-muted-foreground font-roboto leading-relaxed">
-                Somos tu solución confiable en servicios de mensajería y delivery en Mar del Plata.
-                Ofrecemos soluciones rápidas, seguras y económicas para todas tus necesidades de envío.
-              </p>
+                {/* Párrafo Descriptivo */}
+                <p className="mt-6 max-w-xl text-pretty text-base sm:text-lg text-muted-foreground font-roboto leading-relaxed">
+                  Somos tu solución confiable en servicios de mensajería y delivery en Mar del Plata.
+                  Ofrecemos soluciones rápidas, seguras y económicas para todas tus necesidades de envío.
+                </p>
 
-              {/* Botones */}
-              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto lg:justify-start">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full sm:w-auto h-12 rounded-full pl-6 pr-4 text-base font-semibold font-roboto bg-primary text-primary-foreground hover:bg-primary/90 hover:translate-x-0.5 transition-all duration-200 shadow-md shadow-primary/20"
-                >
-                  <Link href="/cotizar/express" className="flex items-center justify-center gap-1">
-                    <span>Solicitar Servicio</span>
-                    <ChevronRight className="w-5 h-5 ml-1" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="ghost"
-                  className="w-full sm:w-auto h-12 rounded-full px-6 text-base font-medium font-roboto hover:bg-zinc-950/5 dark:hover:bg-white/5 transition-colors duration-200"
-                >
-                  <Link href="/servicios/plan-emprendedores">
-                    <span>E-Commerce</span>
-                  </Link>
-                </Button>
+                {/* Botones */}
+                <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto lg:justify-start">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full sm:w-auto h-12 rounded-full pl-6 pr-4 text-base font-semibold font-roboto bg-primary text-primary-foreground hover:bg-primary/90 hover:translate-x-0.5 transition-all duration-200 shadow-md shadow-primary/20"
+                  >
+                    <Link href="/cotizar/express" className="flex items-center justify-center gap-1">
+                      <span>Solicitar Servicio</span>
+                      <ChevronRight className="w-5 h-5 ml-1" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="ghost"
+                    className="w-full sm:w-auto h-12 rounded-full px-6 text-base font-medium font-roboto hover:bg-zinc-950/5 dark:hover:bg-white/5 transition-colors duration-200 border border-border/40 hover:border-primary/25"
+                  >
+                    <Link href="/servicios/plan-emprendedores">
+                      <span>E-Commerce</span>
+                    </Link>
+                  </Button>
+                </div>
               </div>
+
+              {/* Right Column: Glassmorphism Stats Card */}
+              <div className="lg:col-span-5 flex justify-center w-full relative z-10">
+                <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-card/30 p-8 backdrop-blur-xl shadow-2xl w-full max-w-md">
+                  {/* Card Glow Effect */}
+                  <div className="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+
+                  <div className="relative z-10 space-y-8">
+                    {/* Header stat */}
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20">
+                        <Target className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-3xl font-bold tracking-tight text-foreground font-orbitron">+5.000</div>
+                        <div className="text-xs text-muted-foreground font-roboto">Envíos completados en la ciudad</div>
+                      </div>
+                    </div>
+
+                    {/* Progress Bar Section */}
+                    <div className="space-y-3">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Satisfacción de Entrega</span>
+                        <span className="text-foreground font-bold">98.4%</span>
+                      </div>
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-primary/10">
+                        <div className="h-full w-[98.4%] rounded-full bg-gradient-to-r from-primary to-[#0084ff]" />
+                      </div>
+                    </div>
+
+                    <div className="h-px w-full bg-border/40" />
+
+                    {/* Characteristics */}
+                    <div className="space-y-4 text-sm font-medium">
+                      <div className="flex items-center gap-3">
+                        <Clock className="w-5 h-5 text-primary shrink-0" />
+                        <span>Entregas en el día (MercadoLibre Flex)</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
+                        <span>Soporte Express Directo por WhatsApp</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Users className="w-5 h-5 text-primary shrink-0" />
+                        <span>Flota Propia de Motocicletas Activa</span>
+                      </div>
+                    </div>
+
+                    {/* Pills status */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      <div className="inline-flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-[10px] font-bold font-orbitron tracking-wider text-green-500">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        OPERATIVO MDP
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] font-bold font-orbitron tracking-wider text-primary">
+                        PREMIUM LOGISTICS
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -72,8 +185,8 @@ export default function HeroPrincipal() {
               loop
               muted
               playsInline
-              className="size-full object-cover opacity-50 invert dark:opacity-35 dark:invert-0 dark:lg:opacity-75"
-              src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
+              className="size-full object-cover opacity-20 dark:opacity-35"
+              src="https://mybycketvercelprojecttest.s3.sa-east-1.amazonaws.com/animation-bg.mp4"
             ></video>
           </div>
         </div>
@@ -92,76 +205,19 @@ export default function HeroPrincipal() {
             <div className="relative py-4 w-full md:w-[calc(100%-11rem)]">
               <InfiniteSlider durationOnHover={20} duration={40} gap={112}>
                 <div className="flex items-center">
-                  <img
-                    className="mx-auto h-5 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                    alt="Nvidia Logo"
-                    height="20"
-                    width="auto"
-                  />
+                  <ShopifyIcon />
                 </div>
                 <div className="flex items-center">
-                  <img
-                    className="mx-auto h-4 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/column.svg"
-                    alt="Column Logo"
-                    height="16"
-                    width="auto"
-                  />
+                  <MercadoLibreIcon />
                 </div>
                 <div className="flex items-center">
-                  <img
-                    className="mx-auto h-4 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/github.svg"
-                    alt="GitHub Logo"
-                    height="16"
-                    width="auto"
-                  />
+                  <TiendanubeIcon />
                 </div>
                 <div className="flex items-center">
-                  <img
-                    className="mx-auto h-5 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/nike.svg"
-                    alt="Nike Logo"
-                    height="20"
-                    width="auto"
-                  />
+                  <WooCommerceIcon />
                 </div>
                 <div className="flex items-center">
-                  <img
-                    className="mx-auto h-5 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                    alt="Lemon Squeezy Logo"
-                    height="20"
-                    width="auto"
-                  />
-                </div>
-                <div className="flex items-center">
-                  <img
-                    className="mx-auto h-4 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/laravel.svg"
-                    alt="Laravel Logo"
-                    height="16"
-                    width="auto"
-                  />
-                </div>
-                <div className="flex items-center">
-                  <img
-                    className="mx-auto h-7 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/lilly.svg"
-                    alt="Lilly Logo"
-                    height="28"
-                    width="auto"
-                  />
-                </div>
-                <div className="flex items-center">
-                  <img
-                    className="mx-auto h-6 w-auto dark:invert opacity-60 hover:opacity-100 transition-opacity"
-                    src="https://html.tailus.io/blocks/customers/openai.svg"
-                    alt="OpenAI Logo"
-                    height="24"
-                    width="auto"
-                  />
+                  <TiendaWebIcon />
                 </div>
               </InfiniteSlider>
 

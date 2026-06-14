@@ -8,10 +8,12 @@ const SOLUTIONS = [
   {
     title: "Soluciones Corporativas",
     badge: "Corporativo",
-    desc: "Optimización logística para empresas con Cuenta Corriente Flexible y beneficios de escala",
+    desc: "Optimización logística para empresas con Cuenta Corriente Flexible y beneficios de escala.",
     icon: Building2,
     colorClass: "from-[#0084ff] to-[#4fa3ff] text-[#0084ff]",
-    borderColor: "hover:border-[#0084ff]/30",
+    borderColor: "hover:border-[#0084ff]/40",
+    glowColor: "hover:shadow-[#0084ff]/5",
+    topGradient: "from-[#0084ff] to-[#4fa3ff]",
     items: [
       "Cuenta Corriente Flexible",
       "Facturación simplificada",
@@ -22,10 +24,12 @@ const SOLUTIONS = [
   {
     title: "Envíos Flex MercadoLibre",
     badge: "MercadoLibre",
-    desc: "Socio estratégico para potenciar tus ventas con entregas en el día",
+    desc: "Socio estratégico para potenciar tus ventas con entregas en el día.",
     icon: ShoppingBag,
     colorClass: "from-amber-500 to-yellow-500 text-amber-500",
-    borderColor: "hover:border-amber-500/30",
+    borderColor: "hover:border-amber-500/40",
+    glowColor: "hover:shadow-amber-500/5",
+    topGradient: "from-amber-500 to-yellow-500",
     items: [
       "Cumplimiento de SLAs",
       "Mejora tu reputación",
@@ -36,10 +40,12 @@ const SOLUTIONS = [
   {
     title: "Logística E-Commerce",
     badge: "PyMEs",
-    desc: "Gestión integral de última milla para PyMEs en crecimiento",
+    desc: "Gestión integral de última milla para PyMEs en crecimiento.",
     icon: Store,
     colorClass: "from-[#9B99FE] to-[#2BC8B7] text-[#9B99FE]",
-    borderColor: "hover:border-[#9B99FE]/30",
+    borderColor: "hover:border-[#9B99FE]/40",
+    glowColor: "hover:shadow-[#9B99FE]/5",
+    topGradient: "from-[#9B99FE] to-[#2BC8B7]",
     items: [
       "Integración tecnológica",
       "Rutas optimizadas",
@@ -82,11 +88,14 @@ export default function EmprendedoresSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group flex flex-col p-8 rounded-2xl border border-border/40 bg-card/30 transition-all duration-300 shadow-sm ${sol.borderColor}`}
+                className={`group relative flex flex-col p-8 rounded-2xl border border-border/40 bg-card/25 hover:bg-card/40 hover:scale-[1.01] hover:shadow-xl transition-all duration-300 overflow-hidden ${sol.borderColor} ${sol.glowColor}`}
               >
+                {/* Top gradient line */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${sol.topGradient} opacity-60 group-hover:opacity-100 transition-opacity`} />
+
                 {/* Icon and Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className={`p-3 rounded-xl bg-primary/5 border border-border/40 group-hover:scale-105 transition-transform duration-300`}>
+                  <div className="p-3.5 rounded-xl bg-primary/5 border border-border/40 group-hover:scale-105 transition-transform duration-300">
                     <Icon className={`w-6 h-6 ${sol.colorClass}`} />
                   </div>
                   <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-muted/80 border border-border/40 text-muted-foreground font-orbitron">
@@ -100,7 +109,7 @@ export default function EmprendedoresSection() {
                 </h3>
 
                 {/* Desc */}
-                <p className="text-sm text-muted-foreground font-roboto leading-relaxed mb-6">
+                <p className="text-sm text-muted-foreground font-roboto leading-relaxed mb-6 min-h-[40px]">
                   {sol.desc}
                 </p>
 

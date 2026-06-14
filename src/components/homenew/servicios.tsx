@@ -36,18 +36,23 @@ export default function ServiciosSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col justify-between p-8 rounded-2xl border border-border/40 bg-card/40 hover:bg-card/75 hover:border-primary/30 transition-all duration-300 shadow-sm"
+            className="group relative flex flex-col justify-between p-8 rounded-2xl border border-border/40 bg-card/30 hover:bg-card/50 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden"
           >
+            {/* Glowing top line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-[#0084ff] opacity-70 group-hover:opacity-100 transition-opacity" />
+
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="p-3.5 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+                <div className="p-3.5 rounded-xl bg-primary/10 border border-primary/25 text-primary group-hover:scale-105 transition-transform">
                   <Zap className="w-6 h-6" />
                 </div>
                 <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-red-500/10 border border-red-500/20 text-red-500 font-orbitron">
                   ALTA PRIORIDAD
                 </span>
               </div>
-              <h3 className="text-2xl font-bold font-orbitron mb-2">Envíos Express</h3>
+              <h3 className="text-2xl font-bold font-orbitron mb-2 text-foreground group-hover:text-primary transition-colors">
+                Envíos Express
+              </h3>
               <p className="text-sm font-semibold text-primary/90 font-roboto mb-4 uppercase tracking-wider">
                 Prioridad absoluta y certeza total.
               </p>
@@ -57,11 +62,11 @@ export default function ServiciosSection() {
             </div>
             <Button
               asChild
-              className="w-full bg-primary hover:bg-primary/90 font-roboto font-semibold flex items-center justify-center gap-2"
+              className="w-full bg-primary hover:bg-primary/95 text-primary-foreground font-roboto font-semibold flex items-center justify-center gap-2 transition-all hover:scale-[1.01] shadow-md shadow-primary/10"
             >
               <Link href="/cotizar/express">
                 <span>Solicitar Express</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
           </motion.div>
@@ -72,18 +77,23 @@ export default function ServiciosSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col justify-between p-8 rounded-2xl border border-border/40 bg-card/40 hover:bg-card/75 hover:border-secondary/30 transition-all duration-300 shadow-sm"
+            className="group relative flex flex-col justify-between p-8 rounded-2xl border border-border/40 bg-card/30 hover:bg-card/50 hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300 overflow-hidden"
           >
+            {/* Glowing top line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary to-[#ffcd75] opacity-70 group-hover:opacity-100 transition-opacity" />
+
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="p-3.5 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary">
+                <div className="p-3.5 rounded-xl bg-secondary/10 border border-secondary/25 text-secondary group-hover:scale-105 transition-transform">
                   <Percent className="w-6 h-6" />
                 </div>
-                <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 font-orbitron">
+                <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-green-500/10 border border-green-500/20 text-green-500 font-orbitron">
                   RECOMENDADO
                 </span>
               </div>
-              <h3 className="text-2xl font-bold font-orbitron mb-2">Envíos LowCost</h3>
+              <h3 className="text-2xl font-bold font-orbitron mb-2 text-foreground group-hover:text-secondary transition-colors">
+                Envíos LowCost
+              </h3>
               <p className="text-sm font-semibold text-secondary font-roboto mb-4 uppercase tracking-wider">
                 Rentabilidad y ruteo masivo.
               </p>
@@ -94,11 +104,11 @@ export default function ServiciosSection() {
             <Button
               asChild
               variant="outline"
-              className="w-full border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary-foreground font-roboto font-semibold flex items-center justify-center gap-2 transition-colors duration-200"
+              className="w-full border-secondary/60 text-secondary hover:bg-secondary/15 font-roboto font-semibold flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
             >
               <Link href="/servicios/envios-lowcost">
                 <span>Ahorrá con LowCost</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
           </motion.div>
