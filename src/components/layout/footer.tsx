@@ -142,7 +142,7 @@ export default function Footer() {
 
       {/* Navigation Links Columns */}
       <div className="mx-auto max-w-7xl px-6 py-10">
-        <div className="border-b border-dotted border-border"> </div>
+        <div className="border-b border-dotted border-border" />
         <div className="py-10">
           {navigation.categories.map((category) => (
             <div
@@ -175,7 +175,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="border-b border-dotted border-border"> </div>
+        <div className="border-b border-dotted border-border" />
       </div>
 
       {/* Social Icons & Theme Toggle */}
