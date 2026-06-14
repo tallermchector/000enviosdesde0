@@ -1,7 +1,20 @@
 "use client";
 
 import React from "react";
-import { Clock, ShieldCheck, Users, Calendar, Bike, CheckCircle2 } from "lucide-react";
+import {
+  ContainerAnimated,
+  ContainerStagger,
+  GalleryGrid,
+  GalleryGridCell,
+} from "@/components/ui/cta-section-with-gallery";
+import { Clock, ShieldCheck } from "lucide-react";
+
+const IMAGES = [
+  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1553413532-67617d54bbaa?q=80&w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=600&auto=format&fit=crop",
+];
 
 export default function VisionSection() {
   return (
@@ -12,111 +25,87 @@ export default function VisionSection() {
         <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-[120px] dark:bg-secondary/5" />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-[60px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-          
-          {/* Left Column: Text & Features */}
-          <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Badge */}
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-primary/10 border border-primary/20 text-primary mb-6 font-orbitron">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              Partner Logístico Especializado
-            </span>
+      <div className="relative z-10 mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-16 px-6 md:px-[60px] md:grid-cols-2">
+        <ContainerStagger className="flex flex-col items-start max-w-xl">
+          {/* Badge */}
+          <ContainerAnimated className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-primary/10 border border-primary/20 text-primary mb-6 font-orbitron">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            Partner Logístico Especializado
+          </ContainerAnimated>
 
-            {/* Title (H2) */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-orbitron tracking-tight mb-6 leading-tight">
-              Nuestra Visión Logística
-            </h2>
+          {/* Title (H2) */}
+          <ContainerAnimated className="text-3xl sm:text-4xl md:text-5xl font-bold font-orbitron tracking-tight mb-6 leading-tight">
+            Nuestra Visión Logística
+          </ContainerAnimated>
 
-            {/* Description */}
-            <p className="text-lg leading-relaxed text-muted-foreground mb-10 font-roboto max-w-2xl">
-              Transformamos tus costos fijos en soluciones flexibles que acompañan el crecimiento de tu negocio.
-            </p>
+          {/* Description */}
+          <ContainerAnimated className="text-lg leading-relaxed text-muted-foreground mb-8 font-roboto">
+            Transformamos tus costos fijos en soluciones flexibles que acompañan el crecimiento de tu negocio.
+          </ContainerAnimated>
 
-            {/* Features list */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-              {/* Feature 1 */}
-              <div className="flex gap-4 p-5 rounded-xl border border-border/55 bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-base font-orbitron mb-1">Entregas a Tiempo</h3>
-                  <p className="text-sm text-muted-foreground font-roboto">
-                    Puntualidad garantizada en cada envío
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="flex gap-4 p-5 rounded-xl border border-border/55 bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-base font-orbitron mb-1">Envíos Seguros</h3>
-                  <p className="text-sm text-muted-foreground font-roboto">
-                    Protección total de tus paquetes
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Statistics Grid */}
-          <div className="lg:col-span-5 w-full flex flex-col gap-6">
-            
-            {/* Stat Card 1 */}
-            <div className="group relative flex items-center gap-6 p-6 rounded-xl border border-border/55 bg-card/30 backdrop-blur-md hover:bg-card/50 transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-secondary/15 flex items-center justify-center text-secondary border border-secondary/20 shadow-inner">
-                <Users className="w-7 h-7" />
-              </div>
+          {/* Characteristics/Features */}
+          <ContainerAnimated className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div className="flex gap-3 items-start p-3.5 rounded-lg border border-border/30 bg-card/25 hover:border-primary/30 hover:bg-card/45 transition-all duration-300">
+              <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
               <div>
-                <div className="text-3xl sm:text-4xl font-bold font-orbitron text-foreground mb-1">
-                  +5.000
-                </div>
-                <div className="text-sm text-muted-foreground font-roboto font-medium uppercase tracking-wide">
-                  Confianza local comprobada
-                </div>
+                <h4 className="font-bold text-sm font-orbitron">Entregas a Tiempo</h4>
+                <p className="text-xs text-muted-foreground font-roboto mt-0.5">
+                  Puntualidad garantizada en cada envío
+                </p>
               </div>
             </div>
-
-            {/* Stat Card 2 */}
-            <div className="group relative flex items-center gap-6 p-6 rounded-xl border border-border/55 bg-card/30 backdrop-blur-md hover:bg-card/50 transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-secondary/15 flex items-center justify-center text-secondary border border-secondary/20 shadow-inner">
-                <Calendar className="w-7 h-7" />
-              </div>
+            <div className="flex gap-3 items-start p-3.5 rounded-lg border border-border/30 bg-card/25 hover:border-primary/30 hover:bg-card/45 transition-all duration-300">
+              <ShieldCheck className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
               <div>
-                <div className="text-3xl sm:text-4xl font-bold font-orbitron text-foreground mb-1">
-                  7 Años
-                </div>
-                <div className="text-sm text-muted-foreground font-roboto font-medium uppercase tracking-wide">
-                  Innovación constante en última milla
-                </div>
+                <h4 className="font-bold text-sm font-orbitron">Envíos Seguros</h4>
+                <p className="text-xs text-muted-foreground font-roboto mt-0.5">
+                  Protección total de tus paquetes
+                </p>
               </div>
             </div>
+          </ContainerAnimated>
 
-            {/* Stat Card 3 */}
-            <div className="group relative flex items-center gap-6 p-6 rounded-xl border border-border/55 bg-card/30 backdrop-blur-md hover:bg-card/50 transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-secondary/15 flex items-center justify-center text-secondary border border-secondary/20 shadow-inner">
-                <Bike className="w-7 h-7" />
+          {/* Trust Statistics */}
+          <ContainerAnimated className="w-full border-t border-border/40 pt-8 flex flex-col sm:flex-row gap-6">
+            <div className="flex-1">
+              <div className="text-2xl font-bold font-orbitron text-secondary mb-1">
+                +5.000
               </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-bold font-orbitron text-foreground mb-1">
-                  Flota Exclusiva
-                </div>
-                <div className="text-sm text-muted-foreground font-roboto font-medium uppercase tracking-wide">
-                  Motocicletas dedicadas para máxima agilidad urbana
-                </div>
-              </div>
+              <p className="text-xs text-muted-foreground font-roboto leading-normal">
+                Confianza local comprobada
+              </p>
             </div>
+            <div className="flex-1">
+              <div className="text-2xl font-bold font-orbitron text-secondary mb-1">
+                7 Años
+              </div>
+              <p className="text-xs text-muted-foreground font-roboto leading-normal">
+                Innovación constante en última milla
+              </p>
+            </div>
+            <div className="flex-1">
+              <div className="text-2xl font-bold font-orbitron text-secondary mb-1">
+                Flota Exclusiva
+              </div>
+              <p className="text-xs text-muted-foreground font-roboto leading-normal">
+                Motocicletas dedicadas para máxima agilidad urbana
+              </p>
+            </div>
+          </ContainerAnimated>
+        </ContainerStagger>
 
-          </div>
-          
-        </div>
+        {/* Gallery Grid */}
+        <GalleryGrid className="w-full max-w-md mx-auto md:max-w-none">
+          {IMAGES.map((imageUrl, index) => (
+            <GalleryGridCell index={index} key={index}>
+              <img
+                className="w-full h-full object-cover object-center grayscale hover:grayscale-0 hover:scale-105 opacity-80 hover:opacity-100 transition-all duration-500"
+                src={imageUrl}
+                alt={`Visión Logística ${index + 1}`}
+              />
+            </GalleryGridCell>
+          ))}
+        </GalleryGrid>
       </div>
     </section>
   );
