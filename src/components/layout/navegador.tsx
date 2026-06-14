@@ -108,7 +108,7 @@ export default function Navegador({
             </a>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
+                <Button variant="outline" size="icon" aria-label="Abrir menú de navegación">
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
