@@ -3,6 +3,7 @@ import React from "react";
 import Navegador from "@/components/layout/navegador";
 import Footer from "@/components/layout/footer";
 import HeroPrincipal from "@/components/homenew/heroprincipal";
+import VisionSection from "@/components/homenew/vision";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       
       <main className="flex-1">
         <HeroPrincipal />
+        <VisionSection />
       </main>
 
       <Footer />
