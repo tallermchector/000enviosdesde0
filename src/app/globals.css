@@ -40,6 +40,7 @@
     --ring: 222 47% 5%;
 
     --radius: 0.5rem;
+    --button-ripple-color: oklch(0.145 0 0 / 0.3);
   }
 
   .dark {
@@ -71,6 +72,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 217.2 91.2% 59.8%;
+    --button-ripple-color: oklch(0.985 0 0 / 0.5);
   }
 }
 

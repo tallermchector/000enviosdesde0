@@ -6,6 +6,7 @@ import HeroPrincipal from "@/components/homenew/heroprincipal";
 import VisionSection from "@/components/homenew/vision";
 import ServiciosSection from "@/components/homenew/servicios";
 import EmprendedoresSection from "@/components/homenew/emprendedores";
+import PricingSection from "@/components/homenew/pricing";
 import CTAFinalSection from "@/components/homenew/ctafinal";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <VisionSection />
         <ServiciosSection />
         <EmprendedoresSection />
+        <PricingSection />
         <CTAFinalSection />
       </main>
 
