@@ -28,7 +28,7 @@ import {
   logo as defaultLogo,
   menu as defaultMenu,
   mobileExtraLinks as defaultMobileExtraLinks,
-} from "@/lib/navegacion";
+} from "../../lib/navegacion";
 
 interface MenuItem {
   title: string;

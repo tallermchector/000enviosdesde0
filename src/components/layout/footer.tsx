@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { DIcons } from "dicons";
 import { useTheme } from "next-themes";
-import { logo as defaultLogo } from "@/lib/navegacion";
+import { logo as defaultLogo } from "../../lib/navegacion";
 
 function handleScrollTop() {
   if (typeof window !== "undefined") {
