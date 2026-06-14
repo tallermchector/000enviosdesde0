@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PriceRange {
+  id             Int             @id @default(autoincrement())
+  serviceType    ServiceTypeEnum
+  distanciaMinKm Decimal         @db.Decimal(10, 2)
+  distanciaMaxKm Decimal         @db.Decimal(10, 2)
+  precioRango    Decimal         @db.Decimal(10, 2)
+  isActive       Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@unique([serviceType, distanciaMinKm, distanciaMaxKm])
+}
+
+model SocialPost {
+  id         Int                @id @default(autoincrement())
+  platform   SocialPlatformEnum
+  userName   String             @default("Envios DosRuedas")
+  userAvatar String?            @default("/LogoEnviosDosRuedas.webp")
+  userUrl    String?
+  content    String
+  postUrl    String             @unique
+  imageUrl   String?
+  imageHint  String?
+  likes      Int?               @default(dbgenerated("(floor((random() * (100)::double precision)))::integer"))
+  comments   Int?               @default(dbgenerated("(floor((random() * (50)::double precision)))::integer"))
+  shares     Int?               @default(dbgenerated("(floor((random() * (20)::double precision)))::integer"))
+  timestamp  DateTime           @default(now())
+}
+
+enum ServiceTypeEnum {
+  EXPRESS
+  LOW_COST
+  PUNTO_DE_RETIRO
+}
+
+enum SocialPlatformEnum {
+  facebook
+  instagram
+  whatsapp
+}
+
