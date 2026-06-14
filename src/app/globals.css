@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +6,49 @@
 
 @layer base {
   :root {
-    /* Font Variables mapped to user's design requirements */
-    --font-roboto: 'Bebas Neue', sans-serif;
+    /* Font Variables mapped to DESING.md specs */
+    --font-roboto: 'Inter', sans-serif;
     --font-orbitron: 'Anton', sans-serif;
     --font-jetbrains-mono: 'JetBrains Mono', monospace;
 
-    /* Light Theme (Default) */
-    --background: 0 0% 100%;
-    --foreground: 232 100% 5%;
+    /* Light Theme (Default in DESING.md) */
+    --background: 210 17% 98%; /* #f8f9fa */
+    --foreground: 232 10% 11%; /* #191c1d */
 
-    --card: 0 0% 100%;
-    --card-foreground: 232 100% 5%;
+    --card: 0 0% 100%; /* #ffffff */
+    --card-foreground: 232 10% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 232 100% 5%;
+    --popover-foreground: 232 10% 11%;
 
-    /* Brand Colors */
-    --primary: 232 100% 44%; /* #001de0 */
+    /* Brand accents */
+    --primary: 233 100% 32%; /* #0012a1 */
     --primary-foreground: 0 0% 100%; /* #ffffff */
 
     --secondary: 51 100% 46%; /* #e9c400 */
-    --secondary-foreground: 232 100% 5%;
+    --secondary-foreground: 232 10% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 200 10% 93%; /* #edeeef */
+    --muted-foreground: 232 10% 40%; /* #444556 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 232 100% 44%; /* #001de0 - Container Electric Blue */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 42%; /* #ba1a1a */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 232 100% 44%;
+    --border: 232 10% 90%; /* #e1e3e4 */
+    --input: 232 10% 90%;
+    --ring: 233 100% 32%;
 
-    --radius: 0.25rem; /* Default: 0.25rem */
-    --button-ripple-color: oklch(0.145 0 0 / 0.3);
+    --radius: 0px; /* Sharp 0px profile */
+    --button-ripple-color: rgba(0, 18, 161, 0.1);
   }
 
   .dark {
-    /* Dark Theme with deep high-contrast blue backgrounds */
+    /* Dark Theme fallback or alternative */
     --background: 232 60% 4%;
-    --foreground: 0 0% 100%; /* #ffffff */
+    --foreground: 0 0% 100%;
 
     --card: 232 45% 7%;
     --card-foreground: 0 0% 100%;
@@ -56,12 +56,11 @@
     --popover: 232 60% 4%;
     --popover-foreground: 0 0% 100%;
 
-    /* Brand Colors in Dark Mode */
-    --primary: 232 100% 44%; /* #001de0 */
-    --primary-foreground: 0 0% 100%; /* #ffffff */
+    --primary: 232 100% 44%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 51 100% 46%; /* #e9c400 */
-    --secondary-foreground: 232 100% 5%;
+    --secondary: 51 100% 46%;
+    --secondary-foreground: 232 10% 11%;
 
     --muted: 232 30% 14%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -75,7 +74,7 @@
     --border: 232 30% 14%;
     --input: 232 30% 14%;
     --ring: 232 100% 44%;
-    --button-ripple-color: oklch(0.985 0 0 / 0.5);
+    --button-ripple-color: rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -109,7 +108,7 @@
 }
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--primary));
-  border-radius: 4px;
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsla(var(--primary), 0.8);
@@ -150,13 +149,14 @@
 }
 
 @layer utilities {
-  /* Typographic scale classes specified by the user */
+  /* Typographic scale classes specified in DESING.md */
   .text-display-lg {
     font-family: var(--font-orbitron);
-    font-size: 72px;
+    font-size: 64px;
     font-weight: 400;
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
   
   @media (max-width: 768px) {
@@ -170,7 +170,8 @@
     font-size: 48px;
     font-weight: 400;
     line-height: 1.2;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
   
   .text-headline-lg {
@@ -178,6 +179,7 @@
     font-size: 40px;
     font-weight: 400;
     line-height: 1.2;
+    text-transform: uppercase;
   }
 
   @media (max-width: 768px) {
@@ -188,44 +190,52 @@
   
   .text-headline-md {
     font-family: var(--font-orbitron);
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 400;
-    line-height: 1.3;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
   
   .text-body-lg {
     font-family: var(--font-roboto);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.6;
   }
   
   .text-body-md {
     font-family: var(--font-roboto);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
+  }
+
+  .text-body-sm {
+    font-family: var(--font-roboto);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
   }
   
   .text-label-md {
     font-family: var(--font-jetbrains-mono);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.0;
     letter-spacing: 0.05em;
   }
   
   .text-label-sm {
     font-family: var(--font-jetbrains-mono);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: 0.1em;
+    line-height: 1.0;
+    letter-spacing: 0.05em;
   }
   
   .text-code-tracking {
     font-family: var(--font-jetbrains-mono);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.0;
     letter-spacing: 0.1em;

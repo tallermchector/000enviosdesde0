@@ -14,7 +14,7 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px", // Industrial fixed grid 1280px max-width
       },
     },
     extend: {
@@ -54,24 +54,25 @@ const config: Config = {
         },
       },
       borderRadius: {
-        sm: "0.125rem",
-        DEFAULT: "0.25rem",
-        md: "0.375rem",
-        lg: "0.5rem",
-        xl: "0.75rem",
-        full: "9999px",
+        sm: "0px",
+        DEFAULT: "0px",
+        md: "0px",
+        lg: "0px",
+        xl: "0px",
+        full: "9999px", // Exception for toggle/status indicators
       },
       spacing: {
-        base: "8px",
+        unit: "4px",
         xs: "4px",
         sm: "8px",
         md: "16px",
-        lg: "32px",
-        xl: "64px",
-        gutter: "24px",
-        "margin-mobile": "20px",
-        "margin-desktop": "64px",
-        "container-max": "1400px",
+        lg: "24px",
+        xl: "40px",
+        "container-margin": "24px",
+        gutter: "16px",
+        "margin-mobile": "16px",
+        "margin-desktop": "24px",
+        "container-max": "1280px",
       },
       keyframes: {
         "accordion-down": {
