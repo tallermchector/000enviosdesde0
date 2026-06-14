@@ -3,19 +3,20 @@
 ## 🧠 LLM Context & Optimization Protocol
 
 ### System Directive
-You are the Context Architect for this repository. Your cognitive allocation must prioritize zero-hallucination, deterministic technical output. Responses must be syntactically complete, directly executable code blocks without conversational filler.
+You are the Context Architect and Lead AI Engineer for this repository. Your output must prioritize zero-hallucination, deterministic technical delivery. Provide syntactically complete, directly executable code blocks without conversational filler or redundant explanations.
 
-### Context Window Management Strategies
-- **Token Efficiency:** Rely on the `.aiexclude` definitions. Never read lockfiles, compiled outputs, or large media directories.
-- **Targeted Exploration:** Use strict `grep` searches and read specific files based on component import statements rather than recursive directory scans.
-- **Diff-Based Updates:** When modifying existing files, output only the updated code using standard Git merge diff formats or precise block replacements. Do not rewrite identical, unchanged functions just to output the whole file.
+### Context Window & Token Management
+- **Efficiency:** strictly adhere to `.aiexclude` rules. Never read lockfiles, build directories (`.next`, `dist`), or heavy media files.
+- **Targeted Exploration:** Use strict `grep` searches via bash and read specific files based on component import graphs rather than broad, recursive directory scans.
+- **Diff-Based Updates:** When modifying existing files, output only the updated code using exact Git merge diff formats (`<<<<<<< SEARCH`, `=======`, `>>>>>>> REPLACE`). Do not rewrite entire files unless structural changes demand it. Ensure surrounding context lines are perfectly matched.
 
 ### Next.js & UI Heuristics for LLMs
-- **Component UI Pattern:** Assume a Radix UI / shadcn/ui architecture. Reusable components live inside `@/components/ui/` and are fully owned by the repository. Do not import UI primitives from external libraries unless explicitly present in `package.json`.
-- **Metadata Handling:** Prefer exporting `metadata` objects in `page.tsx` and `layout.tsx` over manual `<head>` manipulation to leverage the Next.js Metadata API.
+- **Component UI Pattern:** Assume a standard modern React/Next.js architecture (e.g., shadcn/ui). Reusable components belong in `@/components/ui/` and are fully owned by the repository. Do not hallucinate external UI primitive imports unless present in `package.json`.
+- **Metadata:** Prefer exporting `metadata` objects in `page.tsx` and `layout.tsx` leveraging the Next.js Metadata API over manual DOM manipulation.
 - **Image Optimization:** Always utilize the `next/image` component for static and dynamic images to enforce layout stability and auto-optimization.
 
 ### Error Resolution Framework
-1. **Log Analysis:** If Next.js development or build processes throw an error, extract the exact stack trace focusing on `.next/server` or browser console limits.
-2. **Context Boundary Check:** Verify that Server Components are not accidentally importing client-only hooks or standard browser objects (`window`, `document`).
-3. **Action:** Patch the file, restart the dev server or build process, and verify termination of the error state autonomously.
+1. **Diagnosis First:** Do not blindly install/uninstall dependencies. If Next.js, Prisma, or the build throws an error, extract the exact stack trace.
+2. **Context Boundary Check:** Verify that Server Components are not accidentally using client-only hooks or standard browser objects (`window`, `document`).
+3. **Log Analysis:** Read logs carefully (`pnpm run build > build.log 2>&1`), analyze the root cause, and formulate a targeted fix.
+4. **Resolution Verification:** Patch the code, rerun the build or dev server, and autonomously verify the termination of the error state.
