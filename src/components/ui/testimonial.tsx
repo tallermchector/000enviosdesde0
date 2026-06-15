@@ -4,6 +4,7 @@ import { TimelineContent } from "@/components/ui/timeline-animation";
 import { Variants } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 function ClientFeedback() {
   const testimonialRef = useRef<HTMLDivElement>(null);
@@ -80,33 +81,43 @@ function ClientFeedback() {
               animationNum={3} 
               customVariants={revealVariants} 
               timelineRef={testimonialRef} 
-              className="flex-1 flex flex-col justify-between relative bg-white text-black rounded-none border-2 border-black p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300"
+              className="flex-1 flex flex-col"
             >
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f10_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f10_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
-              
-              <div className="relative z-10 flex-1 flex flex-col justify-between">
-                <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
-                  "Envíos DosRuedas ha sido un verdadero socio estratégico. Su servicio de entrega express en el día es impecable y su equipo responde al instante."
-                </p>
-                <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
-                  <div>
-                    <h3 className="font-display text-base font-bold uppercase tracking-wider text-black">
-                      Guillermo Rauch
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-black/60 mt-0.5">
-                      CEO de Enigma
-                    </p>
-                  </div>
-                  <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                    <Image
-                      src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=150&auto=format&fit=crop"
-                      alt="Guillermo Rauch"
-                      fill
-                      className="object-cover rounded-none"
-                    />
+              <GlowCard
+                glowColor="blue"
+                radius={0}
+                border={2}
+                borderColor="#000"
+                backdrop="#fff"
+                customSize
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f10_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f10_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
+                
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
+                    "Envíos DosRuedas ha sido un verdadero socio estratégico. Su servicio de entrega express en el día es impecable y su equipo responde al instante."
+                  </p>
+                  <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-black">
+                        Guillermo Rauch
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-wider text-black/60 mt-0.5">
+                        CEO de Enigma
+                      </p>
+                    </div>
+                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=150&auto=format&fit=crop"
+                        alt="Guillermo Rauch"
+                        fill
+                        className="object-cover rounded-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </TimelineContent>
 
             {/* Card 2: Rika Shinoda - Electric Blue */}
@@ -114,31 +125,41 @@ function ClientFeedback() {
               animationNum={4} 
               customVariants={revealVariants} 
               timelineRef={testimonialRef} 
-              className="flex-shrink-0 flex flex-col justify-between relative bg-[#001de0] text-white rounded-none border-2 border-black p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300"
+              className="flex-shrink-0 flex flex-col"
             >
-              <div className="relative z-10">
-                <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                  "Vimos un salto enorme en nuestras calificaciones de MercadoLibre. La puntualidad y cuidado en las entregas es insuperable."
-                </p>
-                <div className="flex justify-between items-end border-t border-white/20 pt-4">
-                  <div>
-                    <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                      Rika Shinoda
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                      CEO de Kintsugi
-                    </p>
-                  </div>
-                  <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                    <Image
-                      src="https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=150&auto=format&fit=crop"
-                      alt="Rika Shinoda"
-                      fill
-                      className="object-cover rounded-none"
-                    />
+              <GlowCard
+                glowColor="yellow"
+                radius={0}
+                border={2}
+                borderColor="#000"
+                backdrop="#001de0"
+                customSize
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
+                    "Vimos un salto enorme en nuestras calificaciones de MercadoLibre. La puntualidad y cuidado en las entregas es insuperable."
+                  </p>
+                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
+                        Rika Shinoda
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
+                        CEO de Kintsugi
+                      </p>
+                    </div>
+                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=150&auto=format&fit=crop"
+                        alt="Rika Shinoda"
+                        fill
+                        className="object-cover rounded-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </TimelineContent>
           </div>
 
@@ -149,31 +170,41 @@ function ClientFeedback() {
               animationNum={5} 
               customVariants={revealVariants} 
               timelineRef={testimonialRef} 
-              className="flex flex-col justify-between relative bg-black text-white rounded-none border-2 border-black p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300"
+              className="flex-1 flex flex-col"
             >
-              <div className="relative z-10">
-                <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                  "El equipo es sumamente profesional. Sus soluciones de logística integrada y cadetería urbana transformaron nuestra operación."
-                </p>
-                <div className="flex justify-between items-end border-t border-white/20 pt-4">
-                  <div>
-                    <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                      Reacher
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                      CEO de OdeaoLabs
-                    </p>
-                  </div>
-                  <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                    <Image
-                      src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=150&auto=format&fit=crop"
-                      alt="Reacher"
-                      fill
-                      className="object-cover rounded-none"
-                    />
+              <GlowCard
+                glowColor="green"
+                radius={0}
+                border={2}
+                borderColor="#000"
+                backdrop="#000"
+                customSize
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
+                    "El equipo es sumamente profesional. Sus soluciones de logística integrada y cadetería urbana transformaron nuestra operation."
+                  </p>
+                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
+                        Reacher
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
+                        CEO de OdeaoLabs
+                      </p>
+                    </div>
+                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=150&auto=format&fit=crop"
+                        alt="Reacher"
+                        fill
+                        className="object-cover rounded-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </TimelineContent>
 
             {/* Card 4: John - Dark Card */}
@@ -181,31 +212,41 @@ function ClientFeedback() {
               animationNum={6} 
               customVariants={revealVariants} 
               timelineRef={testimonialRef} 
-              className="flex flex-col justify-between relative bg-black text-white rounded-none border-2 border-black p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300"
+              className="flex-1 flex flex-col"
             >
-              <div className="relative z-10">
-                <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                  "Súper recomendados. Su conocimiento del terreno en Mar del Plata nos da una ventaja competitiva al entregar en horas."
-                </p>
-                <div className="flex justify-between items-end border-t border-white/20 pt-4">
-                  <div>
-                    <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                      John
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                      CEO de Labsbo
-                    </p>
-                  </div>
-                  <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                    <Image
-                      src="https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=150&auto=format&fit=crop"
-                      alt="John"
-                      fill
-                      className="object-cover rounded-none"
-                    />
+              <GlowCard
+                glowColor="purple"
+                radius={0}
+                border={2}
+                borderColor="#000"
+                backdrop="#000"
+                customSize
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
+                    "Súper recomendados. Su conocimiento del terreno en Mar del Plata nos da una ventaja competitiva al entregar en horas."
+                  </p>
+                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
+                        John
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
+                        CEO de Labsbo
+                      </p>
+                    </div>
+                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=150&auto=format&fit=crop"
+                        alt="John"
+                        fill
+                        className="object-cover rounded-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </TimelineContent>
 
             {/* Card 5: Steven Sunny - Dark Card */}
@@ -213,31 +254,41 @@ function ClientFeedback() {
               animationNum={7} 
               customVariants={revealVariants} 
               timelineRef={testimonialRef} 
-              className="flex flex-col justify-between relative bg-black text-white rounded-none border-2 border-black p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300"
+              className="flex-1 flex flex-col"
             >
-              <div className="relative z-10">
-                <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                  "El canal de soporte por WhatsApp es súper directo y eficiente. Saben resolver contingencias al instante y con excelente trato."
-                </p>
-                <div className="flex justify-between items-end border-t border-white/20 pt-4">
-                  <div>
-                    <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                      Steven Sunny
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                      CEO de boxefi
-                    </p>
-                  </div>
-                  <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                    <Image
-                      src="https://images.unsplash.com/photo-1740102074295-c13fae3e4f8a?q=80&w=150&auto=format&fit=crop"
-                      alt="Steven Sunny"
-                      fill
-                      className="object-cover rounded-none"
-                    />
+              <GlowCard
+                glowColor="orange"
+                radius={0}
+                border={2}
+                borderColor="#000"
+                backdrop="#000"
+                customSize
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
+                    "El canal de soporte por WhatsApp es súper directo y eficiente. Saben resolver contingencias al instante y con excelente trato."
+                  </p>
+                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
+                        Steven Sunny
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
+                        CEO de boxefi
+                      </p>
+                    </div>
+                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1740102074295-c13fae3e4f8a?q=80&w=150&auto=format&fit=crop"
+                        alt="Steven Sunny"
+                        fill
+                        className="object-cover rounded-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </TimelineContent>
           </div>
 
@@ -248,31 +299,41 @@ function ClientFeedback() {
               animationNum={8} 
               customVariants={revealVariants} 
               timelineRef={testimonialRef} 
-              className="flex-shrink-0 flex flex-col justify-between relative bg-[#001de0] text-white rounded-none border-2 border-black p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300"
+              className="flex-shrink-0 flex flex-col"
             >
-              <div className="relative z-10">
-                <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                  "Su integración directa nos ha permitido procesar despachos masivos de e-commerce sin demoras y sin errores de ruteo."
-                </p>
-                <div className="flex justify-between items-end border-t border-white/20 pt-4">
-                  <div>
-                    <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                      Adrián Gómez
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                      CEO de TechSur
-                    </p>
-                  </div>
-                  <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                    <Image
-                      src="https://images.unsplash.com/photo-1563237023-b1e970526dcb?q=80&w=150&auto=format&fit=crop"
-                      alt="Adrián Gómez"
-                      fill
-                      className="object-cover rounded-none"
-                    />
+              <GlowCard
+                glowColor="yellow"
+                radius={0}
+                border={2}
+                borderColor="#000"
+                backdrop="#001de0"
+                customSize
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
+                    "Su integración directa nos ha permitido procesar despachos masivos de e-commerce sin demoras y sin errores de ruteo."
+                  </p>
+                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
+                        Adrián Gómez
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
+                        CEO de TechSur
+                      </p>
+                    </div>
+                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1563237023-b1e970526dcb?q=80&w=150&auto=format&fit=crop"
+                        alt="Adrián Gómez"
+                        fill
+                        className="object-cover rounded-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </TimelineContent>
 
             {/* Card 7: Paul Brauch - Safety Yellow Brutalist */}
@@ -280,33 +341,43 @@ function ClientFeedback() {
               animationNum={9} 
               customVariants={revealVariants} 
               timelineRef={testimonialRef} 
-              className="flex-1 flex flex-col justify-between relative bg-[#fed726] text-black rounded-none border-2 border-black p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300"
+              className="flex-1 flex flex-col"
             >
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
-              
-              <div className="relative z-10 flex-1 flex flex-col justify-between">
-                <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
-                  "Un cambio estratégico para nuestro negocio. La velocidad de su flota y el compromiso con el cliente final tiene un impacto enorme en la recompra."
-                </p>
-                <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
-                  <div>
-                    <h3 className="font-display text-base font-bold uppercase tracking-wider text-black">
-                      Paul Brauch
-                    </h3>
-                    <p className="font-mono text-xs uppercase tracking-wider text-black/60 mt-0.5">
-                      CTO de Spectrum
-                    </p>
-                  </div>
-                  <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                    <Image
-                      src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?q=80&w=150&auto=format&fit=crop"
-                      alt="Paul Brauch"
-                      fill
-                      className="object-cover rounded-none"
-                    />
+              <GlowCard
+                glowColor="blue"
+                radius={0}
+                border={2}
+                borderColor="#000"
+                backdrop="#fed726"
+                customSize
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
+                
+                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                  <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
+                    "Un cambio estratégico para nuestro negocio. La velocidad de su flota y el compromiso con el cliente final tiene un impacto enorme en la recompra."
+                  </p>
+                  <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-black">
+                        Paul Brauch
+                      </h3>
+                      <p className="font-mono text-xs uppercase tracking-wider text-black/60 mt-0.5">
+                        CTO de Spectrum
+                      </p>
+                    </div>
+                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
+                      <Image
+                        src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?q=80&w=150&auto=format&fit=crop"
+                        alt="Paul Brauch"
+                        fill
+                        className="object-cover rounded-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </GlowCard>
             </TimelineContent>
           </div>
 

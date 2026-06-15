@@ -9,6 +9,7 @@ import {
   GalleryGridCell,
 } from "@/components/ui/cta-section-with-gallery";
 import { Clock, ShieldCheck } from "lucide-react";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 const IMAGES = [
   "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop",
@@ -44,52 +45,98 @@ export default function VisionSection() {
 
           {/* Characteristics/Features */}
           <ContainerAnimated className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <div className="flex gap-3 items-start p-4 rounded-none border-2 border-black bg-white shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">
-              <Clock className="w-5 h-5 text-[#001de0] mt-0.5 flex-shrink-0" />
-              <div>
+            <GlowCard 
+              glowColor="blue"
+              radius={0}
+              border={2}
+              borderColor="#000"
+              backdrop="#fff"
+              customSize
+              className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all"
+            >
+              <Clock className="w-5 h-5 text-[#001de0] mt-0.5 flex-shrink-0 z-10" />
+              <div className="z-10">
                 <h4 className="font-bold text-sm font-display uppercase tracking-wider">Entregas a Tiempo</h4>
                 <p className="text-xs text-[#444556] font-mono uppercase tracking-wider mt-0.5">
                   Puntualidad garantizada en cada entrega.
                 </p>
               </div>
-            </div>
-            <div className="flex gap-3 items-start p-4 rounded-none border-2 border-black bg-white shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">
-              <ShieldCheck className="w-5 h-5 text-[#001de0] mt-0.5 flex-shrink-0" />
-              <div>
+            </GlowCard>
+            <GlowCard 
+              glowColor="blue"
+              radius={0}
+              border={2}
+              borderColor="#000"
+              backdrop="#fff"
+              customSize
+              className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all"
+            >
+              <ShieldCheck className="w-5 h-5 text-[#001de0] mt-0.5 flex-shrink-0 z-10" />
+              <div className="z-10">
                 <h4 className="font-bold text-sm font-display uppercase tracking-wider">Envíos Seguros</h4>
                 <p className="text-xs text-[#444556] font-mono uppercase tracking-wider mt-0.5">
                   Protección total de tus paquetes.
                 </p>
               </div>
-            </div>
+            </GlowCard>
           </ContainerAnimated>
 
           {/* Trust Statistics (Brutalist style) */}
           <ContainerAnimated className="w-full border-t-2 border-dotted border-black pt-8 flex flex-col sm:flex-row gap-4">
-            <div className="flex-1 p-4 rounded-none border-2 border-black bg-white shadow-[4px_4px_0px_#000]">
-              <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
-                +5.000
+            <GlowCard 
+              glowColor="blue"
+              radius={0}
+              border={2}
+              borderColor="#000"
+              backdrop="#fff"
+              customSize
+              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+            >
+              <div className="relative z-10">
+                <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
+                  +5.000
+                </div>
+                <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
+                  Envíos locales al mes.
+                </p>
               </div>
-              <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
-                Envíos locales al mes.
-              </p>
-            </div>
-            <div className="flex-1 p-4 rounded-none border-2 border-black bg-white shadow-[4px_4px_0px_#000]">
-              <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
-                7 Años
+            </GlowCard>
+            <GlowCard 
+              glowColor="blue"
+              radius={0}
+              border={2}
+              borderColor="#000"
+              backdrop="#fff"
+              customSize
+              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+            >
+              <div className="relative z-10">
+                <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
+                  7 Años
+                </div>
+                <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
+                  De trayectoria urbana.
+                </p>
               </div>
-              <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
-                De trayectoria urbana.
-              </p>
-            </div>
-            <div className="flex-1 p-4 rounded-none border-2 border-black bg-white shadow-[4px_4px_0px_#000]">
-              <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
-                Flota
+            </GlowCard>
+            <GlowCard 
+              glowColor="blue"
+              radius={0}
+              border={2}
+              borderColor="#000"
+              backdrop="#fff"
+              customSize
+              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+            >
+              <div className="relative z-10">
+                <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
+                  Flota
+                </div>
+                <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
+                  Motocicletas dedicadas.
+                </p>
               </div>
-              <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
-                Motocicletas dedicadas.
-              </p>
-            </div>
+            </GlowCard>
           </ContainerAnimated>
         </ContainerStagger>
 

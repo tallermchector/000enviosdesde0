@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { RippleButton } from "@/components/ui/multi-type-ripple-buttons";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 // --- Internal Helper Components (Not exported) --- //
 
@@ -196,43 +197,53 @@ export const PricingCard = ({
   const isNumeric = !isNaN(Number(price.replace('$', '')));
 
   return (
-    <div className={cardClasses.trim()}>
-      {isPopular && (
-        <div className="absolute -top-4 right-6 px-3 py-1 text-[11px] font-bold tracking-wider uppercase rounded-full bg-primary text-primary-foreground font-orbitron">
-          Recomendado
+    <GlowCard
+      glowColor="blue"
+      radius={16}
+      border={1}
+      borderColor="transparent"
+      backdrop="transparent"
+      customSize
+      className={cardClasses.trim()}
+    >
+      <div className="relative z-10 flex flex-col h-full flex-1">
+        {isPopular && (
+          <div className="absolute -top-12 right-0 px-3 py-1 text-[11px] font-bold tracking-wider uppercase rounded-full bg-primary text-primary-foreground font-orbitron">
+            Recomendado
+          </div>
+        )}
+        <div className="mb-4">
+          <h3 className="text-3xl font-bold tracking-tight text-foreground font-orbitron">{planName}</h3>
+          <p className="text-sm text-foreground/75 mt-2 font-sans min-h-10 leading-relaxed">{description}</p>
         </div>
-      )}
-      <div className="mb-4">
-        <h3 className="text-3xl font-bold tracking-tight text-foreground font-orbitron">{planName}</h3>
-        <p className="text-sm text-foreground/75 mt-2 font-sans min-h-10 leading-relaxed">{description}</p>
-      </div>
-      <div className="my-6 flex items-baseline gap-1">
-        <span className="text-4xl font-bold font-orbitron text-foreground tracking-tight">
-          {isNumeric ? `$${price}` : price}
-        </span>
-        {isNumeric && (
-          <span className="text-sm text-muted-foreground font-sans font-medium">/envío</span>
+        <div className="my-6 flex items-baseline gap-1">
+          <span className="text-4xl font-bold font-orbitron text-foreground tracking-tight">
+            {isNumeric ? `$${price}` : price}
+          </span>
+          {isNumeric && (
+            <span className="text-sm text-muted-foreground font-sans font-medium">/envío</span>
+          )}
+        </div>
+        <div className="card-divider w-full mb-6 h-px bg-[linear-gradient(90deg,transparent,rgba(0,0,0,0.1)_50%,transparent)] dark:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.09)_20%,rgba(255,255,255,0.22)_50%,rgba(255,255,255,0.09)_80%,transparent)]"></div>
+        <ul className="flex flex-col gap-3 text-[14px] text-foreground/90 mb-8 font-sans flex-1">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-start gap-2.5">
+              <CheckIcon className="text-primary w-4.5 h-4.5 mt-0.5 flex-shrink-0" /> 
+              <span className="text-sm font-medium leading-relaxed">{feature}</span>
+            </li>
+          ))}
+        </ul>
+        {href ? (
+          <Link href={href} className="w-full mt-auto block">
+            {buttonContent}
+          </Link>
+        ) : (
+          <div className="mt-auto w-full">
+            {buttonContent}
+          </div>
         )}
       </div>
-      <div className="card-divider w-full mb-6 h-px bg-[linear-gradient(90deg,transparent,rgba(0,0,0,0.1)_50%,transparent)] dark:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.09)_20%,rgba(255,255,255,0.22)_50%,rgba(255,255,255,0.09)_80%,transparent)]"></div>
-      <ul className="flex flex-col gap-3 text-[14px] text-foreground/90 mb-8 font-sans flex-1">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2.5">
-            <CheckIcon className="text-primary w-4.5 h-4.5 mt-0.5 flex-shrink-0" /> 
-            <span className="text-sm font-medium leading-relaxed">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      {href ? (
-        <Link href={href} className="w-full mt-auto block">
-          {buttonContent}
-        </Link>
-      ) : (
-        <div className="mt-auto w-full">
-          {buttonContent}
-        </div>
-      )}
-    </div>
+    </GlowCard>
   );
 };
 

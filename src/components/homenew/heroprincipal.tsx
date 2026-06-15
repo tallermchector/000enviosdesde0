@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+import { GlowCard } from "@/components/ui/spotlight-card";
 import { ChevronRight, Target, ShieldCheck, Clock, Users } from "lucide-react";
 
 // --- CUSTOM E-COMMERCE BRAND ICONS ---
@@ -118,8 +119,15 @@ export default function HeroPrincipal() {
 
               {/* Right Column: Industrial Card */}
               <div className="lg:col-span-5 flex justify-center w-full relative z-10">
-                <div className="relative rounded-none border-2 border-black bg-white p-8 shadow-[6px_6px_0px_rgba(0,0,0,1)] w-full max-w-md">
-                  
+                <GlowCard 
+                  glowColor="blue" 
+                  radius={0} 
+                  border={2} 
+                  borderColor="#000" 
+                  backdrop="#fff" 
+                  customSize 
+                  className="w-full max-w-md p-8 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_rgba(0,0,0,1)] transition-all duration-150"
+                >
                   <div className="relative z-10 space-y-6">
                     {/* Header stat */}
                     <div className="flex items-center gap-4 border-b-2 border-dotted border-black pb-4">
@@ -175,7 +183,7 @@ export default function HeroPrincipal() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </GlowCard>
               </div>
 
             </div>

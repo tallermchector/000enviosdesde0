@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Zap, Percent, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 export default function ServiciosSection() {
   return (
@@ -36,39 +37,51 @@ export default function ServiciosSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="group relative flex flex-col justify-between p-8 rounded-none border-2 border-black bg-white shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 overflow-hidden"
+            className="w-full h-full"
           >
-            {/* Top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#001de0]" />
-
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="p-3 rounded-none bg-[#001de0]/10 border-2 border-black text-[#001de0] group-hover:scale-105 transition-transform duration-150">
-                  <Zap className="w-6 h-6" />
-                </div>
-                <span className="px-3 py-1 rounded-none border-2 border-black bg-[#ba1a1a] text-white text-[10px] font-bold font-mono uppercase tracking-wider">
-                  ALTA PRIORIDAD
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold font-display uppercase tracking-wider mb-2 text-black">
-                Envíos Express
-              </h3>
-              <p className="text-xs font-bold text-[#001de0] font-mono mb-4 uppercase tracking-wider">
-                Prioridad absoluta y certeza total.
-              </p>
-              <p className="text-body-md text-[#444556] leading-relaxed mb-6">
-                Diseñado para operaciones de alta criticidad horaria. Vos elegís el rango exacto de entrega con solo 2 horas de anticipación.
-              </p>
-            </div>
-            <Button
-              asChild
-              className="w-full bg-[#001de0] hover:bg-[#0012a1] text-white font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
+            <GlowCard
+              glowColor="blue"
+              radius={0}
+              border={2}
+              borderColor="#000"
+              backdrop="#fff"
+              customSize
+              className="group flex flex-col justify-between p-8 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 overflow-hidden h-full"
             >
-              <Link href="/cotizar/express">
-                <span>Solicitar Express</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Button>
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#001de0] z-10" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="p-3 rounded-none bg-[#001de0]/10 border-2 border-black text-[#001de0] group-hover:scale-105 transition-transform duration-150">
+                      <Zap className="w-6 h-6" />
+                    </div>
+                    <span className="px-3 py-1 rounded-none border-2 border-black bg-[#ba1a1a] text-white text-[10px] font-bold font-mono uppercase tracking-wider">
+                      ALTA PRIORIDAD
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold font-display uppercase tracking-wider mb-2 text-black">
+                    Envíos Express
+                  </h3>
+                  <p className="text-xs font-bold text-[#001de0] font-mono mb-4 uppercase tracking-wider">
+                    Prioridad absoluta y certeza total.
+                  </p>
+                  <p className="text-body-md text-[#444556] leading-relaxed mb-6">
+                    Diseñado para operaciones de alta criticidad horaria. Vos elegís el rango exacto de entrega con solo 2 horas de anticipación.
+                  </p>
+                </div>
+                <Button
+                  asChild
+                  className="w-full bg-[#001de0] hover:bg-[#0012a1] text-white font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
+                >
+                  <Link href="/cotizar/express">
+                    <span>Solicitar Express</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </GlowCard>
           </motion.div>
 
           {/* Card 2: Envíos LowCost */}
@@ -77,39 +90,51 @@ export default function ServiciosSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="group relative flex flex-col justify-between p-8 rounded-none border-2 border-black bg-white shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 overflow-hidden"
+            className="w-full h-full"
           >
-            {/* Top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#e9c400]" />
-
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="p-3 rounded-none bg-[#e9c400]/10 border-2 border-black text-black group-hover:scale-105 transition-transform duration-150">
-                  <Percent className="w-6 h-6" />
-                </div>
-                <span className="px-3 py-1 rounded-none border-2 border-black bg-[#13bb2e] text-white text-[10px] font-bold font-mono uppercase tracking-wider">
-                  RECOMENDADO
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold font-display uppercase tracking-wider mb-2 text-black">
-                Envíos LowCost
-              </h3>
-              <p className="text-xs font-bold text-black font-mono mb-4 uppercase tracking-wider">
-                Rentabilidad y ruteo masivo.
-              </p>
-              <p className="text-body-md text-[#444556] leading-relaxed mb-6">
-                Variabilizá tus costos logísticos. Ingresá tus pedidos antes de las 13:00 hs y garantizamos entrega en el día.
-              </p>
-            </div>
-            <Button
-              asChild
-              className="w-full bg-[#e9c400] hover:bg-[#ffd700] text-black font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
+            <GlowCard
+              glowColor="yellow"
+              radius={0}
+              border={2}
+              borderColor="#000"
+              backdrop="#fff"
+              customSize
+              className="group flex flex-col justify-between p-8 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 overflow-hidden h-full"
             >
-              <Link href="/servicios/envios-lowcost">
-                <span>Ahorrá con LowCost</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Button>
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#e9c400] z-10" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="p-3 rounded-none bg-[#e9c400]/10 border-2 border-black text-black group-hover:scale-105 transition-transform duration-150">
+                      <Percent className="w-6 h-6" />
+                    </div>
+                    <span className="px-3 py-1 rounded-none border-2 border-black bg-[#13bb2e] text-white text-[10px] font-bold font-mono uppercase tracking-wider">
+                      RECOMENDADO
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold font-display uppercase tracking-wider mb-2 text-black">
+                    Envíos LowCost
+                  </h3>
+                  <p className="text-xs font-bold text-black font-mono mb-4 uppercase tracking-wider">
+                    Rentabilidad y ruteo masivo.
+                  </p>
+                  <p className="text-body-md text-[#444556] leading-relaxed mb-6">
+                    Variabilizá tus costos logísticos. Ingresá tus pedidos antes de las 13:00 hs y garantizamos entrega en el día.
+                  </p>
+                </div>
+                <Button
+                  asChild
+                  className="w-full bg-[#e9c400] hover:bg-[#ffd700] text-black font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
+                >
+                  <Link href="/servicios/envios-lowcost">
+                    <span>Ahorrá con LowCost</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </GlowCard>
           </motion.div>
         </div>
       </div>
