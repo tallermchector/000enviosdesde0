@@ -55,10 +55,10 @@ const TiendaWebIcon: React.FC = () => (
 
 export default function HeroPrincipal() {
   return (
-    <main className="overflow-x-hidden bg-[#f8f9fa] text-[#191c1d] transition-colors duration-300">
+    <main className="overflow-x-hidden section-even relative">
       
       {/* Brutalist Grid Overlay for Background Context */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
       <section className="relative">
         <div className="py-20 md:pb-28 lg:pb-36 lg:pt-44">
@@ -69,7 +69,7 @@ export default function HeroPrincipal() {
               <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-10 relative">
                 
                 {/* Badge with flat outline */}
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#fed726] border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-8 font-display">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-8 font-display">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
@@ -78,16 +78,16 @@ export default function HeroPrincipal() {
                 </span>
 
                 {/* H1 Title (Anton uppercase display) */}
-                <h1 className="mt-2 text-balance text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold font-display uppercase tracking-wider leading-[1.0] text-black">
+                <h1 className="mt-2 text-balance text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold font-display uppercase tracking-wider leading-[1.0] text-white">
                   Mensajería y Logística{" "}
-                  <span className="text-[#001de0] underline decoration-4 decoration-[#fed726] underline-offset-4">
+                  <span className="text-[#E9C400] underline decoration-4 decoration-white underline-offset-4">
                     E-Commerce
                   </span>{" "}
                   en Mar del Plata
                 </h1>
 
                 {/* Párrafo Descriptivo */}
-                <p className="mt-6 max-w-xl text-pretty text-body-lg text-[#191c1d] leading-relaxed">
+                <p className="mt-6 max-w-xl text-pretty text-body-lg text-white/90 leading-relaxed border-l-4 border-[#E9C400] pl-6">
                   Somos tu solución confiable en servicios de mensajería y delivery en Mar del Plata.
                   Ofrecemos soluciones rápidas, seguras y económicas para todas tus necesidades de envío.
                 </p>
@@ -97,7 +97,7 @@ export default function HeroPrincipal() {
                   <Button
                     asChild
                     size="lg"
-                    className="w-full sm:w-auto h-12 rounded-none pl-6 pr-5 text-base font-semibold font-sans bg-[#001de0] hover:bg-[#0012a1] text-white border-2 border-black shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+                    className="w-full sm:w-auto h-12 rounded-none pl-6 pr-5 text-base font-bold font-display uppercase bg-[#E9C400] text-[#000833] border-2 border-[#000833] shadow-[4px_4px_0px_#000] hover:bg-white hover:text-[#000833] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
                   >
                     <Link href="/cotizar/express" className="flex items-center justify-center gap-1">
                       <span>Solicitar Servicio</span>
@@ -108,7 +108,7 @@ export default function HeroPrincipal() {
                     asChild
                     size="lg"
                     variant="ghost"
-                    className="w-full sm:w-auto h-12 rounded-none px-6 text-base font-bold font-sans bg-white hover:bg-[#fed726] text-black border-2 border-black shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+                    className="w-full sm:w-auto h-12 rounded-none px-6 text-base font-bold font-display uppercase bg-transparent text-white border-2 border-white hover:bg-white/10 hover:text-white hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_#ffffff] transition-all duration-150"
                   >
                     <Link href="/servicios/plan-emprendedores">
                       <span>E-Commerce</span>
@@ -120,7 +120,7 @@ export default function HeroPrincipal() {
               {/* Right Column: Industrial Card */}
               <div className="lg:col-span-5 flex justify-center w-full relative z-10">
                 <GlowCard 
-                  glowColor="blue" 
+                  glowColor="yellow" 
                   radius={0} 
                   border={2} 
                   borderColor="#000" 
@@ -131,7 +131,7 @@ export default function HeroPrincipal() {
                   <div className="relative z-10 space-y-6">
                     {/* Header stat */}
                     <div className="flex items-center gap-4 border-b-2 border-dotted border-black pb-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-none bg-[#001de0] border-2 border-black text-white">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-none bg-[#000833] border-2 border-black text-[#E9C400]">
                         <Target className="h-6 w-6" />
                       </div>
                       <div>
@@ -143,28 +143,28 @@ export default function HeroPrincipal() {
                     {/* Progress Bar Section (Industrial Meter) */}
                     <div className="space-y-3">
                       <div className="flex justify-between text-xs font-mono uppercase tracking-wider font-semibold">
-                        <span>Satisfacción de Entrega</span>
-                        <span className="font-bold">98.4%</span>
+                        <span className="text-[#000833]">Satisfacción de Entrega</span>
+                        <span className="font-bold text-[#000833]">98.4%</span>
                       </div>
                       <div className="h-4 w-full overflow-hidden rounded-none border-2 border-black bg-white p-0.5">
-                        <div className="h-full w-[98.4%] rounded-none bg-[#001de0]" />
+                        <div className="h-full w-[98.4%] rounded-none bg-[#000833]" />
                       </div>
                     </div>
 
                     <div className="border-b-2 border-dotted border-black" />
 
                     {/* Characteristics */}
-                    <div className="space-y-4 text-xs font-mono uppercase tracking-wider font-semibold">
+                    <div className="space-y-4 text-xs font-mono uppercase tracking-wider font-semibold text-[#000833]">
                       <div className="flex items-center gap-3">
-                        <Clock className="w-5 h-5 text-[#001de0] shrink-0" />
+                        <Clock className="w-5 h-5 text-[#000833] shrink-0" />
                         <span>Entregas en el día (MercadoLibre Flex)</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <ShieldCheck className="w-5 h-5 text-[#001de0] shrink-0" />
+                        <ShieldCheck className="w-5 h-5 text-[#000833] shrink-0" />
                         <span>Soporte Express Directo por WhatsApp</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Users className="w-5 h-5 text-[#001de0] shrink-0" />
+                        <Users className="w-5 h-5 text-[#000833] shrink-0" />
                         <span>Flota Propia de Motocicletas Activa</span>
                       </div>
                     </div>
@@ -192,7 +192,7 @@ export default function HeroPrincipal() {
       </section>
 
       {/* Infinite Logo Slider Section */}
-      <section className="bg-white pb-12 border-t-2 border-b-2 border-black pt-8">
+      <section className="bg-[#E9C400] pb-12 border-t-2 border-b-2 border-black pt-8 text-black">
         <div className="group relative m-auto max-w-[1280px] px-6">
           <div className="flex flex-col items-center md:flex-row gap-6">
             <div className="md:max-w-44 md:border-r-2 border-black md:pr-8 flex-shrink-0">
@@ -203,26 +203,26 @@ export default function HeroPrincipal() {
             
             <div className="relative py-4 w-full md:w-[calc(100%-11rem)]">
               <InfiniteSlider durationOnHover={20} duration={40} gap={112}>
-                <div className="flex items-center">
+                <div className="flex items-center text-[#000833]">
                   <ShopifyIcon />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-[#000833]">
                   <MercadoLibreIcon />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-[#000833]">
                   <TiendanubeIcon />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-[#000833]">
                   <WooCommerceIcon />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-[#000833]">
                   <TiendaWebIcon />
                 </div>
               </InfiniteSlider>
 
               {/* Gradient & progressive blur overlays */}
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#E9C400] to-transparent z-10"></div>
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#E9C400] to-transparent z-10"></div>
               
               <ProgressiveBlur
                 className="pointer-events-none absolute left-0 top-0 h-full w-20 z-20"

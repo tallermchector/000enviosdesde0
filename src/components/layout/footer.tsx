@@ -33,40 +33,40 @@ const ThemeToggle = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="flex items-center rounded-full border border-dotted border-border p-1 bg-background">
+      <div className="flex items-center rounded-none border-2 border-black p-1 bg-white">
         <button
           onClick={() => setTheme("light")}
-          className={`rounded-full p-1.5 transition-colors ${
+          className={`rounded-none p-1.5 transition-colors ${
             theme === "light"
-              ? "bg-accent text-accent-foreground"
-              : "text-muted-foreground hover:text-foreground"
+              ? "bg-[#000833] text-white"
+              : "text-[#000833]/70 hover:text-[#000833]"
           }`}
           title="Modo Claro"
         >
-          <DIcons.Sun className="h-4 w-4" strokeWidth={1} />
+          <DIcons.Sun className="h-4 w-4" strokeWidth={1.5} />
           <span className="sr-only">Claro</span>
         </button>
-
+ 
         <button
           type="button"
           onClick={handleScrollTop}
-          className="mx-2 text-muted-foreground hover:text-foreground p-1 transition-colors"
+          className="mx-2 text-[#000833]/70 hover:text-[#000833] p-1 transition-colors"
           title="Volver Arriba"
         >
           <DIcons.ArrowUp className="h-3 w-3" />
           <span className="sr-only">Subir</span>
         </button>
-
+ 
         <button
           onClick={() => setTheme("dark")}
-          className={`rounded-full p-1.5 transition-colors ${
+          className={`rounded-none p-1.5 transition-colors ${
             theme === "dark"
-              ? "bg-accent text-accent-foreground"
-              : "text-muted-foreground hover:text-foreground"
+              ? "bg-[#000833] text-white"
+              : "text-[#000833]/70 hover:text-[#000833]"
           }`}
           title="Modo Oscuro"
         >
-          <DIcons.Moon className="h-4 w-4" strokeWidth={1} />
+          <DIcons.Moon className="h-4 w-4" strokeWidth={1.5} />
           <span className="sr-only">Oscuro</span>
         </button>
       </div>
@@ -120,20 +120,23 @@ const navigation = {
   ],
 };
 
-const Underline = "hover:-translate-y-1 border border-dotted border-border rounded-xl p-2.5 transition-transform flex items-center justify-center bg-background hover:bg-accent text-muted-foreground hover:text-foreground";
+const Underline = "hover:-translate-y-1 border-2 border-black rounded-none p-2.5 transition-transform flex items-center justify-center bg-white hover:bg-[#E9C400] text-[#000833] hover:text-[#000833]";
 
 export default function Footer() {
   const logo = defaultLogo;
 
   return (
-    <footer className="mx-auto w-full border-t border-border bg-background px-4">
+    <footer className="mx-auto w-full border-t-2 border-[#000833] bg-white px-4 text-[#000833]">
       {/* Brand & Description Section */}
       <div className="relative mx-auto grid max-w-7xl items-center justify-center gap-6 p-10 pb-0 md:flex">
         <Link href="/" className="flex items-center gap-2">
           <img src={logo.src} className="w-8 h-auto" alt={logo.alt} />
-          <span className="text-lg font-semibold font-orbitron">{logo.title}</span>
+          <span className="text-xl font-bold font-display uppercase tracking-wider text-[#000833]">
+            <span>Envíos</span>
+            <span className="text-[#E9C400] ml-1">DosRuedas</span>
+          </span>
         </Link>
-        <p className="bg-transparent text-center text-xs leading-5 text-muted-foreground md:text-left font-roboto max-w-3xl">
+        <p className="bg-transparent text-center text-xs leading-5 text-[#000833]/80 md:text-left font-roboto max-w-3xl">
           <strong>Dos Ruedas Pro</strong> es la plataforma líder de logística y mensajería urbana en Mar del Plata.
           Optimizamos tus envíos con soluciones en tiempo real para envíos Express inmediatos, opciones
           programadas LowCost de bajo costo, y servicios especiales de MercadoLibre Flex y Fulfillment (3PL) para potenciar tu comercio.
@@ -143,7 +146,7 @@ export default function Footer() {
 
       {/* Navigation Links Columns */}
       <div className="mx-auto max-w-7xl px-6 py-10">
-        <div className="border-b border-dotted border-border" />
+        <div className="border-b-2 border-dotted border-[#000833]" />
         <div className="py-10">
           {navigation.categories.map((category) => (
             <div
@@ -152,7 +155,7 @@ export default function Footer() {
             >
               {category.sections.map((section) => (
                 <div key={section.name} className="flex flex-col">
-                  <h3 className="text-sm font-semibold font-orbitron text-foreground mb-4 tracking-wider">
+                  <h3 className="text-sm font-bold font-display uppercase tracking-wider text-[#000833] mb-4">
                     {section.name}
                   </h3>
                   <ul
@@ -164,7 +167,7 @@ export default function Footer() {
                       <li key={item.name} className="flow-root">
                         <Link
                           href={item.href}
-                          className="text-sm text-muted-foreground hover:text-foreground transition-colors font-roboto md:text-xs"
+                          className="text-sm text-[#000833]/80 hover:text-[#000833] hover:underline font-semibold transition-colors font-roboto md:text-xs"
                         >
                           {item.name}
                         </Link>
@@ -176,7 +179,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="border-b border-dotted border-border" />
+        <div className="border-b-2 border-dotted border-[#000833]" />
       </div>
 
       {/* Social Icons & Theme Toggle */}

@@ -20,33 +20,33 @@ const IMAGES = [
 
 export default function VisionSection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-[#f8f9fa] text-[#191c1d] transition-colors duration-300 border-t-2 border-black">
+    <section className="relative py-24 md:py-32 overflow-hidden bg-white text-[#000833] transition-colors duration-300 border-t-2 border-black">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-
+ 
       <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-16 px-6 md:grid-cols-2">
         <ContainerStagger className="flex flex-col items-start max-w-xl">
           
           {/* Badge */}
           <ContainerAnimated className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-6 font-display">
-            <span className="w-2 h-2 bg-[#001de0]" />
+            <span className="w-2 h-2 bg-[#000833]" />
             Partner Logístico Especializado
           </ContainerAnimated>
-
+ 
           {/* Title (H2 Anton uppercase) */}
           <ContainerAnimated className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider mb-6 leading-none text-black">
             Nuestra Visión Logística
           </ContainerAnimated>
-
+ 
           {/* Description */}
-          <ContainerAnimated className="text-body-lg text-[#191c1d] mb-8">
+          <ContainerAnimated className="text-body-lg text-[#000833] mb-8">
             Transformamos tus costos fijos en soluciones flexibles que acompañan el crecimiento de tu negocio en toda la costa atlántica.
           </ContainerAnimated>
-
+ 
           {/* Characteristics/Features */}
           <ContainerAnimated className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <GlowCard 
-              glowColor="blue"
+              glowColor="yellow"
               radius={0}
               border={2}
               borderColor="#000"
@@ -54,7 +54,7 @@ export default function VisionSection() {
               customSize
               className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all"
             >
-              <Clock className="w-5 h-5 text-[#001de0] mt-0.5 flex-shrink-0 z-10" />
+              <Clock className="w-5 h-5 text-[#000833] mt-0.5 flex-shrink-0 z-10" />
               <div className="z-10">
                 <h4 className="font-bold text-sm font-display uppercase tracking-wider">Entregas a Tiempo</h4>
                 <p className="text-xs text-[#444556] font-mono uppercase tracking-wider mt-0.5">
@@ -63,7 +63,7 @@ export default function VisionSection() {
               </div>
             </GlowCard>
             <GlowCard 
-              glowColor="blue"
+              glowColor="yellow"
               radius={0}
               border={2}
               borderColor="#000"
@@ -71,7 +71,7 @@ export default function VisionSection() {
               customSize
               className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all"
             >
-              <ShieldCheck className="w-5 h-5 text-[#001de0] mt-0.5 flex-shrink-0 z-10" />
+              <ShieldCheck className="w-5 h-5 text-[#000833] mt-0.5 flex-shrink-0 z-10" />
               <div className="z-10">
                 <h4 className="font-bold text-sm font-display uppercase tracking-wider">Envíos Seguros</h4>
                 <p className="text-xs text-[#444556] font-mono uppercase tracking-wider mt-0.5">
@@ -80,11 +80,11 @@ export default function VisionSection() {
               </div>
             </GlowCard>
           </ContainerAnimated>
-
+ 
           {/* Trust Statistics (Brutalist style) */}
           <ContainerAnimated className="w-full border-t-2 border-dotted border-black pt-8 flex flex-col sm:flex-row gap-4">
             <GlowCard 
-              glowColor="blue"
+              glowColor="yellow"
               radius={0}
               border={2}
               borderColor="#000"
@@ -93,7 +93,7 @@ export default function VisionSection() {
               className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
             >
               <div className="relative z-10">
-                <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
+                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1">
                   +5.000
                 </div>
                 <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
@@ -102,7 +102,7 @@ export default function VisionSection() {
               </div>
             </GlowCard>
             <GlowCard 
-              glowColor="blue"
+              glowColor="yellow"
               radius={0}
               border={2}
               borderColor="#000"
@@ -111,7 +111,7 @@ export default function VisionSection() {
               className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
             >
               <div className="relative z-10">
-                <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
+                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1">
                   7 Años
                 </div>
                 <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
@@ -120,7 +120,7 @@ export default function VisionSection() {
               </div>
             </GlowCard>
             <GlowCard 
-              glowColor="blue"
+              glowColor="yellow"
               radius={0}
               border={2}
               borderColor="#000"
@@ -129,7 +129,7 @@ export default function VisionSection() {
               className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
             >
               <div className="relative z-10">
-                <div className="text-2xl font-bold font-display uppercase text-[#001de0] mb-1">
+                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1">
                   Flota
                 </div>
                 <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">

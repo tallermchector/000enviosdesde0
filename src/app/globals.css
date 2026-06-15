@@ -13,36 +13,36 @@
 
     /* Light Theme (Default in DESING.md) */
     --background: 210 17% 98%; /* #f8f9fa */
-    --foreground: 232 10% 11%; /* #191c1d */
+    --foreground: 232 100% 10%; /* #000833 */
 
     --card: 0 0% 100%; /* #ffffff */
-    --card-foreground: 232 10% 11%;
+    --card-foreground: 232 100% 10%; /* #000833 */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 232 10% 11%;
+    --popover-foreground: 232 100% 10%;
 
     /* Brand accents */
-    --primary: 233 100% 32%; /* #0012a1 */
+    --primary: 232 100% 10%; /* #000833 */
     --primary-foreground: 0 0% 100%; /* #ffffff */
 
     --secondary: 51 100% 46%; /* #e9c400 */
-    --secondary-foreground: 232 10% 11%;
+    --secondary-foreground: 232 100% 10%;
 
-    --muted: 200 10% 93%; /* #edeeef */
-    --muted-foreground: 232 10% 40%; /* #444556 */
+    --muted: 210 17% 93%; /* #e9ecef */
+    --muted-foreground: 232 100% 10%;
 
-    --accent: 232 100% 44%; /* #001de0 - Container Electric Blue */
+    --accent: 232 100% 10%; /* #000833 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 75% 42%; /* #ba1a1a */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 232 10% 90%; /* #e1e3e4 */
-    --input: 232 10% 90%;
-    --ring: 233 100% 32%;
+    --border: 232 100% 10%; /* #000833 */
+    --input: 232 100% 10%;
+    --ring: 232 100% 10%;
 
     --radius: 0px; /* Sharp 0px profile */
-    --button-ripple-color: rgba(0, 18, 161, 0.1);
+    --button-ripple-color: rgba(233, 196, 0, 0.1);
   }
 
   .dark {
@@ -240,4 +240,23 @@
     line-height: 1.0;
     letter-spacing: 0.1em;
   }
+
+  .brutalist-border {
+    border: 2px solid #000833;
+  }
+
+  .brutalist-border-white {
+    border: 2px solid #FFFFFF;
+  }
+
+  .section-even {
+    background: linear-gradient(135deg, #000833 0%, #00041a 100%) !important;
+    color: #FFFFFF !important;
+  }
+
+  .section-odd {
+    background-color: #FFFFFF !important;
+    color: #000833 !important;
+  }
 }
+

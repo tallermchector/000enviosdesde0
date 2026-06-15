@@ -1,18 +1,18 @@
 "use client";
-
+ 
 import React from "react";
 import { CheckCircle2, Building2, ShoppingBag, Store } from "lucide-react";
 import { motion } from "framer-motion";
 import { GlowCard } from "@/components/ui/spotlight-card";
-
+ 
 const SOLUTIONS = [
   {
     title: "Soluciones Corporativas",
     badge: "Corporativo",
     desc: "Optimización logística para empresas con Cuenta Corriente Flexible y beneficios de escala.",
     icon: Building2,
-    colorClass: "text-[#001de0]",
-    topBg: "bg-[#001de0]",
+    colorClass: "text-[#000833]",
+    topBg: "bg-[#000833]",
     items: [
       "Cuenta Corriente Flexible",
       "Facturación simplificada",
@@ -49,33 +49,33 @@ const SOLUTIONS = [
     ]
   }
 ];
-
+ 
 export default function EmprendedoresSection() {
   return (
-    <section className="relative py-24 overflow-hidden bg-[#f8f9fa] text-[#191c1d] transition-colors duration-300 border-t-2 border-black">
+    <section className="relative py-24 overflow-hidden section-even border-t-2 border-black">
       {/* Background Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+ 
       <div className="relative z-10 mx-auto max-w-[1280px] px-6">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display">
             Flexibilidad
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider mb-4 leading-none text-black">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider mb-4 leading-none text-white">
             Soluciones para Emprendedores & PyMEs
           </h2>
-          <p className="text-body-lg text-[#191c1d]">
+          <p className="text-body-lg text-white/90">
             Adaptamos nuestra estructura a tus necesidades específicas. Impulsamos tus ventas con un servicio de última milla excelente.
           </p>
         </div>
-
+ 
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {SOLUTIONS.map((sol, index) => {
             const Icon = sol.icon;
-            const glowColor = sol.topBg.includes("001de0") 
+            const glowColor = sol.topBg.includes("000833") 
               ? "blue" 
               : sol.topBg.includes("e9c400") 
               ? "yellow" 
@@ -100,7 +100,7 @@ export default function EmprendedoresSection() {
                 >
                   {/* Top solid accent line */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 ${sol.topBg} z-10`} />
-
+ 
                   <div className="relative z-10 flex flex-col justify-between h-full flex-1">
                     <div>
                       {/* Icon and Badge */}
@@ -112,22 +112,22 @@ export default function EmprendedoresSection() {
                           {sol.badge}
                         </span>
                       </div>
-
+ 
                       {/* Title */}
-                      <h3 className="text-xl font-bold font-display uppercase tracking-wider mb-3 group-hover:text-[#001de0] transition-colors duration-150 text-black">
+                      <h3 className="text-xl font-bold font-display uppercase tracking-wider mb-3 group-hover:text-[#000833] transition-colors duration-150 text-black">
                         {sol.title}
                       </h3>
-
+ 
                       {/* Desc */}
                       <p className="text-body-sm text-[#444556] leading-relaxed mb-6 min-h-[40px]">
                         {sol.desc}
                       </p>
                     </div>
-
+ 
                     <div>
                       {/* Divider */}
                       <div className="border-b border-dotted border-black mb-6" />
-
+ 
                       {/* Items List */}
                       <ul className="space-y-3.5">
                         {sol.items.map((item) => (

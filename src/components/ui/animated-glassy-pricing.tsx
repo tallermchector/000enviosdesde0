@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { RippleButton } from "@/components/ui/multi-type-ripple-buttons";
 import { GlowCard } from "@/components/ui/spotlight-card";
 
 // --- Internal Helper Components (Not exported) --- //
@@ -19,140 +18,10 @@ const CheckIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ShaderCanvas = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const glProgramRef = useRef<WebGLProgram | null>(null);
-  const glBgColorLocationRef = useRef<WebGLUniformLocation | null>(null);
-  const glRef = useRef<WebGLRenderingContext | null>(null);
-  const [backgroundColor, setBackgroundColor] = useState([1.0, 1.0, 1.0]);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const updateColor = () => {
-      const isDark = root.classList.contains('dark');
-      setBackgroundColor(isDark ? [0.03, 0.05, 0.12] : [1.0, 1.0, 1.0]);
-    };
-    updateColor();
-    const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          updateColor();
-        }
-      }
-    });
-    observer.observe(root, { attributes: true });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const gl = glRef.current;
-    const program = glProgramRef.current;
-    const location = glBgColorLocationRef.current;
-    if (gl && program && location) {
-      gl.useProgram(program);
-      gl.uniform3fv(location, new Float32Array(backgroundColor));
-    }
-  }, [backgroundColor]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const gl = canvas.getContext('webgl');
-    if (!gl) { console.error("WebGL not supported"); return; }
-    glRef.current = gl;
-
-    const vertexShaderSource = `attribute vec2 aPosition; void main() { gl_Position = vec4(aPosition, 0.0, 1.0); }`;
-    const fragmentShaderSource = `
-      precision highp float;
-      uniform float iTime;
-      uniform vec2 iResolution;
-      uniform vec3 uBackgroundColor;
-      mat2 rotate2d(float angle){ float c=cos(angle),s=sin(angle); return mat2(c,-s,s,c); }
-      float variation(vec2 v1,vec2 v2,float strength,float speed){ return sin(dot(normalize(v1),normalize(v2))*strength+iTime*speed)/100.0; }
-      vec3 paintCircle(vec2 uv,vec2 center,float rad,float width){
-        vec2 diff = center-uv;
-        float len = length(diff);
-        len += variation(diff,vec2(0.,1.),5.,2.);
-        len -= variation(diff,vec2(1.,0.),5.,2.);
-        float circle = smoothstep(rad-width,rad,len)-smoothstep(rad,rad+width,len);
-        return vec3(circle);
-      }
-      void main(){
-        vec2 uv = gl_FragCoord.xy/iResolution.xy;
-        uv.x *= 1.5; uv.x -= 0.25;
-        float mask = 0.0;
-        float radius = .35;
-        vec2 center = vec2(.5);
-        mask += paintCircle(uv,center,radius,.035).r;
-        mask += paintCircle(uv,center,radius-.018,.01).r;
-        mask += paintCircle(uv,center,radius+.018,.005).r;
-        vec2 v=rotate2d(iTime)*uv;
-        vec3 foregroundColor=vec3(v.x,v.y,.7-v.y*v.x);
-        vec3 color=mix(uBackgroundColor,foregroundColor,mask);
-        color=mix(color,vec3(1.),paintCircle(uv,center,radius,.003).r);
-        gl_FragColor=vec4(color,1.);
-      }`;
-
-    const compileShader = (type: number, source: string) => {
-      const shader = gl.createShader(type);
-      if (!shader) throw new Error("Could not create shader");
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        throw new Error(gl.getShaderInfoLog(shader) || "Shader compilation error");
-      }
-      return shader;
-    };
-
-    const program = gl.createProgram();
-    if (!program) throw new Error("Could not create program");
-    const vertexShader = compileShader(gl.VERTEX_SHADER, vertexShaderSource);
-    const fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    gl.useProgram(program);
-    glProgramRef.current = program;
-
-    const buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
-    const aPosition = gl.getAttribLocation(program, 'aPosition');
-    gl.enableVertexAttribArray(aPosition);
-    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
-
-    const iTimeLoc = gl.getUniformLocation(program, 'iTime');
-    const iResLoc = gl.getUniformLocation(program, 'iResolution');
-    glBgColorLocationRef.current = gl.getUniformLocation(program, 'uBackgroundColor');
-    gl.uniform3fv(glBgColorLocationRef.current, new Float32Array(backgroundColor));
-
-    let animationFrameId: number;
-    const render = (time: number) => {
-      gl.uniform1f(iTimeLoc, time * 0.001);
-      gl.uniform2f(iResLoc, canvas.width, canvas.height);
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
-      animationFrameId = requestAnimationFrame(render);
-    };
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    animationFrameId = requestAnimationFrame(render);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block z-0 opacity-40 dark:opacity-30 pointer-events-none" />;
-};
 
 
 // --- EXPORTED Building Blocks --- //
-
+ 
 /**
  * We export the Props interface so you can easily type the data for your plans.
  */
@@ -166,70 +35,66 @@ export interface PricingCardProps {
   buttonVariant?: 'primary' | 'secondary';
   href?: string;
 }
-
+ 
 /**
  * We export the PricingCard component itself in case you want to use it elsewhere.
  */
 export const PricingCard = ({
-  planName, description, price, features, buttonText, isPopular = false, buttonVariant = 'primary', href
+  planName, description, price, features, buttonText, isPopular = false, href
 }: PricingCardProps) => {
+  const isLowCost = planName.toLowerCase().includes("lowcost") || isPopular;
+ 
   const cardClasses = `
-    backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl flex-1 w-full max-w-sm px-7 py-8 flex flex-col transition-all duration-300
-    from-black/[0.03] to-black/0 border border-black/10 z-10
-    dark:from-white/10 dark:to-white/5 dark:border-white/10 dark:backdrop-brightness-[0.91]
-    ${isPopular ? 'scale-100 md:scale-105 relative ring-2 ring-primary/20 dark:from-white/20 dark:to-white/10 dark:border-primary/30 shadow-2xl' : ''}
+    bg-white text-[#000833] shadow-[4px_4px_0px_#000833] flex-1 w-full max-w-sm px-7 py-8 flex flex-col transition-all duration-300
+    border-2 border-[#000833] z-10 rounded-none hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000833]
+    ${isPopular ? 'scale-100 md:scale-105 relative ring-2 ring-[#000833] shadow-[8px_8px_0px_#000833] hover:shadow-[10px_10px_0px_#000833]' : ''}
   `;
   
-  const buttonClasses = `
-    w-full py-3 rounded-xl font-semibold text-[14px] transition font-sans justify-center flex items-center
-    ${buttonVariant === 'primary' 
-      ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-      : 'bg-black/5 hover:bg-black/10 text-foreground border border-black/20 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/20'
-    }
-  `;
-
+  const btnClasses = isLowCost
+    ? "w-full py-3 bg-[#E9C400] text-[#000833] border-2 border-black hover:bg-[#000833] hover:text-white font-display uppercase font-bold text-[16px] transition-colors rounded-none justify-center flex items-center shadow-[2px_2px_0px_#000]"
+    : "w-full py-3 bg-white text-[#000833] border-2 border-black hover:bg-[#E9C400] font-display uppercase font-bold text-[16px] transition-colors rounded-none justify-center flex items-center shadow-[2px_2px_0px_#000]";
+ 
   const buttonContent = (
-    <RippleButton className={buttonClasses.trim()}>
+    <button className={btnClasses}>
       {buttonText}
-    </RippleButton>
+    </button>
   );
-
-  const isNumeric = !isNaN(Number(price.replace('$', '')));
-
+ 
   return (
     <GlowCard
-      glowColor="blue"
-      radius={16}
-      border={1}
-      borderColor="transparent"
-      backdrop="transparent"
+      glowColor={isLowCost ? "yellow" : "blue"}
+      radius={0}
+      border={2}
+      borderColor="#000833"
+      backdrop="#fff"
       customSize
       className={cardClasses.trim()}
     >
       <div className="relative z-10 flex flex-col h-full flex-1">
-        {isPopular && (
-          <div className="absolute -top-12 right-0 px-3 py-1 text-[11px] font-bold tracking-wider uppercase rounded-full bg-primary text-primary-foreground font-orbitron">
-            Recomendado
-          </div>
-        )}
+        {/* Conditional Header */}
+        <div className={`p-4 border-b-2 border-[#000833] -mx-7 -mt-8 mb-8 flex justify-between items-center ${isLowCost ? 'bg-[#000833] text-white' : 'bg-[#E9ECEF] text-[#000833]'}`}>
+          <h3 className="text-2xl font-bold font-display uppercase tracking-wider leading-none">{planName}</h3>
+          {isPopular && (
+            <span className="bg-[#E9C400] text-[10px] font-mono font-bold px-2 py-0.5 border-2 border-black uppercase text-black leading-none">
+              Masivo
+            </span>
+          )}
+        </div>
+ 
         <div className="mb-4">
-          <h3 className="text-3xl font-bold tracking-tight text-foreground font-orbitron">{planName}</h3>
           <p className="text-sm text-foreground/75 mt-2 font-sans min-h-10 leading-relaxed">{description}</p>
         </div>
         <div className="my-6 flex items-baseline gap-1">
-          <span className="text-4xl font-bold font-orbitron text-foreground tracking-tight">
-            {isNumeric ? `$${price}` : price}
+          <span className="text-4xl font-bold font-display text-foreground tracking-tight uppercase">
+            {price}
           </span>
-          {isNumeric && (
-            <span className="text-sm text-muted-foreground font-sans font-medium">/envío</span>
-          )}
         </div>
-        <div className="card-divider w-full mb-6 h-px bg-[linear-gradient(90deg,transparent,rgba(0,0,0,0.1)_50%,transparent)] dark:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.09)_20%,rgba(255,255,255,0.22)_50%,rgba(255,255,255,0.09)_80%,transparent)]"></div>
+        <div className="w-full mb-6 border-b border-dotted border-[#000833]"></div>
         <ul className="flex flex-col gap-3 text-[14px] text-foreground/90 mb-8 font-sans flex-1">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start gap-2.5">
               <CheckIcon className="text-primary w-4.5 h-4.5 mt-0.5 flex-shrink-0" /> 
-              <span className="text-sm font-medium leading-relaxed">{feature}</span>
+              <span className="text-sm font-semibold font-mono uppercase tracking-wider text-black">{feature}</span>
             </li>
           ))}
         </ul>
@@ -246,10 +111,10 @@ export const PricingCard = ({
     </GlowCard>
   );
 };
-
-
+ 
+ 
 // --- EXPORTED Customizable Page Component --- //
-
+ 
 interface ModernPricingPageProps {
   /** The main title. Can be a string or a ReactNode for more complex content. */
   title: React.ReactNode;
@@ -260,25 +125,26 @@ interface ModernPricingPageProps {
   /** Whether to show the animated WebGL background. Defaults to true. */
   showAnimatedBackground?: boolean;
 }
-
+ 
 export const ModernPricingPage = ({
   title,
   subtitle,
   plans,
-  showAnimatedBackground = true,
 }: ModernPricingPageProps) => {
   return (
-    <div className="bg-background text-foreground py-24 min-h-screen w-full relative flex items-center border-t border-border/10 overflow-hidden">
-      {showAnimatedBackground && <ShaderCanvas />}
+    <div className="bg-white text-[#000833] py-24 min-h-screen w-full relative flex items-center border-t-2 border-black overflow-hidden">
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+ 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-[60px] flex flex-col items-center justify-center">
         <div className="w-full max-w-3xl text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-primary/10 border border-primary/20 text-primary mb-4 font-orbitron">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display">
             Esquema Tarifario
           </span>
-          <h2 className="text-[36px] md:text-[54px] font-bold leading-tight tracking-tight text-foreground font-display">
+          <h2 className="text-[36px] md:text-[54px] font-bold leading-tight tracking-tight text-foreground font-display uppercase">
             {title}
           </h2>
-          <p className="mt-4 text-[16px] md:text-[18px] text-muted-foreground max-w-2xl mx-auto font-sans leading-relaxed">
+          <p className="mt-4 text-[16px] md:text-[18px] text-[#000833] max-w-2xl mx-auto font-sans leading-relaxed">
             {subtitle}
           </p>
         </div>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Envíos DosRuedas | Mensajería y Logística E-Commerce Mar del Plata</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Anton&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000833", // Deep Navy Blue
+                        "on-primary": "#FFFFFF",
+                        "secondary": "#000833", // Navy for text on white
+                        "highlight": "#E9C400", // Safety Yellow
+                        "background": "#F8F9FA",
+                        "surface": "#FFFFFF",
+                        "surface-variant": "#E9ECEF",
+                        "outline": "#000833",
+                        "on-background": "#000833",
+                        "on-surface": "#000833",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "margin-desktop": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Anton", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-headline {
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .brutalist-border {
+            border: 1px solid #000833;
+        }
+
+        .brutalist-border-white {
+            border: 1px solid #FFFFFF;
+        }
+
+        .section-even {
+            background: linear-gradient(135deg, #000833 0%, #00041a 100%);
+            color: #FFFFFF;
+        }
+
+        .section-odd {
+            background-color: #FFFFFF;
+            color: #000833;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-highlight selection:text-primary">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-[#000833] border-b brutalist-border">
+        <div
+            class="max-w-container-max mx-auto flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3">
+            <div class="flex items-center gap-3">
+                <img alt="Logo Envíos DosRuedas" class="h-10 w-auto brightness-0 invert"
+                    src="https://lh3.googleusercontent.com/aida/AP1WRLuK11nt2iwZkL0Hsh6BWJT4nKCRVRcpOaVrQnBqPIMFeORG_WfV_sktRpPzDECa8VsPhVLohAEF-KSO0Kt_YN3k7uwf30JI_RBuZoNJ1famve9YqhLFOQefiL0-BsAZCCz9uQrTW4g8C6bZ84Qn345QAyrm6A0lr_1xYvPY6GJF_Le_FrndwPEWYI96Zw7epm5zkvyxIafApQdYg_YZf9wg8zhIPspEeypYB7sOqZV32h0WpruLVHuNik8" />
+                <span class="font-headline text-2xl">
+                    <span class="text-white">Envíos</span>
+                    <span class="text-[#E9C400]">DosRuedas</span>
+                </span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="font-mono text-sm uppercase font-bold text-white flex items-center gap-1 hover:text-[#E9C400] transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined text-[#E9C400] text-sm">settings_input_component</span>
+                    Servicios
+                </a>
+                <a class="font-mono text-sm uppercase text-white flex items-center gap-1 hover:text-[#E9C400] transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined text-[#E9C400] text-sm">payments</span> Tarifas
+                </a>
+                <a class="font-mono text-sm uppercase text-white flex items-center gap-1 hover:text-[#E9C400] transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined text-[#E9C400] text-sm">corporate_fare</span> PyMEs
+                </a>
+                <a class="font-mono text-sm uppercase text-white flex items-center gap-1 hover:text-[#E9C400] transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined text-[#E9C400] text-sm">reviews</span> Testimonios
+                </a>
+            </nav>
+            <button
+                class="bg-[#E9C400] text-[#000833] font-headline px-6 py-2 hover:bg-white transition-colors border brutalist-border">
+                SOLICITAR ENVÍO
+            </button>
+        </div>
+    </header>
+    <main class="pt-[65px]">
+        <!-- Hero Section (Even: 0) -->
+        <section
+            class="section-even relative min-h-[80vh] flex items-center px-margin-mobile md:px-margin-desktop py-16 border-b brutalist-border">
+            <div class="absolute inset-0 z-0">
+                <img alt="Almacén logístico moderno"
+                    class="w-full h-full object-cover object-center grayscale opacity-10"
+                    src="https://lh3.googleusercontent.com/aida/AP1WRLvpifiOD6KByZ-6EXHOuJtf6bWOEDfLkNn9eR1gbZHKyyPA7BVbcSL5oKLh4UYYBTAOcTF6qrvyR1351rlHR3dnn57YZNXSFmSe0zD_OlCbeCDTznoVLIR_7k37vb63dD6vQUu7UWlGhr1Ti5EQ0GYlFVJlzSSGH9tdHmn0PEx0NcYhgW0nW2YT9PfragJzsFJEv1M7__OqO_bnh_V3pD7BE4KOb1Y_vubyIOPpUVGnLGTy9jLmsidEOg" />
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent"></div>
+            </div>
+            <div class="relative z-20 max-w-4xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-highlight brutalist-border mb-8">
+                    <span class="material-symbols-outlined text-[18px] text-primary">bolt</span>
+                    <span class="font-mono text-xs font-bold uppercase tracking-widest text-primary">Logística Técnica
+                        // Mar del Plata</span>
+                </div>
+                <h1 class="font-headline text-5xl md:text-7xl text-white mb-6 leading-none">
+                    Mensajería y Logística <span class="text-highlight">E-Commerce</span>
+                </h1>
+                <p class="font-body text-lg text-white/90 mb-10 max-w-2xl border-l-4 border-highlight pl-6">
+                    Sistemas de transporte urbano de alta precisión. Optimizamos la última milla para potenciar el flujo
+                    operativo de su negocio local.
+                </p>
+                <div class="flex flex-wrap gap-0">
+                    <a class="inline-flex items-center gap-3 bg-highlight text-primary px-8 py-4 font-headline text-xl border brutalist-border hover:bg-white transition-colors"
+                        href="#">
+                        INICIAR OPERACIÓN
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                    <a class="inline-flex items-center gap-3 bg-transparent text-white px-8 py-4 font-headline text-xl border-y border-r brutalist-border-white hover:bg-white/10 transition-colors"
+                        href="#">
+                        PLANES PYME
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-0 mt-16 border brutalist-border bg-white text-primary">
+                    <div class="p-6 border-r brutalist-border">
+                        <div class="font-headline text-4xl text-primary mb-1">5.000+</div>
+                        <div class="font-mono text-[10px] text-primary uppercase font-bold">Unidades Procesadas</div>
+                    </div>
+                    <div class="p-6 md:border-r brutalist-border">
+                        <div class="font-headline text-4xl text-primary mb-1">98.4%</div>
+                        <div class="font-mono text-[10px] text-primary uppercase font-bold">SLA Cumplimiento</div>
+                    </div>
+                    <div class="p-6 col-span-2 md:col-span-1">
+                        <div class="font-headline text-4xl text-primary mb-1">24/7</div>
+                        <div class="font-mono text-[10px] text-primary uppercase font-bold">Terminal Operativa</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Marquee (Separator) -->
+        <section class="py-6 bg-highlight border-b brutalist-border overflow-hidden">
+            <div class="marquee-track flex items-center gap-12 text-primary">
+                <span class="font-headline text-2xl">TIENDANUBE</span>
+                <span class="font-headline text-2xl opacity-50">WOOCOMMERCE</span>
+                <span class="font-headline text-2xl">MERCADOLIBRE FLEX</span>
+                <span class="font-headline text-2xl opacity-50">SHOPIFY</span>
+                <span class="font-headline text-2xl">MAGENTO</span>
+                <span class="font-headline text-2xl opacity-50">TIENDANUBE</span>
+                <span class="font-headline text-2xl">WOOCOMMERCE</span>
+                <span class="font-headline text-2xl opacity-50">MERCADOLIBRE FLEX</span>
+                <span class="font-headline text-2xl">SHOPIFY</span>
+                <span class="font-headline text-2xl opacity-50">MAGENTO</span>
+            </div>
+        </section>
+        <!-- Servicios (Odd: 1) -->
+        <section class="section-odd py-20 px-margin-mobile md:px-margin-desktop border-b brutalist-border">
+            <div class="max-w-container-max mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div class="max-w-2xl">
+                        <span class="font-mono text-xs font-bold text-primary uppercase tracking-[0.3em] mb-3 block">01
+                            // Protocolos de Envío</span>
+                        <h2 class="font-headline text-4xl text-primary">Infraestructura de Servicios</h2>
+                    </div>
+                    <div class="bg-surface-variant brutalist-border p-4 flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+                        <div class="font-mono">
+                            <div class="text-[10px] font-bold uppercase text-primary">Estado del Sistema</div>
+                            <div class="text-xs text-primary font-bold uppercase">Operativo 100%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-l brutalist-border">
+                    <!-- Item 1 -->
+                    <div
+                        class="group bg-white border-r border-b brutalist-border p-8 hover:bg-surface-variant transition-colors">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="w-12 h-12 bg-primary flex items-center justify-center brutalist-border">
+                                <span class="material-symbols-outlined text-highlight text-2xl">timer</span>
+                            </div>
+                            <span
+                                class="font-mono text-[10px] bg-highlight px-2 py-0.5 brutalist-border font-bold text-primary">ALTA
+                                PRIORIDAD</span>
+                        </div>
+                        <h3 class="font-headline text-2xl mb-4 text-primary">Envíos Express</h3>
+                        <p class="font-body text-sm text-primary mb-8 leading-relaxed">
+                            Logística de respuesta inmediata. Rango de entrega exacto con pre-aviso de 120 minutos.
+                            Ideal para documentos y urgencias técnicas.
+                        </p>
+                        <a class="font-headline text-primary inline-flex items-center gap-2 group-hover:gap-4 transition-all"
+                            href="#">
+                            SOLICITAR TERMINAL <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+                        </a>
+                    </div>
+                    <!-- Item 2 -->
+                    <div
+                        class="group bg-white border-r border-b brutalist-border p-8 hover:bg-surface-variant transition-colors">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="w-12 h-12 bg-primary flex items-center justify-center brutalist-border">
+                                <span class="material-symbols-outlined text-highlight text-2xl">inventory_2</span>
+                            </div>
+                            <span
+                                class="font-mono text-[10px] bg-surface-variant px-2 py-0.5 brutalist-border font-bold text-primary">ESTÁNDAR</span>
+                        </div>
+                        <h3 class="font-headline text-2xl mb-4 text-primary">Envíos LowCost</h3>
+                        <p class="font-body text-sm text-primary mb-8 leading-relaxed">
+                            Optimización por ruteo masivo. Recepción hasta las 13:00hs para entrega en el mismo ciclo
+                            operativo. Eficiencia de costos máxima.
+                        </p>
+                        <a class="font-headline text-primary inline-flex items-center gap-2 group-hover:gap-4 transition-all"
+                            href="#">
+                            VER TARIFARIO <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+                        </a>
+                    </div>
+                    <!-- Item 3 -->
+                    <div
+                        class="group bg-white border-r border-b brutalist-border p-8 hover:bg-surface-variant transition-colors">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="w-12 h-12 bg-surface-variant flex items-center justify-center brutalist-border">
+                                <span class="material-symbols-outlined text-primary text-2xl">hub</span>
+                            </div>
+                        </div>
+                        <h3 class="font-headline text-2xl mb-4 text-primary">Logística E-Com</h3>
+                        <p class="font-body text-sm text-primary mb-8 leading-relaxed">
+                            Integración API y gestión de última milla. Flota dedicada para operaciones de volumen.
+                            Seguimiento en tiempo real y reportes técnicos.
+                        </p>
+                        <a class="font-headline text-primary inline-flex items-center gap-2 group-hover:gap-4 transition-all"
+                            href="#">
+                            CONFIGURAR API <span class="material-symbols-outlined text-lg">arrow_right_alt</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PyMEs Section (Even: 2) -->
+        <section class="section-even py-20 border-b brutalist-border overflow-hidden">
+            <div
+                class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="font-mono text-xs font-bold text-highlight uppercase tracking-[0.3em] mb-4 block">02 //
+                        Segmento Corporativo</span>
+                    <h2 class="font-headline text-4xl mb-8 text-white">Soluciones <span class="text-highlight">B2B e
+                            Industriales</span></h2>
+                    <div class="space-y-0 border brutalist-border bg-white text-primary">
+                        <div
+                            class="p-6 border-b brutalist-border flex gap-6 hover:bg-surface-variant transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+                            <div>
+                                <h4 class="font-headline text-xl mb-1 text-primary">Cuenta Corriente Técnica</h4>
+                                <p class="font-body text-xs text-primary">Ciclos de facturación automatizados y reportes
+                                    de rendimiento logístico mensual.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 flex gap-6 hover:bg-surface-variant transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl">rocket</span>
+                            <div>
+                                <h4 class="font-headline text-xl mb-1 text-primary">Meli Flex Integrated</h4>
+                                <p class="font-body text-xs text-primary">Cumplimiento estricto de SLA para
+                                    MercadoLibre. Entregas garantizadas en ventana horaria.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="brutalist-border-white overflow-hidden">
+                        <img alt="Logística almacén" class="w-full grayscale brightness-75"
+                            src="https://lh3.googleusercontent.com/aida/AP1WRLvdmBpNIoqqln2sb90-rttYL1vypT4hj55Hs-JvMshvwb-ZIJOYCv2IHhWbE3l_EeIBMP5qRqwb-TDbcYmTuDWT1Beld6BV7V0_iECNCCzmnaNeMSRz3FyIgwgxztIl9kxMXr_tmCUYDPUPKowfvmy2OeEdM8_XBsycqpuJsYvqjHRfO0sdfbsE8jDlcGXAMo7zmHb5RE9ps7WGKpGtWKciC5J2aWEGSTEf095Vlw5H_z74wz38WWMowg" />
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -right-6 bg-highlight brutalist-border p-6 max-w-[200px] hidden md:block text-primary">
+                        <div class="font-mono text-[10px] font-bold uppercase mb-2">Technical Stat:</div>
+                        <p class="font-headline text-sm leading-tight">98.4% Entregas exitosas antes de las 18:00hs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Pricing (Odd: 3) -->
+        <section class="section-odd py-24 px-margin-mobile md:px-margin-desktop border-b brutalist-border">
+            <div class="max-w-container-max mx-auto">
+                <div class="text-center mb-16">
+                    <span class="font-mono text-xs font-bold text-primary uppercase tracking-[0.3em] mb-4 block">03 //
+                        Esquemas Tarifarios</span>
+                    <h2 class="font-headline text-4xl text-primary">Matrices de Costo</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border brutalist-border bg-white text-primary">
+                    <!-- Plan 1: Express -->
+                    <div class="bg-white p-10 border-r brutalist-border flex flex-col">
+                        <div class="bg-surface-variant p-4 border-b brutalist-border -mx-10 -mt-10 mb-8">
+                            <h3 class="font-headline text-2xl text-primary">Express</h3>
+                        </div>
+                        <ul class="space-y-4 mb-10 font-mono text-xs text-primary">
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> RANGO
+                                EXACTO DE ENTREGA</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> PREAVISO:
+                                120 MIN (PROTOCOLO P2P)</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> SLA DE
+                                ENTREGA: 99.9%</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> TRACKING
+                                GPS REAL-TIME</li>
+                        </ul>
+                        <button
+                            class="mt-auto py-3 bg-white border brutalist-border font-headline text-lg text-primary hover:bg-highlight transition-colors">COTIZAR</button>
+                    </div>
+                    <!-- Plan 2: LowCost (Popular) -->
+                    <div
+                        class="bg-white p-10 border-r brutalist-border flex flex-col relative z-10 scale-[1.02] ring-2 ring-primary">
+                        <div
+                            class="bg-primary p-4 border-b brutalist-border -mx-10 -mt-10 mb-8 flex justify-between items-center">
+                            <h3 class="font-headline text-2xl text-white">LowCost</h3>
+                            <span
+                                class="bg-highlight text-[10px] font-mono font-bold px-2 py-0.5 brutalist-border uppercase text-primary">Masivo</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 font-mono text-xs text-primary">
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> CORTE
+                                OPERATIVO: 13:00HS</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> ALGORITMO
+                                DE RUTEO MASIVO</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> CARGA:
+                                HASTA 5KG / BULTO</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> COSTO POR
+                                NODO: OPTIMIZADO</li>
+                        </ul>
+                        <button
+                            class="mt-auto py-3 bg-highlight text-primary border brutalist-border font-headline text-lg hover:bg-primary hover:text-white transition-colors">ACCEDER</button>
+                    </div>
+                    <!-- Plan 3: PyME & 3PL -->
+                    <div class="bg-white p-10 flex flex-col">
+                        <div class="bg-surface-variant p-4 border-b brutalist-border -mx-10 -mt-10 mb-8">
+                            <h3 class="font-headline text-2xl text-primary">PyME &amp; 3PL</h3>
+                        </div>
+                        <ul class="space-y-4 mb-10 font-mono text-xs text-primary">
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> WMS &amp;
+                                ALMACENAJE 3PL</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> API REST
+                                / WEBHOOKS</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> CICLO DE
+                                FACTURACIÓN: MENSUAL</li>
+                            <li class="flex items-center gap-3"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> SOPORTE
+                                TÉCNICO NIVEL 1</li>
+                        </ul>
+                        <button
+                            class="mt-auto py-3 bg-white border brutalist-border font-headline text-lg text-primary hover:bg-highlight transition-colors">CONSULTAR</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials (Even: 4) -->
+        <section class="section-even py-24 px-margin-mobile md:px-margin-desktop border-b brutalist-border">
+            <div class="max-w-container-max mx-auto">
+                <h2 class="font-headline text-3xl mb-12 text-center text-white">Validación de <span
+                        class="text-highlight">Terceros</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Testimonial -->
+                    <div class="bg-white text-primary p-8 border brutalist-border flex flex-col">
+                        <span class="font-headline text-4xl text-highlight mb-4 leading-none">"</span>
+                        <p class="font-body text-sm text-primary italic mb-8 flex-grow">
+                            "Socio estratégico fundamental. Servicio express impecable, respuesta técnica al instante."
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t brutalist-border">
+                            <div
+                                class="w-10 h-10 bg-primary text-highlight brutalist-border flex items-center justify-center font-headline">
+                                GR</div>
+                            <div class="font-mono">
+                                <div class="text-[10px] font-bold uppercase text-primary">Guillermo Rauch</div>
+                                <div class="text-[9px] text-primary/70">CEO Enigma</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial -->
+                    <div class="bg-white text-primary p-8 border brutalist-border flex flex-col">
+                        <span class="font-headline text-4xl text-highlight mb-4 leading-none">"</span>
+                        <p class="font-body text-sm text-primary italic mb-8 flex-grow">
+                            "Incremento directo en nuestras calificaciones. La precisión en la última milla es
+                            absoluta."
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t brutalist-border">
+                            <div
+                                class="w-10 h-10 bg-primary text-highlight brutalist-border flex items-center justify-center font-headline">
+                                RS</div>
+                            <div class="font-mono">
+                                <div class="text-[10px] font-bold uppercase text-primary">Rika Shinoda</div>
+                                <div class="text-[9px] text-primary/70">Ops Kintsugi</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial -->
+                    <div class="bg-white text-primary p-8 border brutalist-border flex flex-col">
+                        <span class="font-headline text-4xl text-highlight mb-4 leading-none">"</span>
+                        <p class="font-body text-sm text-primary italic mb-8 flex-grow">
+                            "Soporte directo vía terminal WhatsApp. Resolución de contingencias en tiempo real."
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t brutalist-border">
+                            <div
+                                class="w-10 h-10 bg-primary text-highlight brutalist-border flex items-center justify-center font-headline">
+                                SS</div>
+                            <div class="font-mono">
+                                <div class="text-[10px] font-bold uppercase text-primary">Steven Sunny</div>
+                                <div class="text-[9px] text-primary/70">CEO Boxefi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA (Special/Separator - Dark) -->
+        <section class="py-24 px-margin-mobile md:px-margin-desktop bg-[#00041a] text-white relative overflow-hidden">
+            <img alt="Paquetes" class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale"
+                src="https://lh3.googleusercontent.com/aida/AP1WRLt6cfgTk4C8-LtZ6AGftGVk3epSevNVJnxzYoi72Y8bsZPWj2exW6dB5bC-PEjtoeGTXDZMNHMjcqTjNHd5Vqaot6u3crOrjXliGSm-RunyyKMV-f8zS9m9NOn3-LXIrRry-bfe4XRoQFnTB7JaTFRm7IdqQmNvFaP6DwOt-Lwqb1HllqnTmOAnNEuVcgujzikByfYtj3EqFe88eirN0ideK-0ntUU1KKE2E5wHb1w65_sKqCsNC83W2Q4" />
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <h2 class="font-headline text-5xl md:text-6xl mb-6 text-highlight leading-none">¿ESCALAR OPERACIONES?
+                </h2>
+                <p class="font-body text-lg text-white/70 mb-10">Optimice su cadena de distribución urbana. Terminales
+                    operativas disponibles ahora.</p>
+                <div class="flex flex-wrap justify-center gap-0">
+                    <a class="bg-highlight text-primary px-10 py-5 font-headline text-2xl border border-primary hover:bg-white transition-colors"
+                        href="https://wa.me/5492236602699">
+                        HABLAR CON CENTRAL
+                    </a>
+                    <a class="bg-transparent text-white px-10 py-5 font-headline text-2xl border border-white/30 hover:bg-white/10 transition-colors"
+                        href="#">
+                        PROTOCOLOS
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-white border-t brutalist-border py-16 px-margin-mobile md:px-margin-desktop text-primary">
+        <div class="max-w-container-max mx-auto grid grid-cols-1 md:col-span-4 lg:grid-cols-4 gap-12">
+            <div class="col-span-1">
+                <div class="font-headline text-2xl mb-6 text-primary">Envíos DosRuedas</div>
+                <p class="font-mono text-[10px] text-primary/80 leading-relaxed uppercase">
+                    Terminal de logística urbana de alta precisión. Mar del Plata, Argentina. Operaciones técnicas 24/7.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-mono text-xs font-bold text-primary mb-6 uppercase tracking-widest">Protocolos</h5>
+                <ul class="space-y-3 font-mono text-[10px] text-primary/80 uppercase font-bold">
+                    <li><a class="hover:text-highlight transition-colors" href="#">Express Service</a></li>
+                    <li><a class="hover:text-highlight transition-colors" href="#">LowCost Bulk</a></li>
+                    <li><a class="hover:text-highlight transition-colors" href="#">Flex Integration</a></li>
+                    <li><a class="hover:text-highlight transition-colors" href="#">Pyme Dashboard</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-mono text-xs font-bold text-primary mb-6 uppercase tracking-widest">Sistemas</h5>
+                <ul class="space-y-3 font-mono text-[10px] text-primary/80 uppercase font-bold">
+                    <li><a class="hover:text-highlight transition-colors" href="#">Estatus Red</a></li>
+                    <li><a class="hover:text-highlight transition-colors" href="#">API Docs</a></li>
+                    <li><a class="hover:text-highlight transition-colors" href="#">Privacidad</a></li>
+                    <li><a class="hover:text-highlight transition-colors" href="#">Terminales</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-mono text-xs font-bold text-primary mb-6 uppercase tracking-widest">Conexión</h5>
+                <ul class="space-y-3 font-mono text-[10px] text-primary/80 font-bold uppercase">
+                    <li class="flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[16px] text-highlight">call</span> +54 9 223 660 2699
+                    </li>
+                    <li class="flex items-center gap-3"><span
+                            class="material-symbols-outlined text-[16px] text-highlight">mail</span>
+                        central@dosruedas.mdq</li>
+                    <li class="pt-6 flex gap-4">
+                        <a class="w-8 h-8 border brutalist-border flex items-center justify-center hover:bg-highlight transition-all"
+                            href="#">
+                            <span class="material-symbols-outlined text-[18px] text-primary">hub</span>
+                        </a>
+                        <a class="w-8 h-8 border brutalist-border flex items-center justify-center hover:bg-highlight transition-all"
+                            href="#">
+                            <span class="material-symbols-outlined text-[18px] text-primary">terminal</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-container-max mx-auto mt-16 pt-8 border-t brutalist-border flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-mono text-[9px] text-primary uppercase font-bold">
+                © 2024 DOSRUEDAS_LOGISTICS_MDQ // V.2.4.0
+            </p>
+            <p class="font-mono text-[9px] text-primary uppercase font-bold">
+                BUILD WITH <span class="text-red-600">PRECISION</span> BY DOS RUEDAS PRO.
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('bg-[#000833]/95', 'backdrop-blur-sm');
+            } else {
+                header.classList.remove('bg-[#000833]/95', 'backdrop-blur-sm');
+            }
+        });
+    </script>
+</body>
+
+</html>

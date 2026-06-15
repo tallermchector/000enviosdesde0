@@ -29,30 +29,30 @@ function ClientFeedback() {
 
   return (
     <section 
-      className="relative w-full py-20 bg-[#f8f9fa] border-t-2 border-black overflow-hidden" 
+      className="relative w-full py-20 section-even border-t-2 border-black overflow-hidden" 
       ref={testimonialRef}
       id="testimonios"
     >
       {/* Brutalist Grid Overlay for Background Context */}
-      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+ 
       <div className="relative z-10 mx-auto max-w-[1280px] px-6">
         {/* Section Header */}
         <article className="max-w-screen-md mx-auto text-center space-y-4 mb-14">
           <TimelineContent 
             as="span" 
-            className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-black text-black font-bold uppercase tracking-wider text-xs font-display"
+            className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs font-display"
             animationNum={0} 
             customVariants={revealVariants} 
             timelineRef={testimonialRef}
           >
-            <span className="w-2 h-2 bg-[#001de0]" />
+            <span className="w-2 h-2 bg-black" />
             Testimonios y Casos de Éxito
           </TimelineContent>
           
           <TimelineContent 
             as="h2" 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider text-black leading-none" 
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider text-white leading-none" 
             animationNum={1} 
             customVariants={revealVariants} 
             timelineRef={testimonialRef}
@@ -62,7 +62,7 @@ function ClientFeedback() {
           
           <TimelineContent 
             as="p" 
-            className="mx-auto text-body-md text-[#444556] max-w-xl" 
+            className="mx-auto text-body-md text-white/90 max-w-xl" 
             animationNum={2} 
             customVariants={revealVariants} 
             timelineRef={testimonialRef}
@@ -70,11 +70,11 @@ function ClientFeedback() {
             Conocé la experiencia de quienes impulsan sus ventas y automatizan sus envíos con nuestra logística express y MercadoLibre Flex.
           </TimelineContent>
         </article>
-
+ 
         {/* Testimonials Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full pb-8">
           
-          {/* Column 1: White & Electric Blue */}
+          {/* Column 1: White & Navy */}
           <div className="flex flex-col gap-6">
             {/* Card 1: Guillermo Rauch - White Brutalist */}
             <TimelineContent 
@@ -84,7 +84,7 @@ function ClientFeedback() {
               className="flex-1 flex flex-col"
             >
               <GlowCard
-                glowColor="blue"
+                glowColor="yellow"
                 radius={0}
                 border={2}
                 borderColor="#000"
@@ -119,8 +119,8 @@ function ClientFeedback() {
                 </div>
               </GlowCard>
             </TimelineContent>
-
-            {/* Card 2: Rika Shinoda - Electric Blue */}
+ 
+            {/* Card 2: Rika Shinoda - Navy Blue */}
             <TimelineContent 
               animationNum={4} 
               customVariants={revealVariants} 
@@ -132,9 +132,9 @@ function ClientFeedback() {
                 radius={0}
                 border={2}
                 borderColor="#000"
-                backdrop="#001de0"
+                backdrop="#000833"
                 customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
@@ -162,7 +162,7 @@ function ClientFeedback() {
               </GlowCard>
             </TimelineContent>
           </div>
-
+ 
           {/* Column 2: Total Black Brutalist Stack */}
           <div className="flex flex-col gap-6">
             {/* Card 3: Reacher - Dark Card */}
@@ -173,17 +173,17 @@ function ClientFeedback() {
               className="flex-1 flex flex-col"
             >
               <GlowCard
-                glowColor="green"
+                glowColor="yellow"
                 radius={0}
                 border={2}
                 borderColor="#000"
-                backdrop="#000"
+                backdrop="#000833"
                 customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    {'"El equipo es sumamente profesional. Sus soluciones de logística integrada y cadetería urbana transformaron nuestra operation."'}
+                    {'"El equipo es sumamente profesional. Sus soluciones de logística integrada y cadetería urbana transformaron nuestra operacion."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
                     <div>
@@ -206,7 +206,7 @@ function ClientFeedback() {
                 </div>
               </GlowCard>
             </TimelineContent>
-
+ 
             {/* Card 4: John - Dark Card */}
             <TimelineContent 
               animationNum={6} 
@@ -215,13 +215,13 @@ function ClientFeedback() {
               className="flex-1 flex flex-col"
             >
               <GlowCard
-                glowColor="purple"
+                glowColor="yellow"
                 radius={0}
                 border={2}
                 borderColor="#000"
-                backdrop="#000"
+                backdrop="#000833"
                 customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
@@ -248,7 +248,7 @@ function ClientFeedback() {
                 </div>
               </GlowCard>
             </TimelineContent>
-
+ 
             {/* Card 5: Steven Sunny - Dark Card */}
             <TimelineContent 
               animationNum={7} 
@@ -257,13 +257,13 @@ function ClientFeedback() {
               className="flex-1 flex flex-col"
             >
               <GlowCard
-                glowColor="orange"
+                glowColor="yellow"
                 radius={0}
                 border={2}
                 borderColor="#000"
-                backdrop="#000"
+                backdrop="#000833"
                 customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
@@ -291,10 +291,10 @@ function ClientFeedback() {
               </GlowCard>
             </TimelineContent>
           </div>
-
-          {/* Column 3: Electric Blue & Safety Yellow */}
+ 
+          {/* Column 3: Navy & Safety Yellow */}
           <div className="flex flex-col gap-6">
-            {/* Card 6: Adrián Gómez - Electric Blue */}
+            {/* Card 6: Adrián Gómez - Navy */}
             <TimelineContent 
               animationNum={8} 
               customVariants={revealVariants} 
@@ -306,9 +306,9 @@ function ClientFeedback() {
                 radius={0}
                 border={2}
                 borderColor="#000"
-                backdrop="#001de0"
+                backdrop="#000833"
                 customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
+                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
@@ -335,7 +335,7 @@ function ClientFeedback() {
                 </div>
               </GlowCard>
             </TimelineContent>
-
+ 
             {/* Card 7: Paul Brauch - Safety Yellow Brutalist */}
             <TimelineContent 
               animationNum={9} 
@@ -348,7 +348,7 @@ function ClientFeedback() {
                 radius={0}
                 border={2}
                 borderColor="#000"
-                backdrop="#fed726"
+                backdrop="#E9C400"
                 customSize
                 className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
               >
@@ -380,9 +380,9 @@ function ClientFeedback() {
               </GlowCard>
             </TimelineContent>
           </div>
-
+ 
         </div>
-
+ 
         {/* Decorative Grid footer detail */}
         <div className="absolute border-b-2 border-black bottom-4 h-16 z-[2] md:w-[calc(100%-3rem)] w-[90%] md:left-6 left-[5%] pointer-events-none">
           <div className="container mx-auto w-full h-full relative before:absolute before:-left-2 before:-bottom-2 before:w-4 before:h-4 before:bg-white before:border-2 before:border-black after:absolute after:-right-2 after:-bottom-2 after:w-4 after:h-4 after:bg-white after:border-2 after:border-black "></div>

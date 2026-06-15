@@ -72,14 +72,17 @@ export default function Navegador({
   },
 }: NavegadorProps) {
   return (
-    <section className="py-4 border-b border-border bg-background">
+    <section className="py-4 border-b-2 border-primary bg-[#000833] text-white">
       <div className="container mx-auto px-4">
         {/* Desktop Navigation */}
         <nav className="hidden justify-between lg:flex items-center">
           <div className="flex items-center gap-6">
             <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="w-8 h-auto" alt={logo.alt} />
-              <span className="text-lg font-semibold font-orbitron">{logo.title}</span>
+              <img src={logo.src} className="w-8 h-auto brightness-0 invert" alt={logo.alt} />
+              <span className="text-xl font-bold font-display uppercase tracking-wider text-white">
+                <span>Envíos</span>
+                <span className="text-[#E9C400] ml-1">DosRuedas</span>
+              </span>
             </a>
             <div className="flex items-center">
               <NavigationMenu>
@@ -90,10 +93,10 @@ export default function Navegador({
             </div>
           </div>
           <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm" className="bg-transparent text-white border-2 border-white rounded-none hover:bg-white/10 hover:text-white transition-all font-semibold">
               <a href={auth.login.url}>{auth.login.text}</a>
             </Button>
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="bg-[#E9C400] text-[#000833] border-2 border-black rounded-none hover:bg-white hover:text-[#000833] transition-all font-bold font-display uppercase">
               <a href={auth.signup.url}>{auth.signup.text}</a>
             </Button>
           </div>
@@ -103,12 +106,15 @@ export default function Navegador({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="w-8 h-auto" alt={logo.alt} />
-              <span className="text-lg font-semibold font-orbitron">{logo.title}</span>
+              <img src={logo.src} className="w-8 h-auto brightness-0 invert" alt={logo.alt} />
+              <span className="text-xl font-bold font-display uppercase tracking-wider text-white">
+                <span>Envíos</span>
+                <span className="text-[#E9C400] ml-1">DosRuedas</span>
+              </span>
             </a>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" aria-label="Abrir menú de navegación">
+                <Button variant="outline" size="icon" aria-label="Abrir menú de navegación" className="border-white text-white bg-transparent hover:bg-white/10 hover:text-white rounded-none">
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
@@ -165,24 +171,24 @@ export default function Navegador({
 const renderMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
-      <NavigationMenuItem key={item.title} className="text-muted-foreground">
-        <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+      <NavigationMenuItem key={item.title} className="text-white">
+        <NavigationMenuTrigger className="bg-transparent hover:bg-white/10 hover:text-[#E9C400] focus:bg-white/10 focus:text-[#E9C400] text-white rounded-none transition-colors border-none">{item.title}</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul className="w-80 p-3">
+          <ul className="w-80 p-3 bg-[#000833] border-2 border-primary text-white rounded-none">
             {item.items.map((subItem) => (
               <li key={subItem.title}>
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex select-none gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-accent-foreground"
+                    className="flex select-none gap-4 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-white/10 hover:text-[#E9C400]"
                     href={subItem.url}
                   >
                     {subItem.icon}
                     <div>
-                      <div className="text-sm font-semibold text-foreground">
+                      <div className="text-sm font-semibold text-white">
                         {subItem.title}
                       </div>
                       {subItem.description && (
-                        <p className="text-sm leading-snug text-muted-foreground mt-1">
+                        <p className="text-xs leading-snug text-white/70 mt-1">
                           {subItem.description}
                         </p>
                       )}
@@ -200,7 +206,7 @@ const renderMenuItem = (item: MenuItem) => {
   return (
     <a
       key={item.title}
-      className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-accent-foreground"
+      className="group inline-flex h-10 w-max items-center justify-center rounded-none bg-transparent px-4 py-2 text-sm font-medium text-white hover:text-[#E9C400] transition-colors"
       href={item.url}
     >
       {item.title}

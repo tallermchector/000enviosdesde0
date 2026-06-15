@@ -9,7 +9,7 @@ import { GlowCard } from "@/components/ui/spotlight-card";
 
 export default function ServiciosSection() {
   return (
-    <section className="relative py-24 overflow-hidden bg-[#f8f9fa] text-[#191c1d] transition-colors duration-300 border-t-2 border-black">
+    <section className="relative py-24 overflow-hidden bg-white text-[#000833] transition-colors duration-300 border-t-2 border-black">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
@@ -23,7 +23,7 @@ export default function ServiciosSection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider mb-4 leading-none text-black">
             Nuestros Servicios Logísticos
           </h2>
-          <p className="text-body-lg text-[#191c1d]">
+          <p className="text-body-lg text-[#000833]">
             Soluciones de transporte urbano diseñadas para adaptarse al ritmo y presupuesto de tu negocio.
           </p>
         </div>
@@ -49,12 +49,12 @@ export default function ServiciosSection() {
               className="group flex flex-col justify-between p-8 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 overflow-hidden h-full"
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#001de0] z-10" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#000833] z-10" />
 
               <div className="relative z-10 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-none bg-[#001de0]/10 border-2 border-black text-[#001de0] group-hover:scale-105 transition-transform duration-150">
+                    <div className="p-3 rounded-none bg-[#000833]/10 border-2 border-black text-[#000833] group-hover:scale-105 transition-transform duration-150">
                       <Zap className="w-6 h-6" />
                     </div>
                     <span className="px-3 py-1 rounded-none border-2 border-black bg-[#ba1a1a] text-white text-[10px] font-bold font-mono uppercase tracking-wider">
@@ -64,7 +64,7 @@ export default function ServiciosSection() {
                   <h3 className="text-2xl font-bold font-display uppercase tracking-wider mb-2 text-black">
                     Envíos Express
                   </h3>
-                  <p className="text-xs font-bold text-[#001de0] font-mono mb-4 uppercase tracking-wider">
+                  <p className="text-xs font-bold text-[#000833] font-mono mb-4 uppercase tracking-wider">
                     Prioridad absoluta y certeza total.
                   </p>
                   <p className="text-body-md text-[#444556] leading-relaxed mb-6">
@@ -73,7 +73,7 @@ export default function ServiciosSection() {
                 </div>
                 <Button
                   asChild
-                  className="w-full bg-[#001de0] hover:bg-[#0012a1] text-white font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
+                  className="w-full bg-[#000833] hover:bg-[#00041a] text-white font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
                 >
                   <Link href="/cotizar/express">
                     <span>Solicitar Express</span>
@@ -126,7 +126,7 @@ export default function ServiciosSection() {
                 </div>
                 <Button
                   asChild
-                  className="w-full bg-[#e9c400] hover:bg-[#ffd700] text-black font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
+                  className="w-full bg-[#e9c400] hover:bg-white hover:text-[#000833] text-black font-sans font-bold uppercase rounded-none border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center gap-2 transition-all"
                 >
                   <Link href="/servicios/envios-lowcost">
                     <span>Ahorrá con LowCost</span>
