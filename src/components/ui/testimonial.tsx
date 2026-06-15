@@ -96,7 +96,7 @@ function ClientFeedback() {
                 
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
-                    "Envíos DosRuedas ha sido un verdadero socio estratégico. Su servicio de entrega express en el día es impecable y su equipo responde al instante."
+                    {'"Envíos DosRuedas ha sido un verdadero socio estratégico. Su servicio de entrega express en el día es impecable y su equipo responde al instante."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
                     <div>
@@ -138,7 +138,7 @@ function ClientFeedback() {
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    "Vimos un salto enorme en nuestras calificaciones de MercadoLibre. La puntualidad y cuidado en las entregas es insuperable."
+                    {'"Vimos un salto enorme en nuestras calificaciones de MercadoLibre. La puntualidad y cuidado en las entregas es insuperable."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
                     <div>
@@ -183,7 +183,7 @@ function ClientFeedback() {
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    "El equipo es sumamente profesional. Sus soluciones de logística integrada y cadetería urbana transformaron nuestra operation."
+                    {'"El equipo es sumamente profesional. Sus soluciones de logística integrada y cadetería urbana transformaron nuestra operation."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
                     <div>
@@ -225,7 +225,7 @@ function ClientFeedback() {
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    "Súper recomendados. Su conocimiento del terreno en Mar del Plata nos da una ventaja competitiva al entregar en horas."
+                    {'"Súper recomendados. Su conocimiento del terreno en Mar del Plata nos da una ventaja competitiva al entregar en horas."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
                     <div>
@@ -267,7 +267,7 @@ function ClientFeedback() {
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    "El canal de soporte por WhatsApp es súper directo y eficiente. Saben resolver contingencias al instante y con excelente trato."
+                    {'"El canal de soporte por WhatsApp es súper directo y eficiente. Saben resolver contingencias al instante y con excelente trato."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
                     <div>
@@ -312,7 +312,7 @@ function ClientFeedback() {
               >
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    "Su integración directa nos ha permitido procesar despachos masivos de e-commerce sin demoras y sin errores de ruteo."
+                    {'"Su integración directa nos ha permitido procesar despachos masivos de e-commerce sin demoras y sin errores de ruteo."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
                     <div>
@@ -356,7 +356,7 @@ function ClientFeedback() {
                 
                 <div className="relative z-10 flex-1 flex flex-col justify-between">
                   <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
-                    "Un cambio estratégico para nuestro negocio. La velocidad de su flota y el compromiso con el cliente final tiene un impacto enorme en la recompra."
+                    {'"Un cambio estratégico para nuestro negocio. La velocidad de su flota y el compromiso con el cliente final tiene un impacto enorme en la recompra."'}
                   </p>
                   <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
                     <div>

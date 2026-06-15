@@ -6,7 +6,7 @@ import { motion, useInView, Variants } from "framer-motion";
 interface TimelineContentProps {
   children: React.ReactNode;
   animationNum?: number;
-  timelineRef: React.RefObject<any>;
+  timelineRef: React.RefObject<Element | null>;
   customVariants?: Variants;
   as?: string;
   className?: string;
@@ -22,7 +22,14 @@ export const TimelineContent: React.FC<TimelineContentProps> = ({
 }) => {
   // Map standard tag names to their motion equivalents
   const motionKey = as as keyof typeof motion;
-  const Component = (motionKey in motion ? motion[motionKey] : motion.div) as React.ComponentType<any>;
+  const Component = (motionKey in motion ? motion[motionKey] : motion.div) as React.ComponentType<{
+    children?: React.ReactNode;
+    initial?: string;
+    animate?: string | boolean | object;
+    variants?: Variants;
+    custom?: number;
+    className?: string;
+  }>;
 
   // Track if the container is in view to trigger the animation group
   const isInView = useInView(timelineRef, { once: true, amount: 0.1 });
