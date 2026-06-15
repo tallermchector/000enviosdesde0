@@ -2,9 +2,52 @@
 
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { Variants } from "framer-motion";
-import Image from "next/image";
 import { useRef } from "react";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { testimonials } from "@/lib/testimonials";
+
+const cardStyles = [
+  {
+    backdrop: "#fff",
+    textColor: "text-black",
+    borderColor: "#000",
+    glowColor: "yellow" as const,
+    avatarBg: "bg-[#000833]",
+    avatarTextColor: "text-[#E9C400]"
+  },
+  {
+    backdrop: "#000833",
+    textColor: "text-white",
+    borderColor: "#000",
+    glowColor: "yellow" as const,
+    avatarBg: "bg-[#E9C400]",
+    avatarTextColor: "text-[#000833]"
+  },
+  {
+    backdrop: "#E9C400",
+    textColor: "text-black",
+    borderColor: "#000",
+    glowColor: "blue" as const,
+    avatarBg: "bg-[#000833]",
+    avatarTextColor: "text-white"
+  },
+  {
+    backdrop: "#000833",
+    textColor: "text-white",
+    borderColor: "#000",
+    glowColor: "yellow" as const,
+    avatarBg: "bg-[#E9C400]",
+    avatarTextColor: "text-[#000833]"
+  },
+  {
+    backdrop: "#fff",
+    textColor: "text-black",
+    borderColor: "#000",
+    glowColor: "yellow" as const,
+    avatarBg: "bg-[#000833]",
+    avatarTextColor: "text-[#E9C400]"
+  }
+];
 
 function ClientFeedback() {
   const testimonialRef = useRef<HTMLDivElement>(null);
@@ -41,7 +84,7 @@ function ClientFeedback() {
         <article className="max-w-screen-md mx-auto text-center space-y-4 mb-14">
           <TimelineContent 
             as="span" 
-            className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs font-display"
+            className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs font-display shadow-[2px_2px_0px_#000]"
             animationNum={0} 
             customVariants={revealVariants} 
             timelineRef={testimonialRef}
@@ -74,311 +117,183 @@ function ClientFeedback() {
         {/* Testimonials Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full pb-8">
           
-          {/* Column 1: White & Navy */}
+          {/* Column 1: Testimonials 0 and 1 */}
           <div className="flex flex-col gap-6">
-            {/* Card 1: Guillermo Rauch - White Brutalist */}
-            <TimelineContent 
-              animationNum={3} 
-              customVariants={revealVariants} 
-              timelineRef={testimonialRef} 
-              className="flex-1 flex flex-col"
-            >
-              <GlowCard
-                glowColor="yellow"
-                radius={0}
-                border={2}
-                borderColor="#000"
-                backdrop="#fff"
-                customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f10_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f10_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
-                
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
-                    {'"Envíos DosRuedas ha sido un verdadero socio estratégico. Su servicio de entrega express en el día es impecable y su equipo responde al instante."'}
-                  </p>
-                  <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
-                    <div>
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-black">
-                        Guillermo Rauch
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-wider text-black/60 mt-0.5">
-                        CEO de Enigma
+            {[0, 1].map((idx) => {
+              const t = testimonials[idx];
+              if (!t) return null;
+              const style = cardStyles[idx];
+              return (
+                <TimelineContent 
+                  key={t.id}
+                  animationNum={3 + idx} 
+                  customVariants={revealVariants} 
+                  timelineRef={testimonialRef} 
+                  className="flex-1 flex flex-col"
+                >
+                  <GlowCard
+                    glowColor={style.glowColor}
+                    radius={0}
+                    border={2}
+                    borderColor={style.borderColor}
+                    backdrop={style.backdrop}
+                    customSize
+                    className={`flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden ${style.textColor}`}
+                  >
+                    {/* Visual details for white card */}
+                    {style.backdrop === "#fff" && (
+                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f10_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f10_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
+                    )}
+                    
+                    <div className="relative z-10 flex-1 flex flex-col justify-between">
+                      {/* Platform & Stars Technical Badge */}
+                      <div className="flex justify-between items-center mb-6 font-mono text-[9px] uppercase tracking-wider font-bold opacity-80">
+                        <span>{t.platform}</span>
+                        <span className={style.backdrop === "#E9C400" ? "text-black" : "text-[#E9C400]"}>{"★".repeat(t.rating)}</span>
+                      </div>
+
+                      <p className="font-sans text-body-md leading-relaxed italic mb-8">
+                        {`"${t.content}"`}
                       </p>
+                      
+                      <div className={`flex justify-between items-end border-t pt-4 mt-auto ${style.backdrop === "#000833" ? "border-white/20" : "border-black/10"}`}>
+                        <div>
+                          <h3 className="font-display text-base font-bold uppercase tracking-wider">
+                            {t.name}
+                          </h3>
+                          <p className={`font-mono text-xs uppercase tracking-wider mt-0.5 ${style.backdrop === "#000833" ? "text-white/70" : "text-black/60"}`}>
+                            {t.role}
+                          </p>
+                        </div>
+                        
+                        <div className={`w-12 h-12 border-2 border-black flex items-center justify-center font-display text-base font-black shadow-[2px_2px_0px_#000] shrink-0 ${style.avatarBg} ${style.avatarTextColor}`}>
+                          {t.avatarPlaceholder}
+                        </div>
+                      </div>
                     </div>
-                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                      <Image
-                        src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=150&auto=format&fit=crop"
-                        alt="Guillermo Rauch"
-                        fill
-                        className="object-cover rounded-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </GlowCard>
-            </TimelineContent>
- 
-            {/* Card 2: Rika Shinoda - Navy Blue */}
-            <TimelineContent 
-              animationNum={4} 
-              customVariants={revealVariants} 
-              timelineRef={testimonialRef} 
-              className="flex-shrink-0 flex flex-col"
-            >
-              <GlowCard
-                glowColor="yellow"
-                radius={0}
-                border={2}
-                borderColor="#000"
-                backdrop="#000833"
-                customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
-              >
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    {'"Vimos un salto enorme en nuestras calificaciones de MercadoLibre. La puntualidad y cuidado en las entregas es insuperable."'}
-                  </p>
-                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
-                    <div>
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                        Rika Shinoda
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                        CEO de Kintsugi
-                      </p>
-                    </div>
-                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                      <Image
-                        src="https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=150&auto=format&fit=crop"
-                        alt="Rika Shinoda"
-                        fill
-                        className="object-cover rounded-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </GlowCard>
-            </TimelineContent>
+                  </GlowCard>
+                </TimelineContent>
+              );
+            })}
           </div>
- 
-          {/* Column 2: Total Black Brutalist Stack */}
+
+          {/* Column 2: Testimonials 2 and 3 */}
           <div className="flex flex-col gap-6">
-            {/* Card 3: Reacher - Dark Card */}
-            <TimelineContent 
-              animationNum={5} 
-              customVariants={revealVariants} 
-              timelineRef={testimonialRef} 
-              className="flex-1 flex flex-col"
-            >
-              <GlowCard
-                glowColor="yellow"
-                radius={0}
-                border={2}
-                borderColor="#000"
-                backdrop="#000833"
-                customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
-              >
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    {'"El equipo es sumamente profesional. Sus soluciones de logística integrada y cadetería urbana transformaron nuestra operacion."'}
-                  </p>
-                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
-                    <div>
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                        Reacher
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                        CEO de OdeaoLabs
+            {[2, 3].map((idx) => {
+              const t = testimonials[idx];
+              if (!t) return null;
+              const style = cardStyles[idx];
+              return (
+                <TimelineContent 
+                  key={t.id}
+                  animationNum={5 + idx} 
+                  customVariants={revealVariants} 
+                  timelineRef={testimonialRef} 
+                  className="flex-1 flex flex-col"
+                >
+                  <GlowCard
+                    glowColor={style.glowColor}
+                    radius={0}
+                    border={2}
+                    borderColor={style.borderColor}
+                    backdrop={style.backdrop}
+                    customSize
+                    className={`flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden ${style.textColor}`}
+                  >
+                    {/* Visual details for yellow card */}
+                    {style.backdrop === "#E9C400" && (
+                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
+                    )}
+                    
+                    <div className="relative z-10 flex-1 flex flex-col justify-between">
+                      {/* Platform & Stars Technical Badge */}
+                      <div className="flex justify-between items-center mb-6 font-mono text-[9px] uppercase tracking-wider font-bold opacity-80">
+                        <span>{t.platform}</span>
+                        <span className={style.backdrop === "#E9C400" ? "text-black" : "text-[#E9C400]"}>{"★".repeat(t.rating)}</span>
+                      </div>
+
+                      <p className="font-sans text-body-md leading-relaxed italic mb-8">
+                        {`"${t.content}"`}
                       </p>
+                      
+                      <div className={`flex justify-between items-end border-t pt-4 mt-auto ${style.backdrop === "#000833" ? "border-white/20" : "border-black/10"}`}>
+                        <div>
+                          <h3 className="font-display text-base font-bold uppercase tracking-wider">
+                            {t.name}
+                          </h3>
+                          <p className={`font-mono text-xs uppercase tracking-wider mt-0.5 ${style.backdrop === "#000833" ? "text-white/70" : "text-black/60"}`}>
+                            {t.role}
+                          </p>
+                        </div>
+                        
+                        <div className={`w-12 h-12 border-2 border-black flex items-center justify-center font-display text-base font-black shadow-[2px_2px_0px_#000] shrink-0 ${style.avatarBg} ${style.avatarTextColor}`}>
+                          {t.avatarPlaceholder}
+                        </div>
+                      </div>
                     </div>
-                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                      <Image
-                        src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=150&auto=format&fit=crop"
-                        alt="Reacher"
-                        fill
-                        className="object-cover rounded-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </GlowCard>
-            </TimelineContent>
- 
-            {/* Card 4: John - Dark Card */}
-            <TimelineContent 
-              animationNum={6} 
-              customVariants={revealVariants} 
-              timelineRef={testimonialRef} 
-              className="flex-1 flex flex-col"
-            >
-              <GlowCard
-                glowColor="yellow"
-                radius={0}
-                border={2}
-                borderColor="#000"
-                backdrop="#000833"
-                customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
-              >
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    {'"Súper recomendados. Su conocimiento del terreno en Mar del Plata nos da una ventaja competitiva al entregar en horas."'}
-                  </p>
-                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
-                    <div>
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                        John
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                        CEO de Labsbo
-                      </p>
-                    </div>
-                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                      <Image
-                        src="https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=150&auto=format&fit=crop"
-                        alt="John"
-                        fill
-                        className="object-cover rounded-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </GlowCard>
-            </TimelineContent>
- 
-            {/* Card 5: Steven Sunny - Dark Card */}
-            <TimelineContent 
-              animationNum={7} 
-              customVariants={revealVariants} 
-              timelineRef={testimonialRef} 
-              className="flex-1 flex flex-col"
-            >
-              <GlowCard
-                glowColor="yellow"
-                radius={0}
-                border={2}
-                borderColor="#000"
-                backdrop="#000833"
-                customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
-              >
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    {'"El canal de soporte por WhatsApp es súper directo y eficiente. Saben resolver contingencias al instante y con excelente trato."'}
-                  </p>
-                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
-                    <div>
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                        Steven Sunny
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                        CEO de boxefi
-                      </p>
-                    </div>
-                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                      <Image
-                        src="https://images.unsplash.com/photo-1740102074295-c13fae3e4f8a?q=80&w=150&auto=format&fit=crop"
-                        alt="Steven Sunny"
-                        fill
-                        className="object-cover rounded-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </GlowCard>
-            </TimelineContent>
+                  </GlowCard>
+                </TimelineContent>
+              );
+            })}
           </div>
- 
-          {/* Column 3: Navy & Safety Yellow */}
+
+          {/* Column 3: Testimonial 4 */}
           <div className="flex flex-col gap-6">
-            {/* Card 6: Adrián Gómez - Navy */}
-            <TimelineContent 
-              animationNum={8} 
-              customVariants={revealVariants} 
-              timelineRef={testimonialRef} 
-              className="flex-shrink-0 flex flex-col"
-            >
-              <GlowCard
-                glowColor="yellow"
-                radius={0}
-                border={2}
-                borderColor="#000"
-                backdrop="#000833"
-                customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden text-white"
-              >
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <p className="font-sans text-body-md text-white leading-relaxed italic mb-8">
-                    {'"Su integración directa nos ha permitido procesar despachos masivos de e-commerce sin demoras y sin errores de ruteo."'}
-                  </p>
-                  <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-auto">
-                    <div>
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
-                        Adrián Gómez
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-wider text-white/70 mt-0.5">
-                        CEO de TechSur
+            {[4].map((idx) => {
+              const t = testimonials[idx];
+              if (!t) return null;
+              const style = cardStyles[idx];
+              return (
+                <TimelineContent 
+                  key={t.id}
+                  animationNum={9} 
+                  customVariants={revealVariants} 
+                  timelineRef={testimonialRef} 
+                  className="flex-1 flex flex-col"
+                >
+                  <GlowCard
+                    glowColor={style.glowColor}
+                    radius={0}
+                    border={2}
+                    borderColor={style.borderColor}
+                    backdrop={style.backdrop}
+                    customSize
+                    className={`flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden ${style.textColor}`}
+                  >
+                    {style.backdrop === "#fff" && (
+                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f10_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f10_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
+                    )}
+                    
+                    <div className="relative z-10 flex-1 flex flex-col justify-between">
+                      {/* Platform & Stars Technical Badge */}
+                      <div className="flex justify-between items-center mb-6 font-mono text-[9px] uppercase tracking-wider font-bold opacity-80">
+                        <span>{t.platform}</span>
+                        <span className={style.backdrop === "#E9C400" ? "text-black" : "text-[#E9C400]"}>{"★".repeat(t.rating)}</span>
+                      </div>
+
+                      <p className="font-sans text-body-md leading-relaxed italic mb-8">
+                        {`"${t.content}"`}
                       </p>
+                      
+                      <div className={`flex justify-between items-end border-t pt-4 mt-auto ${style.backdrop === "#000833" ? "border-white/20" : "border-black/10"}`}>
+                        <div>
+                          <h3 className="font-display text-base font-bold uppercase tracking-wider">
+                            {t.name}
+                          </h3>
+                          <p className={`font-mono text-xs uppercase tracking-wider mt-0.5 ${style.backdrop === "#000833" ? "text-white/70" : "text-black/60"}`}>
+                            {t.role}
+                          </p>
+                        </div>
+                        
+                        <div className={`w-12 h-12 border-2 border-black flex items-center justify-center font-display text-base font-black shadow-[2px_2px_0px_#000] shrink-0 ${style.avatarBg} ${style.avatarTextColor}`}>
+                          {t.avatarPlaceholder}
+                        </div>
+                      </div>
                     </div>
-                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                      <Image
-                        src="https://images.unsplash.com/photo-1563237023-b1e970526dcb?q=80&w=150&auto=format&fit=crop"
-                        alt="Adrián Gómez"
-                        fill
-                        className="object-cover rounded-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </GlowCard>
-            </TimelineContent>
- 
-            {/* Card 7: Paul Brauch - Safety Yellow Brutalist */}
-            <TimelineContent 
-              animationNum={9} 
-              customVariants={revealVariants} 
-              timelineRef={testimonialRef} 
-              className="flex-1 flex flex-col"
-            >
-              <GlowCard
-                glowColor="blue"
-                radius={0}
-                border={2}
-                borderColor="#000"
-                backdrop="#E9C400"
-                customSize
-                className="flex-1 flex flex-col justify-between p-6 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>
-                
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <p className="font-sans text-body-md text-black leading-relaxed italic mb-8">
-                    {'"Un cambio estratégico para nuestro negocio. La velocidad de su flota y el compromiso con el cliente final tiene un impacto enorme en la recompra."'}
-                  </p>
-                  <div className="flex justify-between items-end border-t border-black/10 pt-4 mt-auto">
-                    <div>
-                      <h3 className="font-display text-base font-bold uppercase tracking-wider text-black">
-                        Paul Brauch
-                      </h3>
-                      <p className="font-mono text-xs uppercase tracking-wider text-black/60 mt-0.5">
-                        CTO de Spectrum
-                      </p>
-                    </div>
-                    <div className="relative w-14 h-14 border-2 border-black rounded-none overflow-hidden bg-white shrink-0">
-                      <Image
-                        src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?q=80&w=150&auto=format&fit=crop"
-                        alt="Paul Brauch"
-                        fill
-                        className="object-cover rounded-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </GlowCard>
-            </TimelineContent>
+                  </GlowCard>
+                </TimelineContent>
+              );
+            })}
           </div>
  
         </div>
