@@ -6,12 +6,12 @@
 
 @layer base {
   :root {
-    /* Font Variables mapped to DESING.md specs */
+    /* Font Variables mapped to DESIGN.md specs */
     --font-roboto: 'Inter', sans-serif;
     --font-orbitron: 'Anton', sans-serif;
     --font-jetbrains-mono: 'JetBrains Mono', monospace;
 
-    /* Light Theme (Default in DESING.md) */
+    /* Light Theme (Default in DESIGN.md) */
     --background: 210 17% 98%; /* #f8f9fa */
     --foreground: 232 100% 10%; /* #000833 */
 
@@ -149,7 +149,7 @@
 }
 
 @layer utilities {
-  /* Typographic scale classes specified in DESING.md */
+  /* Typographic scale classes specified in DESIGN.md */
   .text-display-lg {
     font-family: var(--font-orbitron);
     font-size: 64px;
