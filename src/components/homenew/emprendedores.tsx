@@ -1,7 +1,7 @@
 "use client";
  
 import React from "react";
-import { CheckCircle2, Building2, ShoppingBag, Store } from "lucide-react";
+import { Building2, ShoppingBag, Store } from "lucide-react";
 import { motion } from "framer-motion";
 import { GlowCard } from "@/components/ui/spotlight-card";
  
@@ -60,7 +60,7 @@ export default function EmprendedoresSection() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display shadow-[2px_2px_0px_#000]">
             Flexibilidad
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider mb-4 leading-none text-white">
@@ -105,7 +105,7 @@ export default function EmprendedoresSection() {
                     <div>
                       {/* Icon and Badge */}
                       <div className="flex items-center justify-between mb-6">
-                        <div className="p-3.5 rounded-none bg-white border-2 border-black text-black group-hover:scale-105 transition-transform duration-150">
+                        <div className="p-3.5 rounded-none bg-white border-2 border-black text-black group-hover:scale-105 transition-transform duration-150 shadow-[2px_2px_0px_#000]">
                           <Icon className={`w-6 h-6 ${sol.colorClass}`} />
                         </div>
                         <span className="px-3 py-1 rounded-none border-2 border-black bg-[#edeeef] text-black text-[10px] font-bold font-mono uppercase tracking-wider">
@@ -126,14 +126,17 @@ export default function EmprendedoresSection() {
  
                     <div>
                       {/* Divider */}
-                      <div className="border-b border-dotted border-black mb-6" />
+                      <div className="border-b-2 border-dotted border-black mb-6" />
  
                       {/* Items List */}
                       <ul className="space-y-3.5">
                         {sol.items.map((item) => (
-                          <li key={item} className="flex items-start gap-2.5">
-                            <CheckCircle2 className="w-4 h-4 text-[#13bb2e] mt-0.5 flex-shrink-0" />
-                            <span className="text-sm font-semibold font-mono uppercase tracking-wider text-black">
+                          <li key={item} className="flex items-start gap-3 group/item">
+                            {/* Custom brutalist checkbox */}
+                            <div className="w-4 h-4 border-2 border-black bg-[#E9C400] group-hover/item:bg-[#000833] group-hover/item:text-[#E9C400] text-black flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[1px_1px_0px_#000] text-[9px] font-mono font-black transition-colors duration-150">
+                              ✓
+                            </div>
+                            <span className="text-xs font-semibold font-mono uppercase tracking-wider text-black self-center">
                               {item}
                             </span>
                           </li>

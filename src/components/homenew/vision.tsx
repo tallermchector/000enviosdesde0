@@ -18,6 +18,13 @@ const IMAGES = [
   "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=600&auto=format&fit=crop",
 ];
 
+const IMAGE_LABELS = [
+  "CÁM_01_MDP // RECEPCIÓN",
+  "CÁM_02_MDP // CLASIFICACIÓN",
+  "CÁM_03_MDP // DESPACHO_EXPRESS",
+  "CÁM_04_MDP // FLOTA_RUTA",
+];
+
 export default function VisionSection() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden bg-white text-[#000833] transition-colors duration-300 border-t-2 border-black">
@@ -28,7 +35,7 @@ export default function VisionSection() {
         <ContainerStagger className="flex flex-col items-start max-w-xl">
           
           {/* Badge */}
-          <ContainerAnimated className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-6 font-display">
+          <ContainerAnimated className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-6 font-display shadow-[2px_2px_0px_#000]">
             <span className="w-2 h-2 bg-[#000833]" />
             Partner Logístico Especializado
           </ContainerAnimated>
@@ -39,7 +46,7 @@ export default function VisionSection() {
           </ContainerAnimated>
  
           {/* Description */}
-          <ContainerAnimated className="text-body-lg text-[#000833] mb-8">
+          <ContainerAnimated className="text-body-lg text-[#000833] mb-8 leading-relaxed">
             Transformamos tus costos fijos en soluciones flexibles que acompañan el crecimiento de tu negocio en toda la costa atlántica.
           </ContainerAnimated>
  
@@ -52,7 +59,7 @@ export default function VisionSection() {
               borderColor="#000"
               backdrop="#fff"
               customSize
-              className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all"
+              className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all duration-150"
             >
               <Clock className="w-5 h-5 text-[#000833] mt-0.5 flex-shrink-0 z-10" />
               <div className="z-10">
@@ -69,7 +76,7 @@ export default function VisionSection() {
               borderColor="#000"
               backdrop="#fff"
               customSize
-              className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all"
+              className="flex gap-3 items-start p-4 shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all duration-150"
             >
               <ShieldCheck className="w-5 h-5 text-[#000833] mt-0.5 flex-shrink-0 z-10" />
               <div className="z-10">
@@ -90,13 +97,13 @@ export default function VisionSection() {
               borderColor="#000"
               backdrop="#fff"
               customSize
-              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 group"
             >
               <div className="relative z-10">
-                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1">
+                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1 group-hover:scale-105 transition-transform duration-150 origin-left">
                   +5.000
                 </div>
-                <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
+                <p className="text-[10px] text-[#444556] font-mono uppercase tracking-wider font-semibold">
                   Envíos locales al mes.
                 </p>
               </div>
@@ -108,13 +115,13 @@ export default function VisionSection() {
               borderColor="#000"
               backdrop="#fff"
               customSize
-              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 group"
             >
               <div className="relative z-10">
-                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1">
+                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1 group-hover:scale-105 transition-transform duration-150 origin-left">
                   7 Años
                 </div>
-                <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
+                <p className="text-[10px] text-[#444556] font-mono uppercase tracking-wider font-semibold">
                   De trayectoria urbana.
                 </p>
               </div>
@@ -126,14 +133,14 @@ export default function VisionSection() {
               borderColor="#000"
               backdrop="#fff"
               customSize
-              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150"
+              className="flex-1 p-4 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 group"
             >
               <div className="relative z-10">
-                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1">
+                <div className="text-2xl font-bold font-display uppercase text-[#000833] mb-1 group-hover:scale-105 transition-transform duration-150 origin-left">
                   Flota
                 </div>
-                <p className="text-xs text-[#444556] font-mono uppercase tracking-wider font-semibold">
-                  Motocicletas dedicadas.
+                <p className="text-[10px] text-[#444556] font-mono uppercase tracking-wider font-semibold">
+                  Motocicletas activas.
                 </p>
               </div>
             </GlowCard>
@@ -143,11 +150,23 @@ export default function VisionSection() {
         {/* Gallery Grid */}
         <GalleryGrid className="w-full max-w-md mx-auto md:max-w-none">
           {IMAGES.map((imageUrl, index) => (
-            <GalleryGridCell index={index} key={index} className="overflow-hidden rounded-none border-2 border-black bg-white relative h-full min-h-[150px] shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300">
+            <GalleryGridCell index={index} key={index} className="overflow-hidden rounded-none border-2 border-black bg-white relative h-full min-h-[160px] shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-300 group">
+              
+              {/* Technical camera label overlay */}
+              <span className="absolute top-2.5 left-2.5 z-10 bg-black/85 border border-[#E9C400]/40 text-[#E9C400] text-[8px] font-mono font-bold tracking-wider px-1.5 py-0.5 pointer-events-none uppercase">
+                {IMAGE_LABELS[index]}
+              </span>
+
+              {/* Blinking recording point overlay */}
+              <span className="absolute bottom-2.5 right-2.5 z-10 bg-black/60 border border-white/10 text-white text-[8px] font-mono font-bold tracking-wider px-1.5 py-0.5 pointer-events-none uppercase flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+                REC
+              </span>
+
               <Image
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
-                className="object-cover object-center grayscale hover:grayscale-0 opacity-90 hover:opacity-100 transition-all duration-300 cursor-zoom-in rounded-none"
+                className="object-cover object-center grayscale group-hover:grayscale-0 opacity-90 group-hover:opacity-100 transition-all duration-300 cursor-zoom-in rounded-none"
                 src={imageUrl}
                 alt={`Visión Logística ${index + 1}`}
               />
