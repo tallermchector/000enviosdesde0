@@ -1,0 +1,74 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.pnp.cjs
+
+# Next.js Build Artifacts & Caches
+.next/
+out/
+build/
+dist/
+.vercel/
+.turbo/
+
+# Lock files (High token cost, low context value)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+skills-lock.json
+
+# Environment Variables & Secrets
+.env
+.env.*
+*.pem
+*.key
+*.cert
+
+# Logs & Coverage
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
+.nyc_output/
+
+# Git & OS
+.git/
+.github/
+.DS_Store
+Thumbs.db
+
+# Media & Binaries (Exclude to prevent parsing errors and save tokens)
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+**/*.webp
+**/*.ico
+**/*.mp4
+**/*.webm
+**/*.pdf
+**/*.svg
+*.ttf
+*.woff
+*.woff2
+*.eot
+
+# Editor/IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Prisma Generated Code
+src/generated/prisma/
+
+# Minified or compiled files
+*.min.js
+*.min.css

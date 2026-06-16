@@ -1,21 +1,25 @@
 
+'use client';
+import dynamic from "next/dynamic";
 import React from "react";
 import Navegador from "@/components/layout/navegador";
 import Footer from "@/components/layout/footer";
-import HeroPrincipal from "@/components/homenew/heroprincipal";
-import VisionSection from "@/components/homenew/vision";
-import ServiciosSection from "@/components/homenew/servicios";
-import EmprendedoresSection from "@/components/homenew/emprendedores";
-import PricingSection from "@/components/homenew/pricing";
-import ClientFeedback from "@/components/ui/testimonial";
-import CTAFinalSection from "@/components/homenew/ctafinal";
+
+// Lazy‑load heavy UI components for improved initial load performance
+const HeroPrincipal = dynamic(() => import("@/components/homenew/heroprincipal"), { ssr: false });
+const VisionSection = dynamic(() => import("@/components/homenew/vision"), { ssr: false });
+const ServiciosSection = dynamic(() => import("@/components/homenew/servicios"), { ssr: false });
+const EmprendedoresSection = dynamic(() => import("@/components/homenew/emprendedores"), { ssr: false });
+const PricingSection = dynamic(() => import("@/components/homenew/pricing"), { ssr: false });
+const ClientFeedback = dynamic(() => import("@/components/ui/testimonial"), { ssr: false });
+const CTAFinalSection = dynamic(() => import("@/components/homenew/ctafinal"), { ssr: false });
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navegador />
-      
-      <main className="flex-1">
+
+      <main className="flex-1" role="main">
         <HeroPrincipal />
         <VisionSection />
         <ServiciosSection />

@@ -1,0 +1,1 @@
+- [Add CLAUDE.md](memory/add-claude-md.md) — Added comprehensive CLAUDE.md with dev commands, architecture overview, design system components, database guidance, asset management, and security considerations
