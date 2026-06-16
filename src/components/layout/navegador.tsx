@@ -72,89 +72,135 @@ export default function Navegador({
   },
 }: NavegadorProps) {
   return (
-    <section className="py-4 border-b-2 border-primary bg-[#000833] text-white">
-      <div className="container mx-auto px-4">
-        {/* Desktop Navigation */}
-        <nav className="hidden justify-between lg:flex items-center">
-          <div className="flex items-center gap-6">
-            <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="w-8 h-auto brightness-0 invert" alt={logo.alt} />
-              <span className="text-xl font-bold font-display uppercase tracking-wider text-white">
-                <span>Envíos</span>
-                <span className="text-[#E9C400] ml-1">DosRuedas</span>
+    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* Left side: Logo and Desktop Menu */}
+          <div className="flex items-center gap-8">
+            <a href={logo.url} className="flex items-center space-x-2">
+              <img src={logo.src} className="h-8 w-auto" alt={logo.alt} />
+              <span className="text-lg font-bold font-heading tracking-tight text-[#2D3277]">
+                Envíos<span className="text-[#FFE600]">DosRuedas</span>
               </span>
             </a>
-            <div className="flex items-center">
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:block">
               <NavigationMenu>
-                <NavigationMenuList>
-                  {menu.map((item) => renderMenuItem(item))}
+                <NavigationMenuList className="gap-2">
+                  {menu.map((item, index) => (
+                    <NavigationMenuItem key={index}>
+                      {item.items ? (
+                        <>
+                          <NavigationMenuTrigger className="bg-transparent text-[#2D3277] hover:text-[#FFE600] font-medium">
+                            {item.title}
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent>
+                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                              {item.items.map((subItem, subIndex) => (
+                                <li key={subIndex}>
+                                  <NavigationMenuLink asChild>
+                                    <a
+                                      href={subItem.url}
+                                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
+                                    >
+                                      <div className="text-sm font-medium leading-none text-[#2D3277]">
+                                        {subItem.title}
+                                      </div>
+                                      {subItem.description && (
+                                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                          {subItem.description}
+                                        </p>
+                                      )}
+                                    </a>
+                                  </NavigationMenuLink>
+                                </li>
+                              ))}
+                            </ul>
+                          </NavigationMenuContent>
+                        </>
+                      ) : (
+                        <NavigationMenuLink asChild>
+                          <a
+                            href={item.url}
+                            className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-[#2D3277] transition-colors hover:text-[#FFE600]"
+                          >
+                            {item.title}
+                          </a>
+                        </NavigationMenuLink>
+                      )}
+                    </NavigationMenuItem>
+                  ))}
                 </NavigationMenuList>
               </NavigationMenu>
-            </div>
+            </nav>
           </div>
-          <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm" className="bg-transparent text-white border-2 border-white rounded-none hover:bg-white/10 hover:text-white transition-all font-semibold">
+
+          {/* Right side: Auth Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Button variant="ghost" asChild className="text-[#2D3277] hover:text-[#FFE600]">
               <a href={auth.login.url}>{auth.login.text}</a>
             </Button>
-            <Button asChild size="sm" className="bg-[#E9C400] text-[#000833] border-2 border-black rounded-none hover:bg-white hover:text-[#000833] transition-all font-bold font-display uppercase">
+            <Button asChild className="bg-[#FFE600] text-[#2D3277] hover:bg-[#FFD700] font-bold shadow-sm">
               <a href={auth.signup.url}>{auth.signup.text}</a>
             </Button>
           </div>
-        </nav>
 
-        {/* Mobile Navigation */}
-        <div className="block lg:hidden">
-          <div className="flex items-center justify-between">
-            <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="w-8 h-auto brightness-0 invert" alt={logo.alt} />
-              <span className="text-xl font-bold font-display uppercase tracking-wider text-white">
-                <span>Envíos</span>
-                <span className="text-[#E9C400] ml-1">DosRuedas</span>
-              </span>
-            </a>
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" aria-label="Abrir menú de navegación" className="border-white text-white bg-transparent hover:bg-white/10 hover:text-white rounded-none">
-                  <Menu className="size-4" />
+                <Button variant="ghost" size="icon" className="text-[#2D3277]">
+                  <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto" side="right">
-                <SheetHeader>
-                  <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2">
-                      <img src={logo.src} className="w-8 h-auto" alt={logo.alt} />
-                      <span className="text-lg font-semibold font-orbitron">
-                        {logo.title}
-                      </span>
-                    </a>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetHeader className="text-left">
+                  <SheetTitle className="flex items-center gap-2">
+                    <img src={logo.src} className="h-6 w-auto" alt={logo.alt} />
+                    <span className="text-lg font-bold text-[#2D3277]">EnvíosDosRuedas</span>
                   </SheetTitle>
                 </SheetHeader>
-                <div className="my-6 flex flex-col gap-6">
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className="flex w-full flex-col gap-4"
-                  >
-                    {menu.map((item) => renderMobileMenuItem(item))}
-                  </Accordion>
-                  <div className="border-t py-4">
-                    <div className="grid grid-cols-2 justify-start gap-2">
-                      {mobileExtraLinks.map((link, idx) => (
-                        <a
-                          key={idx}
-                          className="inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-accent-foreground"
-                          href={link.url}
-                        >
-                          {link.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
+                <div className="mt-8 flex flex-col gap-6">
+                  <nav className="flex flex-col gap-4">
+                    {menu.map((item, index) => (
+                      <div key={index}>
+                        {item.items ? (
+                          <Accordion type="single" collapsible className="w-full">
+                            <AccordionItem value={`item-${index}`} className="border-none">
+                              <AccordionTrigger className="text-[#2D3277] hover:text-[#FFE600] py-2 font-semibold">
+                                {item.title}
+                              </AccordionTrigger>
+                              <AccordionContent className="flex flex-col gap-2 pl-4">
+                                {item.items.map((subItem, subIndex) => (
+                                  <a
+                                    key={subIndex}
+                                    href={subItem.url}
+                                    className="py-2 text-sm text-muted-foreground hover:text-[#FFE600]"
+                                  >
+                                    {subItem.title}
+                                  </a>
+                                ))}
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        ) : (
+                          <a
+                            href={item.url}
+                            className="text-lg font-semibold text-[#2D3277] hover:text-[#FFE600] block py-2"
+                          >
+                            {item.title}
+                          </a>
+                        )}
+                      </div>
+                    ))}
+                  </nav>
+
+                  <div className="mt-auto flex flex-col gap-3 pt-6 border-t">
+                    <Button variant="outline" className="w-full border-[#2D3277] text-[#2D3277] hover:bg-[#2D3277]/5" asChild>
                       <a href={auth.login.url}>{auth.login.text}</a>
                     </Button>
-                    <Button asChild>
+                    <Button className="w-full bg-[#FFE600] text-[#2D3277] font-bold hover:bg-[#FFD700]" asChild>
                       <a href={auth.signup.url}>{auth.signup.text}</a>
                     </Button>
                   </div>
@@ -164,89 +210,6 @@ export default function Navegador({
           </div>
         </div>
       </div>
-    </section>
+    </header>
   );
 }
-
-const renderMenuItem = (item: MenuItem) => {
-  if (item.items) {
-    return (
-      <NavigationMenuItem key={item.title} className="text-white">
-        <NavigationMenuTrigger className="bg-transparent hover:bg-white/10 hover:text-[#E9C400] focus:bg-white/10 focus:text-[#E9C400] text-white rounded-none transition-colors border-none">{item.title}</NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul className="w-80 p-3 bg-[#000833] border-2 border-primary text-white rounded-none">
-            {item.items.map((subItem) => (
-              <li key={subItem.title}>
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex select-none gap-4 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-white/10 hover:text-[#E9C400]"
-                    href={subItem.url}
-                  >
-                    {subItem.icon}
-                    <div>
-                      <div className="text-sm font-semibold text-white">
-                        {subItem.title}
-                      </div>
-                      {subItem.description && (
-                        <p className="text-xs leading-snug text-white/70 mt-1">
-                          {subItem.description}
-                        </p>
-                      )}
-                    </div>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-            ))}
-          </ul>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
-    );
-  }
-
-  return (
-    <a
-      key={item.title}
-      className="group inline-flex h-10 w-max items-center justify-center rounded-none bg-transparent px-4 py-2 text-sm font-medium text-white hover:text-[#E9C400] transition-colors"
-      href={item.url}
-    >
-      {item.title}
-    </a>
-  );
-};
-
-const renderMobileMenuItem = (item: MenuItem) => {
-  if (item.items) {
-    return (
-      <AccordionItem key={item.title} value={item.title} className="border-b-0">
-        <AccordionTrigger className="py-0 font-semibold hover:no-underline text-foreground">
-          {item.title}
-        </AccordionTrigger>
-        <AccordionContent className="mt-2 flex flex-col gap-1">
-          {item.items.map((subItem) => (
-            <a
-              key={subItem.title}
-              className="flex select-none gap-4 rounded-md p-3 leading-none outline-none transition-colors hover:bg-muted hover:text-accent-foreground"
-              href={subItem.url}
-            >
-              {subItem.icon}
-              <div>
-                <div className="text-sm font-semibold text-foreground">{subItem.title}</div>
-                {subItem.description && (
-                  <p className="text-sm leading-snug text-muted-foreground mt-1">
-                    {subItem.description}
-                  </p>
-                )}
-              </div>
-            </a>
-          ))}
-        </AccordionContent>
-      </AccordionItem>
-    );
-  }
-
-  return (
-    <a key={item.title} href={item.url} className="font-semibold text-foreground py-2 block">
-      {item.title}
-    </a>
-  );
-};

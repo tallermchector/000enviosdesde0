@@ -1,136 +1,45 @@
----
-version: alpha
-name: Envíos DosRuedas
-colors:
-  background: "#f8f9fa"
-  foreground: "#000833"
-  card: "#ffffff"
-  card-foreground: "#000833"
-  popover: "#ffffff"
-  popover-foreground: "#000833"
-  primary: "#000833"
-  primary-foreground: "#ffffff"
-  secondary: "#e9c400"
-  secondary-foreground: "#000833"
-  muted: "#e9ecef"
-  muted-foreground: "#000833"
-  accent: "#000833"
-  accent-foreground: "#ffffff"
-  destructive: "#ba1a1a"
-  destructive-foreground: "#ffffff"
-  border: "#000833"
-  input: "#000833"
-  ring: "#000833"
-typography:
-  display-lg:
-    fontFamily: Anton, sans-serif
-    fontSize: 64px
-    fontWeight: 400
-    lineHeight: 1.1
-    letterSpacing: 0.02em
-  display-md:
-    fontFamily: Anton, sans-serif
-    fontSize: 48px
-    fontWeight: 400
-    lineHeight: 1.2
-    letterSpacing: 0.01em
-  headline-lg:
-    fontFamily: Anton, sans-serif
-    fontSize: 40px
-    fontWeight: 400
-    lineHeight: 1.2
-  headline-md:
-    fontFamily: Anton, sans-serif
-    fontSize: 24px
-    fontWeight: 400
-    lineHeight: 1.2
-  body-lg:
-    fontFamily: Inter, sans-serif
-    fontSize: 18px
-    fontWeight: 400
-    lineHeight: 1.6
-  body-md:
-    fontFamily: Inter, sans-serif
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.5
-  body-sm:
-    fontFamily: Inter, sans-serif
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.5
-  label-md:
-    fontFamily: JetBrains Mono, monospace
-    fontSize: 12px
-    fontWeight: 500
-    lineHeight: 1.0
-    letterSpacing: 0.05em
-  label-sm:
-    fontFamily: JetBrains Mono, monospace
-    fontSize: 11px
-    fontWeight: 400
-    lineHeight: 1.0
-    letterSpacing: 0.05em
-  code-tracking:
-    fontFamily: JetBrains Mono, monospace
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.0
-    letterSpacing: 0.1em
-rounded:
-  sm: 0px
-  md: 0px
-  lg: 0px
-  xl: 0px
-  full: 9999px
-spacing:
-  xs: 4px
-  sm: 8px
-  md: 16px
-  lg: 24px
-  xl: 40px
-  gutter: 16px
-  container-margin: 24px
-  container-max: 1280px
----
+# Envíos DosRuedas Design System
 
-## Overview
+## Visual Identity
+*   **Brand Voice:** Empático, profesional, claro, colaborativo y resolutivo. Habla en primera persona del plural ("nosotros") para posicionarse como un socio estratégico del comerciante, transmitiendo cercanía humana y seguridad operativa sin tecnicismos fríos.
+*   **Color Palette:**
+    *   **Primary / Azul Conector (`#2D3277`):** Dominante (60%). Representa la solidez de la infraestructura, seguridad en los envíos y confianza corporativa.
+    *   **Secondary / Amarillo Impulso (`#FFE600`):** Acento energético (20%). Transmite la alta energía del reparto rápido, dinamismo y optimismo.
+    *   **Neutrals / Blanco y Grises (`#FFFFFF`, `#F3F4F6`, `#4B5563`):** Soporte (15%). Garantizan limpieza visual, fondos descansados y máxima legibilidad.
+    *   **Success / Verde Éxito (`#00A650`):** Funcional (5%). Reservado para indicadores positivos como "Entregado" o "Pago Aprobado".
+*   **Typography:**
+    *   **Headings:** `Montserrat` (Pesos: Bold 700 / Black 900). Formas geométricas redondeadas que aportan solidez, presencia institucional y un carácter amigable.
+    *   **Body Text:** `Inter` o `Roboto` (Pesos: Regular 400 / Medium 500). Diseñadas para interfaces móviles, optimizando la lectura de tarifas, reportes y códigos de seguimiento.
+*   **Iconography:** Estilo *Duotone* o líneas estilizadas de grosor consistente (2px). Los iconos utilizan el Azul Conector para la estructura principal y sutiles toques de Amarillo Impulso para destacar la acción o el movimiento (ej. flechas de velocidad, paquetes abriéndose).
 
-The design system of Envíos DosRuedas reflects an industrial, robust, and highly functional aesthetics. Emphasizing precision and speed, it targets logistics and e-commerce through an "Industrial Minimalism" approach. Heavy and impactful typography ensures a dashboard-like environment prioritizing data density and high visibility signals.
+## Component Guidelines
+*   **Buttons:**
+    *   **Primary:** Fondo Amarillo Impulso (`#FFE600`), texto en Montserrat Bold Azul Conector (`#2D3277`). Sin borde. Corner radius de 8px (esquinas amigables pero estructuradas). Padding: 12px vertical, 24px horizontal.
+    *   **Secondary:** Fondo transparente, borde de 2px Azul Conector (`#2D3277`), texto Azul Conector. Corner radius de 8px.
+*   **Inputs:**
+    *   **Default:** Fondo Blanco (`#FFFFFF`), borde de 1px gris claro (`#D1D5DB`), texto en Inter Regular. Corner radius de 6px.
+    *   **Focus State:** Borde de 2px Azul Conector (`#2D3277`) con un sutil anillo de enfoque exterior (glow) en Amarillo Impulso diluido o gris suave para guiar la atención del usuario sin saturar.
+*   **Cards:**
+    *   **Style:** Fondo Blanco (`#FFFFFF`) con bordes suaves de 12px.
+    *   **Shadow / Elevation:** Sombra sutil y difusa (Soft Shadow: `0 4px 6px -1px rgba(0, 0, 0, 0.05)`). Evita efectos tridimensionales pesados, manteniendo una estética plana, limpia y puramente digital.
+*   **Navigation:**
+    *   **Header:** Fondo Blanco (`#FFFFFF`) plano o con una fina línea inferior gris (`#E5E7EB`). Logo en versión horizontal a la izquierda, enlaces de navegación en Azul Conector (`#2D3277`) a la derecha. Botón de acción principal ("Cotizar Envío") destacado en amarillo.
+    *   **Footer:** Bloque sólido en Azul Conector (`#2D3277`). Textos, enlaces institucionales y variaciones de logo aplicados íntegramente en Blanco (`#FFFFFF`) y Amarillo Impulso para garantizar contraste regulado.
 
-## Colors
+## Layout & Spacing
+*   **Grid:**
+    *   **Desktop:** Sistema de 12 columnas con gutters (canales) de 24px.
+    *   **Mobile:** Sistema de 4 columnas con gutters de 16px para optimizar interfaces de choferes y clientes en movimiento.
+*   **Margins:**
+    *   **Desktop:** Márgenes laterales estándar de 80px a 120px dependiendo del ancho máximo del contenedor (máx. 1440px).
+    *   **Mobile:** Márgenes laterales fijos de 16px para aprovechar al máximo el espacio de lectura en pantallas pequeñas.
+*   **Breakpoints:**
+    *   **Mobile:** `< 640px`
+    *   **Tablet:** `640px` a `1024px`
+    *   **Desktop:** `> 1024px`
 
-The color logic relies on high-visibility markers set against a very clean (mostly white/light gray) background to immediately orient user actions.
-
-- **Primary (#000833):** Used for primary buttons and focus rings. High contrast, signaling core application actions.
-- **Secondary (#e9c400):** A warning/caution or highlight color that stands out sharply against the rest of the UI.
-- **Muted/Borders (#e9ecef / #000833):** Used for subtle backgrounds, component borders, and separation lines.
-- **Destructive (#ba1a1a):** High severity error red.
-
-## Typography
-
-Typography is strongly divided into three distinct roles, reinforcing data hierarchy.
-- **Headings & Display:** The **Anton** font is used for large callouts, emphasizing the bold, industrial brand identity (e.g., `display-lg`, `headline-md`). It is often strictly uppercase.
-- **Body:** **Inter** is the standard for long-form reading and general component text, ensuring high legibility.
-- **Monospace/Data:** **JetBrains Mono** is utilized for labels, technical readouts, and tracking codes (`label-md`, `code-tracking`), delivering a sense of exactness.
-
-## Layout
-
-The layout uses a central container constraint prioritizing functional whitespace and alignment. The `container-max` is set to `1280px` for a desktop grid, establishing an industrial maximum width layout.
-
-## Shapes
-
-The system strictly enforces a **0px** border-radius profile. 
-- `rounded-sm`, `rounded-md`, `rounded-lg`, and `rounded-xl` are all overridden to `0px` in the Tailwind configuration to maintain the sharp, precise, industrial feel. 
-- Elements like buttons, inputs, and cards feature 90-degree right angles. 
-
-## Components
-
-- **Buttons:** By default, buttons use the primary dark blue (`#000833`) with sharp corners (`0px`). Destructive variants use red (`#ba1a1a`), and secondary variants use yellow (`#e9c400`). 
-- **Cards & Inputs:** Standardized to have a 1px border (`border-border`) with no rounded corners. Inputs use a 2px `ring` for focus states for accessibility.
-- **Accordions:** Clean borders separating items, with a strict angular chevron for interaction.
-
-## Do's and Don'ts
-
-- **Don't** use rounded corners for general UI elements. Although some external components might bring in utility classes like `rounded-md` (such as in `src/components/ui/button.tsx`), the underlying Tailwind configuration overrides these to `0px`.
-- **Do** adhere to the `0px` radius convention. The prevalent design extracted from the core configuration overrides any conflicting individual component styles.
+## Motion & Interactions
+*   **Transitions:** Velocidad de respuesta rápida y orgánica de 200ms con una curva de aceleración estándar (`ease-in-out`). Aplicada a los estados *hover* de botones, enlaces y elevaciones sutiles de tarjetas al pasar el cursor.
+*   **Animations:** Micro-interacciones sutiles para reforzar la confianza en la trazabilidad:
+    *   **Checkmarks:** El icono Verde Éxito se dibuja de forma lineal y progresiva cuando un paquete cambia a estado "Entregado".
+    *   **Loading States:** Spinners de carga circulares utilizando un degradado suave del Azul Conector, evitando saltos bruscos o animaciones robóticas agresivas.

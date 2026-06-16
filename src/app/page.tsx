@@ -1,7 +1,7 @@
 'use client';
 import dynamic from "next/dynamic";
 import React from "react";
-import { HeroSection } from "@/components/blocks/hero-section-4";
+import HeroPrincipalNew from "@/components/homenew/hero-principal-new";
 import Footer from "@/components/layout/footer";
 
 // Lazy‑load heavy UI components for improved initial load performance
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1" role="main">
-        <HeroSection />
+        <HeroPrincipalNew />
         <VisionSection />
         <ServiciosSection />
         <ComoFuncionaSection />

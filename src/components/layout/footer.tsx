@@ -2,9 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import { DIcons } from "dicons";
+import { DIIcons } from "dicons";
 import { useTheme } from "next-themes";
 import { logo as defaultLogo } from "../../lib/navegacion";
+import { cn } from "@/lib/utils";
 
 function handleScrollTop() {
   if (typeof window !== "undefined") {
@@ -33,40 +34,40 @@ const ThemeToggle = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="flex items-center rounded-none border-2 border-black p-1 bg-white">
+      <div className="flex items-center rounded-md border border-white/20 p-1 bg-white/5 backdrop-blur-sm">
         <button
           onClick={() => setTheme("light")}
-          className={`rounded-none p-1.5 transition-colors ${
+          className={`rounded-md p-1.5 transition-all ${
             theme === "light"
-              ? "bg-[#000833] text-white"
-              : "text-[#000833]/70 hover:text-[#000833]"
+              ? "bg-[#FFE600] text-[#2D3277]"
+              : "text-white/60 hover:text-white"
           }`}
           title="Modo Claro"
         >
-          <DIcons.Sun className="h-4 w-4" strokeWidth={1.5} />
+          <DIIcons.Sun className="h-4 w-4" strokeWidth={1.5} />
           <span className="sr-only">Claro</span>
         </button>
- 
+
         <button
           type="button"
           onClick={handleScrollTop}
-          className="mx-2 text-[#000833]/70 hover:text-[#000833] p-1 transition-colors"
+          className="mx-2 text-white/60 hover:text-[#FFE600] p-1 transition-colors"
           title="Volver Arriba"
         >
-          <DIcons.ArrowUp className="h-3 w-3" />
+          <DIIcons.ArrowUp className="h-3 w-3" />
           <span className="sr-only">Subir</span>
         </button>
- 
+
         <button
           onClick={() => setTheme("dark")}
-          className={`rounded-none p-1.5 transition-colors ${
+          className={`rounded-md p-1.5 transition-all ${
             theme === "dark"
-              ? "bg-[#000833] text-white"
-              : "text-[#000833]/70 hover:text-[#000833]"
+              ? "bg-[#FFE600] text-[#2D3277]"
+              : "text-white/60 hover:text-white"
           }`}
           title="Modo Oscuro"
         >
-          <DIcons.Moon className="h-4 w-4" strokeWidth={1.5} />
+          <DIIcons.Moon className="h-4 w-4" strokeWidth={1.5} />
           <span className="sr-only">Oscuro</span>
         </button>
       </div>
@@ -120,134 +121,135 @@ const navigation = {
   ],
 };
 
-const Underline = "hover:-translate-y-1 border-2 border-black rounded-none p-2.5 transition-transform flex items-center justify-center bg-white hover:bg-[#E9C400] text-[#000833] hover:text-[#000833]";
+const NavigationLink = ({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) => (
+  <Link
+    href={href}
+    className={cn(
+      "text-sm text-white/70 hover:text-[#FFE600] transition-colors font-medium",
+      className
+    )}
+  >
+    {children}
+  </Link>
+);
 
 export default function Footer() {
   const logo = defaultLogo;
 
   return (
-    <footer className="mx-auto w-full border-t-2 border-[#000833] bg-white px-4 text-[#000833]">
+    <footer className="w-full bg-[#2D3277] text-white">
       {/* Brand & Description Section */}
-      <div className="relative mx-auto grid max-w-7xl items-center justify-center gap-6 p-10 pb-0 md:flex">
-        <Link href="/" className="flex items-center gap-2">
-          <img src={logo.src} className="w-8 h-auto" alt={logo.alt} />
-          <span className="text-xl font-bold font-display uppercase tracking-wider text-[#000833]">
-            <span>Envíos</span>
-            <span className="text-[#E9C400] ml-1">DosRuedas</span>
-          </span>
-        </Link>
-        <p className="bg-transparent text-center text-xs leading-5 text-[#000833]/80 md:text-left font-roboto max-w-3xl">
-          <strong>Dos Ruedas Pro</strong> es la plataforma líder de logística y mensajería urbana en Mar del Plata.
-          Optimizamos tus envíos con soluciones en tiempo real para envíos Express inmediatos, opciones
-          programadas LowCost de bajo costo, y servicios especiales de MercadoLibre Flex y Fulfillment (3PL) para potenciar tu comercio.
-          Garantizamos velocidad, tecnología de geolocalización avanzada y seguridad en cada entrega.
-        </p>
+      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between">
+        <div className="flex flex-col items-center gap-4 md:flex-row md:text-left">
+          <Link href="/" className="flex items-center gap-2">
+            <img src={logo.src} className="h-8 w-auto brightness-0 invert" alt={logo.alt} />
+            <span className="text-xl font-bold font-heading uppercase tracking-wider">
+              <span>Envíos</span>
+              <span className="text-[#FFE600] ml-1">DosRuedas</span>
+            </span>
+          </Link>
+          <p className="max-w-xl text-center text-sm leading-relaxed text-white/70 md:text-left">
+            <strong>Dos Ruedas Pro</strong> es la plataforma líder de logística y mensajería urbana en Mar del Plata.
+            Optimizamos tus envíos con soluciones en tiempo real para envíos Express inmediatos, opciones
+            programadas LowCost de bajo costo, y servicios especiales de MercadoLibre Flex y Fulfillment (3PL) para potenciar tu comercio.
+          </p>
+        </div>
       </div>
 
       {/* Navigation Links Columns */}
-      <div className="mx-auto max-w-7xl px-6 py-10">
-        <div className="border-b-2 border-dotted border-[#000833]" />
-        <div className="py-10">
+      <div className="border-t border-white/10 mx-auto max-w-7xl px-6 py-12">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {navigation.categories.map((category) => (
-            <div
-              key={category.name}
-              className="grid grid-cols-2 justify-between gap-8 leading-6 md:flex"
-            >
-              {category.sections.map((section) => (
-                <div key={section.name} className="flex flex-col">
-                  <h3 className="text-sm font-bold font-display uppercase tracking-wider text-[#000833] mb-4">
-                    {section.name}
-                  </h3>
-                  <ul
-                    role="list"
-                    aria-labelledby={`${category.id}-${section.id}-heading`}
-                    className="flex flex-col space-y-2.5"
-                  >
-                    {section.items.map((item) => (
-                      <li key={item.name} className="flow-root">
-                        <Link
-                          href={item.href}
-                          className="text-sm text-[#000833]/80 hover:text-[#000833] hover:underline font-semibold transition-colors font-roboto md:text-xs"
-                        >
-                          {item.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            <div key={category.name} className="col-span-2 md:col-span-1">
+              <h3 className="text-sm font-bold font-heading uppercase tracking-wider text-[#FFE600] mb-6">
+                {category.name}
+              </h3>
+              <ul className="flex flex-col space-y-4">
+                {category.sections.map((section) => (
+                  <li key={section.name} className="flex flex-col">
+                    <p className="text-xs font-semibold text-white/40 uppercase mb-2">{section.name}</p>
+                    <ul className="space-y-2">
+                      {section.items.map((item) => (
+                        <li key={item.name}>
+                          <NavigationLink href={item.href}>{item.name}</NavigationLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
-        <div className="border-b-2 border-dotted border-[#000833]" />
       </div>
 
       {/* Social Icons & Theme Toggle */}
-      <div className="flex flex-col items-center justify-center gap-6 py-6 md:flex-row">
-        <div className="flex flex-wrap items-center justify-center gap-4 px-6">
-          <Link
-            aria-label="Email"
-            href="mailto:contacto@enviosdosruedas.com"
-            className={Underline}
-          >
-            <DIcons.Mail strokeWidth={1.5} className="h-5 w-5" />
-          </Link>
-          <Link
-            aria-label="X (Twitter)"
-            href="https://x.com/enviosdosruedas"
-            target="_blank"
-            rel="noreferrer"
-            className={Underline}
-          >
-            <DIcons.X className="h-5 w-5" />
-          </Link>
-          <Link
-            aria-label="Instagram"
-            href="https://instagram.com/enviosdosruedas"
-            target="_blank"
-            rel="noreferrer"
-            className={Underline}
-          >
-            <DIcons.Instagram className="h-5 w-5" />
-          </Link>
-          <Link
-            aria-label="WhatsApp"
-            href="https://wa.me/5492236602699"
-            target="_blank"
-            rel="noreferrer"
-            className={Underline}
-          >
-            <DIcons.WhatsApp className="h-5 w-5" />
-          </Link>
-          <Link
-            aria-label="Facebook"
-            href="https://facebook.com/enviosdosruedas"
-            target="_blank"
-            rel="noreferrer"
-            className={Underline}
-          >
-            <DIcons.Facebook className="h-5 w-5" />
-          </Link>
+      <div className="border-t border-white/10 mx-auto max-w-7xl px-6 py-8">
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <Link
+              aria="label"
+              href="mailto:contacto@enviosdosruedas.com"
+              className="text-white/70 hover:text-[#FFE600] transition-colors"
+            >
+              <DIIcons.Mail className="h-5 w-5" />
+            </Link>
+            <Link
+              aria-label="X (Twitter)"
+              href="https://x.com/enviosdosruedas"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/70 hover:text-[#FFE600] transition-colors"
+            >
+              <DIIcons.X className="h-5 w-5" />
+            </Link>
+            <Link
+              aria-label="Instagram"
+              href="https://instagram.com/enviosdosruedas"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/70 hover:text-[#FFE600] transition-colors"
+            >
+              <DIIcons.Instagram className="h-5 w-5" />
+            </Link>
+            <Link
+              aria-label="WhatsApp"
+              href="https://wa.me/5492236602699"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/70 hover:text-[#FFE600] transition-colors"
+            >
+              <DIIcons.WhatsApp className="h-5 w-5" />
+            </Link>
+            <Link
+              aria-label="Facebook"
+              href="https://facebook.com/enviosdosruedas"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/70 hover:text-[#FFE600] transition-colors"
+            >
+              <DIIcons.Facebook className="h-5 w-5" />
+            </Link>
+          </div>
+          <ThemeToggle />
         </div>
-        <ThemeToggle />
       </div>
 
       {/* Copyright & Made By */}
-      <div className="mx-auto mb-10 mt-6 flex flex-col justify-between text-center text-xs md:max-w-7xl">
-        <div className="flex flex-row items-center justify-center gap-1 text-muted-foreground font-roboto">
+      <div className="border-t border-white/5 mx-auto max-w-7xl px-6 py-6 text-center text-xs text-white/40">
+        <div className="flex flex-col items-center justify-center gap-1 md:flex-row">
           <span> © </span>
           <span>{new Date().getFullYear()}</span>
           <span>Hecho con</span>
-          <DIcons.Heart className="text-red-600 mx-1 h-4 w-4 animate-pulse" />
+          <DIIcons.Heart className="text-red-500 mx-1 h-4 w-4 animate-pulse" />
           <span> por </span>
-          <span className="font-bold text-foreground hover:text-primary transition-colors cursor-pointer">
-            <Link
-              aria-label="Dos Ruedas Pro"
-              href="/"
-            >
-              Dos Ruedas Pro
-            </Link>
-          </span>
+          <Link
+            aria-label="Dos Ruedas Pro"
+            href="/"
+            className="font-bold text-white hover:text-[#FFE600] transition-colors"
+          >
+            Dos Ruedas Pro
+          </Link>
         </div>
       </div>
     </footer>

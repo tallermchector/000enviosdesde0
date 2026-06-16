@@ -14,7 +14,7 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1280px", // Industrial fixed grid 1280px max-width
+        "2xl": "1280px",
       },
     },
     extend: {
@@ -52,14 +52,16 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
       },
       borderRadius: {
-        sm: "0px",
-        DEFAULT: "0px",
-        md: "0px",
-        lg: "0px",
-        xl: "0px",
-        full: "9999px", // Exception for toggle/status indicators
+        sm: "var(--radius-sm)",
+        DEFAULT: "var(--radius)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-lg)",
       },
       spacing: {
         unit: "4px",
@@ -69,10 +71,10 @@ const config: Config = {
         lg: "24px",
         xl: "40px",
         "container-margin": "24px",
-        gutter: "16px",
+        gutter: "24px",
         "margin-mobile": "16px",
-        "margin-desktop": "24px",
-        "container-max": "1280px",
+        "margin-desktop": "80px",
+        "container-max": "1440px",
       },
       keyframes: {
         "accordion-down": {
@@ -104,8 +106,8 @@ const config: Config = {
         "spin-slow": "spin-slow 8s linear infinite",
       },
       fontFamily: {
-        sans: ["var(--font-roboto)", "sans-serif"],
-        display: ["var(--font-orbitron)", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-montserrat)", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
     },
