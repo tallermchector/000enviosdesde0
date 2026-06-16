@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { DIIcons } from "dicons";
+import { DIcons } from "dicons";
 import { useTheme } from "next-themes";
 import { logo as defaultLogo } from "../../lib/navegacion";
 import { cn } from "@/lib/utils";
@@ -44,7 +44,7 @@ const ThemeToggle = () => {
           }`}
           title="Modo Claro"
         >
-          <DIIcons.Sun className="h-4 w-4" strokeWidth={1.5} />
+          <DIcons.Sun className="h-4 w-4" strokeWidth={1.5} />
           <span className="sr-only">Claro</span>
         </button>
 
@@ -54,7 +54,7 @@ const ThemeToggle = () => {
           className="mx-2 text-white/60 hover:text-[#FFE600] p-1 transition-colors"
           title="Volver Arriba"
         >
-          <DIIcons.ArrowUp className="h-3 w-3" />
+          <DIcons.ArrowUp className="h-3 w-3" />
           <span className="sr-only">Subir</span>
         </button>
 
@@ -67,7 +67,7 @@ const ThemeToggle = () => {
           }`}
           title="Modo Oscuro"
         >
-          <DIIcons.Moon className="h-4 w-4" strokeWidth={1.5} />
+          <DIcons.Moon className="h-4 w-4" strokeWidth={1.5} />
           <span className="sr-only">Oscuro</span>
         </button>
       </div>
@@ -188,11 +188,11 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Link
-              aria="label"
+              aria-label="Correo de contacto"
               href="mailto:contacto@enviosdosruedas.com"
               className="text-white/70 hover:text-[#FFE600] transition-colors"
             >
-              <DIIcons.Mail className="h-5 w-5" />
+              <DIcons.Mail className="h-5 w-5" />
             </Link>
             <Link
               aria-label="X (Twitter)"
@@ -201,7 +201,7 @@ export default function Footer() {
               rel="noreferrer"
               className="text-white/70 hover:text-[#FFE600] transition-colors"
             >
-              <DIIcons.X className="h-5 w-5" />
+              <DIcons.X className="h-5 w-5" />
             </Link>
             <Link
               aria-label="Instagram"
@@ -210,7 +210,7 @@ export default function Footer() {
               rel="noreferrer"
               className="text-white/70 hover:text-[#FFE600] transition-colors"
             >
-              <DIIcons.Instagram className="h-5 w-5" />
+              <DIcons.Instagram className="h-5 w-5" />
             </Link>
             <Link
               aria-label="WhatsApp"
@@ -219,7 +219,7 @@ export default function Footer() {
               rel="noreferrer"
               className="text-white/70 hover:text-[#FFE600] transition-colors"
             >
-              <DIIcons.WhatsApp className="h-5 w-5" />
+              <DIcons.WhatsApp className="h-5 w-5" />
             </Link>
             <Link
               aria-label="Facebook"
@@ -228,7 +228,7 @@ export default function Footer() {
               rel="noreferrer"
               className="text-white/70 hover:text-[#FFE600] transition-colors"
             >
-              <DIIcons.Facebook className="h-5 w-5" />
+              <DIcons.Facebook className="h-5 w-5" />
             </Link>
           </div>
           <ThemeToggle />
@@ -241,7 +241,7 @@ export default function Footer() {
           <span> © </span>
           <span>{new Date().getFullYear()}</span>
           <span>Hecho con</span>
-          <DIIcons.Heart className="text-red-500 mx-1 h-4 w-4 animate-pulse" />
+          <DIcons.Heart className="text-red-500 mx-1 h-4 w-4 animate-pulse" />
           <span> por </span>
           <Link
             aria-label="Dos Ruedas Pro"

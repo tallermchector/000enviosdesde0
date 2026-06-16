@@ -16,6 +16,7 @@ import BrutalistTrackingCard from "@/components/homenew/tracking-card";
 
 const btnHover = { scale: 1, transition: { type: "spring" as const, stiffness: 260, damping: 20 } };
 const btnTap = { scale: 0.97 };
+const MotionButton = motion(Button);
 
 const steps = [
   { title: "RECEPCIÓN", desc: "Paquete registrado en base de datos", time: "09:15 hs", icon: ClipboardList },
@@ -72,7 +73,7 @@ export default function HeroPrincipalNew() {
 
                 {/* CTA Buttons */}
                 <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto lg:justify-start">
-                  <Button
+                  <MotionButton
                     asChild
                     size="lg"
                     className="w-full sm:w-auto h-14 rounded-none px-8 text-base font-bold uppercase bg-[#FFE600] text-[#2D3277] shadow-[4px_4px_0px_#2D3277] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#2D3277] transition-all duration-200"
@@ -83,9 +84,9 @@ export default function HeroPrincipalNew() {
                       <span>Solicitar Servicio</span>
                       <ChevronRight className="w-5 h-5" />
                     </Link>
-                  </Button>
+                  </MotionButton>
 
-                  <Button
+                  <MotionButton
                     asChild
                     size="lg"
                     variant="outline"
@@ -96,7 +97,7 @@ export default function HeroPrincipalNew() {
                     <Link href="/servicios/plan-emprendedores" className="flex items-center justify-center gap-2">
                       <span>E‑Commerce</span>
                     </Link>
-                  </Button>
+                  </MotionButton>
                 </div>
               </div>
 
@@ -115,8 +116,8 @@ export default function HeroPrincipalNew() {
               </div>
             </div>
           </div>
-        </section>
-      </main>
-    </>
+        </div>
+      </section>
+    </main>
   );
 }

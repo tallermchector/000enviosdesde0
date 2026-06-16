@@ -1,12 +1,13 @@
 'use client';
 import dynamic from "next/dynamic";
 import React from "react";
-import HeroPrincipalNew from "@/components/homenew/hero-principal-new";
+import Navegador from "@/components/layout/navegador";
 import Footer from "@/components/layout/footer";
 
 // Lazy‑load heavy UI components for improved initial load performance
-const VisionSection = dynamic(() => import("@/components/homenew/vision"), { ssr: false });
-const ServiciosSection = dynamic(() => import("@/components/homenew/servicios"), { ssr: false });
+const HeroPrincipal = dynamic(() => import("@/components/homenew/heroprincipal"), { ssr: false });
+const VisionSection = dynamic(() => import("@/components/homenew/vision-new"), { ssr: false });
+const ServiciosSection = dynamic(() => import("@/components/homenew/servicios-new"), { ssr: false });
 const ComoFuncionaSection = dynamic(() => import("@/components/homenew/como-funciona"), { ssr: false });
 const EmprendedoresSection = dynamic(() => import("@/components/homenew/emprendedores"), { ssr: false });
 const PricingSection = dynamic(() => import("@/components/homenew/pricing"), { ssr: false });
@@ -16,8 +17,10 @@ const CTAFinalSection = dynamic(() => import("@/components/homenew/ctafinal"), {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <Navegador />
+
       <main className="flex-1" role="main">
-        <HeroPrincipalNew />
+        <HeroPrincipal />
         <VisionSection />
         <ServiciosSection />
         <ComoFuncionaSection />
