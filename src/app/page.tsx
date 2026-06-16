@@ -9,6 +9,7 @@ import Footer from "@/components/layout/footer";
 const HeroPrincipal = dynamic(() => import("@/components/homenew/heroprincipal"), { ssr: false });
 const VisionSection = dynamic(() => import("@/components/homenew/vision"), { ssr: false });
 const ServiciosSection = dynamic(() => import("@/components/homenew/servicios"), { ssr: false });
+const ComoFuncionaSection = dynamic(() => import("@/components/homenew/como-funciona"), { ssr: false });
 const EmprendedoresSection = dynamic(() => import("@/components/homenew/emprendedores"), { ssr: false });
 const PricingSection = dynamic(() => import("@/components/homenew/pricing"), { ssr: false });
 const ClientFeedback = dynamic(() => import("@/components/ui/testimonial"), { ssr: false });
@@ -23,6 +24,7 @@ export default function Home() {
         <HeroPrincipal />
         <VisionSection />
         <ServiciosSection />
+        <ComoFuncionaSection />
         <EmprendedoresSection />
         <PricingSection />
         <ClientFeedback />
