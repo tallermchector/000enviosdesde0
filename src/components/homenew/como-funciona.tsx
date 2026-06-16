@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calculator, Package, Truck, Activity, ArrowRight } from "lucide-react";
+import { Calculator, Package, Truck, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Step {
@@ -10,7 +10,8 @@ interface Step {
   title: string;
   description: string;
   icon: React.ReactNode;
-  color: string;
+  tagBg: string;
+  tagText: string;
 }
 
 export default function ComoFuncionaSection() {
@@ -19,93 +20,84 @@ export default function ComoFuncionaSection() {
       number: "01",
       title: "Cotizá tu envío",
       description: "Ingresá los datos de tu envío y obtené una tarifa inmediata y sin compromisos.",
-      icon: <Calculator className="w-8 h-8" />,
-      color: "text-[#ba1a1a]",
+      icon: <Calculator className="w-8 h-8 text-black" />,
+      tagBg: "bg-[#ba1a1a]",
+      tagText: "text-white",
     },
     {
       number: "02",
       title: "Prepará tu paquete",
       description: "Empacá tus artículos de forma segura siguiendo nuestras recomendaciones de embalaje.",
-      icon: <Package className="w-8 h-8" />,
-      color: "text-[#e9c400]",
+      icon: <Package className="w-8 h-8 text-black" />,
+      tagBg: "bg-[#e9c400]",
+      tagText: "text-black",
     },
     {
       number: "03",
       title: "Solicitá la recogida",
       description: "Elegí el horario que mejor te convenga y nosotros pasamos a buscar tu pedido.",
-      icon: <Truck className="w-8 h-8" />,
-      color: "text-[#13bb2e]",
+      icon: <Truck className="w-8 h-8 text-black" />,
+      tagBg: "bg-[#13bb2e]",
+      tagText: "text-white",
     },
     {
       number: "04",
       title: "Seguí tu envío",
       description: "Monitorizá el trayecto de tu paquete en tiempo real hasta que llegue a su destino.",
-      icon: <Activity className="w-8 h-8" />,
-      color: "text-[#000833]",
+      icon: <Activity className="w-8 h-8 text-black" />,
+      tagBg: "bg-[#000833]",
+      tagText: "text-[#e9c400]",
     },
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden bg-[#f4f4f4] text-[#000833] transition-colors duration-300 border-t-2 border-black">
+    <section className="relative py-24 overflow-hidden bg-white text-[#000833] border-t-4 border-black">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-6">
         {/* Title */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-white border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display shadow-[2px_2px_0px_#000]">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display shadow-[2px_2px_0px_#000]">
             Proceso
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider mb-4 leading-none text-black">
+          <h2 className="text-4xl md:text-6xl font-bold font-display uppercase tracking-tighter mb-6 leading-[0.9] text-black">
             Cómo Funciona
           </h2>
-          <p className="text-body-lg text-[#000833]">
+          <p className="text-xl text-[#000833] font-sans max-w-2xl mx-auto">
             Tu logística simplificada en cuatro pasos rápidos y eficientes.
           </p>
         </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-          {/* Connecting Line (Desktop only) */}
-          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-black/10 -translate-y-1/2 z-0"></div>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
           {steps.map((step, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="relative z-10 group"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex flex-col w-full border-4 border-black bg-white shadow-[10px_10px_0px_#000] hover:shadow-[14px_14px_0px_#000] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 overflow-hidden"
             >
-              <div className="flex flex-col items-center text-center">
-                {/* Number & Icon Container */}
-                <div className="relative mb-6">
-                  <div className={cn(
-                    "w-20 h-20 flex items-center justify-center bg-white border-2 border-black shadow-[4px_4px_0px_#000] transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[6px_6px_0px_#000]",
-                    step.color
-                  )}>
-                    {step.icon}
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 bg-black text-white font-mono text-xs font-bold px-2 py-1 shadow-[2px_2px_0px_#000]">
-                    {step.number}
-                  </div>
+              {/* Step Header: Number & Icon */}
+              <div className={cn("p-6 border-b-4 border-black flex items-center justify-between", step.tagBg)}>
+                <div className="bg-white border-2 border-black p-2 shadow-[2px_2px_0px_#000]">
+                  {step.icon}
                 </div>
+                <span className={cn("font-mono font-bold text-xl tracking-tighter shadow-[2px_2px_0px_#000] px-2 py-1", step.tagText)}>
+                  {step.number}
+                </span>
+              </div>
 
-                {/* Text Content */}
-                <h3 className="text-xl font-bold font-display uppercase tracking-wider mb-3 text-black">
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-bold font-display uppercase tracking-tighter mb-3 text-black">
                   {step.title}
                 </h3>
-                <p className="text-sm text-[#000833]/80 leading-relaxed max-w-[280px]">
+                <p className="text-sm text-black/80 leading-relaxed font-sans">
                   {step.description}
                 </p>
-
-                {/* Decorative Arrow (Tablet/Desktop) */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 translate-y-[-50%] z-10 text-black/20">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                )}
               </div>
             </motion.div>
           ))}

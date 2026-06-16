@@ -1,10 +1,10 @@
 "use client";
- 
+
 import React from "react";
 import { Building2, ShoppingBag, Store } from "lucide-react";
 import { motion } from "framer-motion";
-import { GlowCard } from "@/components/ui/spotlight-card";
- 
+import { cn } from "@/lib/utils";
+
 const SOLUTIONS = [
   {
     title: "Soluciones Corporativas",
@@ -12,7 +12,8 @@ const SOLUTIONS = [
     desc: "Optimización logística para empresas con Cuenta Corriente Flexible y beneficios de escala.",
     icon: Building2,
     colorClass: "text-[#000833]",
-    topBg: "bg-[#000833]",
+    tagBg: "bg-[#000833]",
+    tagText: "text-[#e9c400]",
     items: [
       "Cuenta Corriente Flexible",
       "Facturación simplificada",
@@ -26,7 +27,8 @@ const SOLUTIONS = [
     desc: "Socio estratégico para potenciar tus ventas con entregas en el día.",
     icon: ShoppingBag,
     colorClass: "text-[#e9c400]",
-    topBg: "bg-[#e9c400]",
+    tagBg: "bg-[#e9c400]",
+    tagText: "text-black",
     items: [
       "Cumplimiento de SLAs",
       "Mejora tu reputación",
@@ -40,7 +42,8 @@ const SOLUTIONS = [
     desc: "Gestión integral de última milla para PyMEs en crecimiento.",
     icon: Store,
     colorClass: "text-[#13bb2e]",
-    topBg: "bg-[#13bb2e]",
+    tagBg: "bg-[#13bb2e]",
+    tagText: "text-white",
     items: [
       "Integración tecnológica",
       "Rutas optimizadas",
@@ -49,37 +52,32 @@ const SOLUTIONS = [
     ]
   }
 ];
- 
+
 export default function EmprendedoresSection() {
   return (
-    <section className="relative py-24 overflow-hidden section-even border-t-2 border-black">
+    <section className="relative py-24 overflow-hidden bg-white text-[#000833] border-t-4 border-black">
       {/* Background Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
- 
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
       <div className="relative z-10 mx-auto max-w-[1280px] px-6">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9C400] border-2 border-black text-black font-bold uppercase tracking-wider text-xs mb-4 font-display shadow-[2px_2px_0px_#000]">
             Flexibilidad
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display uppercase tracking-wider mb-4 leading-none text-white">
+          <h2 className="text-4xl md:text-6xl font-bold font-display uppercase tracking-tighter mb-6 leading-[0.9] text-black">
             Soluciones para Emprendedores & PyMEs
           </h2>
-          <p className="text-body-lg text-white/90">
+          <p className="text-xl text-[#000833] font-sans max-w-2xl mx-auto">
             Adaptamos nuestra estructura a tus necesidades específicas. Impulsamos tus ventas con un servicio de última milla excelente.
           </p>
         </div>
- 
+
         {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto">
           {SOLUTIONS.map((sol, index) => {
             const Icon = sol.icon;
-            const glowColor = sol.topBg.includes("000833") 
-              ? "blue" 
-              : sol.topBg.includes("e9c400") 
-              ? "yellow" 
-              : "green";
             return (
               <motion.div
                 key={sol.title}
@@ -89,62 +87,50 @@ export default function EmprendedoresSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="w-full h-full"
               >
-                <GlowCard
-                  glowColor={glowColor}
-                  radius={0}
-                  border={2}
-                  borderColor="#000"
-                  backdrop="#fff"
-                  customSize
-                  className="group flex flex-col p-8 shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all duration-150 overflow-hidden h-full"
-                >
-                  {/* Top solid accent line */}
-                  <div className={`absolute top-0 left-0 right-0 h-1.5 ${sol.topBg} z-10`} />
- 
-                  <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                    <div>
-                      {/* Icon and Badge */}
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="p-3.5 rounded-none bg-white border-2 border-black text-black group-hover:scale-105 transition-transform duration-150 shadow-[2px_2px_0px_#000]">
-                          <Icon className={`w-6 h-6 ${sol.colorClass}`} />
-                        </div>
-                        <span className="px-3 py-1 rounded-none border-2 border-black bg-[#edeeef] text-black text-[10px] font-bold font-mono uppercase tracking-wider">
-                          {sol.badge}
-                        </span>
+                <div className="flex flex-col h-full border-4 border-black bg-white shadow-[10px_10px_0px_#000] hover:shadow-[14px_14px_0px_#000] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 overflow-hidden">
+
+                  {/* Top Color Bar */}
+                  <div className={cn("h-3 w-full", sol.tagBg)} />
+
+                  <div className="p-8 flex flex-col flex-1">
+                    {/* Icon and Badge */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="p-3 bg-white border-2 border-black shadow-[2px_2px_0px_#000]">
+                        <Icon className={cn("w-7 h-7", sol.colorClass)} />
                       </div>
- 
-                      {/* Title */}
-                      <h3 className="text-xl font-bold font-display uppercase tracking-wider mb-3 group-hover:text-[#000833] transition-colors duration-150 text-black">
+                      <span className="px-3 py-1 border-2 border-black bg-[#edeeef] text-black text-[10px] font-bold font-mono uppercase tracking-wider">
+                        {sol.badge}
+                      </span>
+                    </div>
+
+                    {/* Title & Desc */}
+                    <div className="mb-8">
+                      <h3 className="text-2xl font-bold font-display uppercase tracking-tighter mb-3 text-black">
                         {sol.title}
                       </h3>
- 
-                      {/* Desc */}
-                      <p className="text-body-sm text-[#444556] leading-relaxed mb-6 min-h-[40px]">
+                      <p className="text-sm text-[#444556] leading-relaxed min-h-[40px]">
                         {sol.desc}
                       </p>
                     </div>
- 
-                    <div>
-                      {/* Divider */}
-                      <div className="border-b-2 border-dotted border-black mb-6" />
- 
-                      {/* Items List */}
-                      <ul className="space-y-3.5">
-                        {sol.items.map((item) => (
-                          <li key={item} className="flex items-start gap-3 group/item">
-                            {/* Custom brutalist checkbox */}
-                            <div className="w-4 h-4 border-2 border-black bg-[#E9C400] group-hover/item:bg-[#000833] group-hover/item:text-[#E9C400] text-black flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[1px_1px_0px_#000] text-[9px] font-mono font-black transition-colors duration-150">
-                              ✓
-                            </div>
-                            <span className="text-xs font-semibold font-mono uppercase tracking-wider text-black self-center">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+
+                    {/* Divider */}
+                    <div className="border-t-4 border-black mb-6" />
+
+                    {/* Items List */}
+                    <ul className="space-y-4 flex-1">
+                      {sol.items.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <div className="w-5 h-5 border-2 border-black bg-[#E9C400] text-black flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[1px_1px_0px_#000] text-[10px] font-bold">
+                            ✓
+                          </div>
+                          <span className="text-xs font-bold font-mono uppercase tracking-wider text-black self-center">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </GlowCard>
+                </div>
               </motion.div>
             );
           })}
