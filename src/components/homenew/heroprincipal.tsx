@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
-import { GlowCard } from "@/components/ui/spotlight-card";
 import {
   ChevronRight,
   ClipboardList,
@@ -15,6 +14,7 @@ import {
   Activity,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import BrutalistTrackingCard from "@/components/homenew/tracking-card";
 
 const MotionButton = motion(Button);
 
@@ -182,123 +182,12 @@ export default function HeroPrincipal() {
               <div className="lg:col-span-5 flex justify-center w-full relative z-10 lg:mt-12 lg:max-w-[720px]">
                 <AnimatePresence>
                   <motion.div
-                    key="glow-card"
+                    key="tracking-card"
                     initial={{ opacity: 0, y: 20, scale: 0.96 }}
                     animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.96 }}
                     transition={{ duration: 0.7, type: "spring", stiffness: 320, damping: 20 }}
                   >
-                    <GlowCard
-                      glowColor="yellow"
-                      radius={0}
-                      border={2}
-                      borderColor="#000833"
-                      backdrop="#ffffff"
-                      customSize
-                      className="w-full max-w-md p-6 relative rounded-lg shadow-[8px_8px_0px_rgba(0,0,0,0.8)] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[12px_12px_0px_rgba(0,0,0,0.8)] transition-all duration-200 animate-fade-in-up"
-                    >
-                      {/* Header with live badge */}
-                      {/* Header with live badge */}
-                      <div className="flex items-center justify-between border-b-2 border-dashed border-black pb-3">
-                        <div className="flex items-center gap-2">
-                          <Activity className="w-5 h-5 text-black animate-pulse" />
-                          <span className="inline-flex items-center gap-1.5 bg-black px-2.5 py-0.5 text-[9px] font-bold font-mono tracking-wider text-[#E9C400] animate-bounce">
-                            <span className="relative flex h-1.5 w-1.5">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-                            </span>
-                            EN VIVO
-                          </span>
-                        </div>
-
-                        {/* Metrics grid */}
-                        <div className="grid grid-cols-2 gap-3 bg-[#E9ECEF] border border-black p-3 rounded-md font-mono text-[10px] uppercase font-bold tracking-wider rounded-md animate-fade-in-up">
-                          <div className="flex flex-col items-start">
-                            <div className="text-black/60">Tracking ID:</div>
-                            <div className="text-black font-bold text-xs">DR-8472-MDP</div>
-                          </div>
-                          <div className="flex flex-col items-start">
-                            <div className="text-black/60">Destino:</div>
-                            <div className="text-black font-bold text-xs">ZONA CENTRO, MDP</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Timeline */}
-                      <div className="relative pl-8 space-y-4">
-                        <div className="absolute left-4 top-2 bottom-2 w-0.5 border-l-2 border-dashed border-black/30" />
-                        {steps.map((stepItem, idx) => {
-                          const isCompleted = idx < step;
-                          const isActive = idx === step;
-                          return (
-                            <div key={idx} className="relative flex items-start gap-4 animate-fade-in-up">
-                              {/* Step badge */}
-                              <div className="absolute -left-5 flex items-center justify-center">
-                                <motion.div
-                                  className={`
-                                    w-6 h-6 flex items-center justify-center border-2 rounded-full
-                                    ${isActive ? "bg-[#E9C400] text-black shadow-[2px_2px_0px_#000]" : isCompleted ? "bg-[#000833] text-white" : "bg-white text-black/30 border-dashed border-black/30"}
-                                  `}
-                                  initial={{ scale: 0.6 }}
-                                  animate={{ scale: isActive ? 1.08 : 0.6 }}
-                                  transition={{ repeat: Infinity, duration: 2 }}
-                                >
-                                  <stepItem.icon className="w-4 h-4" />
-                                </motion.div>
-                              </div>
-
-                              {/* Step content */}
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between">
-                                  <h4 className={`
-                                    text-xs font-bold uppercase tracking-wider
-                                    ${isActive ? "text-[#000833]" : isCompleted ? "text-black/80" : "text-black/40"}
-                                  `}>
-                                    {stepItem.title}
-                                  </h4>
-                                  <span className={`
-                                    text-[9px] font-mono
-                                    ${isActive ? "font-bold text-[#000833]" : isCompleted ? "text-black/60" : "text-black/30"}
-                                  `}>
-                                    {isActive ? "ACTIVO" : isCompleted ? stepItem.time : "ESPERANDO"}
-                                  </span>
-                                </div>
-                                <p className={`
-                                  text-[10px] leading-relaxed
-                                  ${isActive ? "text-black font-semibold" : "text-black/50"}
-                                `}>
-                                  {stepItem.desc}
-                                </p>
-                              </div>
-                            </div>
-                          );
-                        })}
-                        {/* Connector line */}
-                        <div className="border-t border-dotted border-black/30 pt-4">
-                          <div className="relative h-8 bg-[#E9ECEF] border border-black px-4 flex items-center justify-between text-[8px] uppercase tracking-wider rounded-md overflow-hidden animate-fade-in-up">
-                            <span className="text-black/60">MDP DEPÓSITO</span>
-                            <div className="absolute inset-x-10 top-1/2 -translate-y-1/2 h-0.5 border-t border-dashed border-black/40" />
-                            <motion.div
-                              className="absolute left-6 right-6 top-0 bottom-0 pointer-events-none"
-                              animate={{ left: `${(step / 3) * 100}%` }}
-                              transition={{ type: "spring", stiffness: 80, damping: 12 }}
-                            >
-                              <div className="bg-[#E9C400] border border-black p-2 rounded text-[#000833] shadow-[1px_1px_0px_#000]">
-                                <Bike className="w-3.5 h-3.5" />
-                              </div>
-                            </motion.div>
-                            <span className="text-black/60">DESTINO</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Summary pill */}
-                      <div className="flex justify-between items-center py-2 px-3 rounded-md border-t-2 border-dotted border-black text-[10px] uppercase font-mono tracking-wider font-bold animate-fade-in-up">
-                        <span>Ruta Estimada:</span>
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#28a745] text-white font-medium">
-                          OPTIMIZADA (98.4%)
-                        </span>
-                      </div>
-                    </GlowCard>
+                    <BrutalistTrackingCard steps={steps} inView={inView} />
                   </motion.div>
                 </AnimatePresence>
               </div>

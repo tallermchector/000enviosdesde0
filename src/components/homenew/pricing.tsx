@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { ModernPricingPage, PricingCardProps } from "@/components/ui/animated-glassy-pricing";
+import BrutalistPricingPage from "@/components/homenew/pricing-brutalist";
+import { PricingCardProps } from "@/components/ui/animated-glassy-pricing";
 
 const myPricingPlans: PricingCardProps[] = [
   {
@@ -51,15 +52,14 @@ const myPricingPlans: PricingCardProps[] = [
 
 export default function PricingSection() {
   return (
-    <ModernPricingPage
+    <BrutalistPricingPage
       title={
         <>
-          Esquemas y <span className="text-primary">Tarifas Flexibles</span>
+          Esquemas y <span className="text-[#ba1a1a]">Tarifas Flexibles</span>
         </>
       }
       subtitle="Elegí el plan perfecto para los envíos de tu negocio. Sin costos ocultos, 100% transparente."
       plans={myPricingPlans}
-      showAnimatedBackground={true}
     />
   );
 }
