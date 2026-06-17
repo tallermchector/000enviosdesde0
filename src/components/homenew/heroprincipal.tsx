@@ -19,8 +19,17 @@ import BrutalistTrackingCard from "@/components/homenew/tracking-card";
 const MotionButton = motion(Button);
 
 /* ---------- KINETIC TEXT ---------- */
-const KineticText = ({ children, color = "#E9C400", delay = 0, tag = "span", className }: any) => {
-  const Tag = motion[tag as keyof typeof motion] as any;
+interface KineticTextProps {
+  children: React.ReactNode;
+  color?: string;
+  delay?: number;
+  tag?: keyof typeof motion;
+  className?: string;
+}
+
+const KineticText = ({ children, color = "#E9C400", delay = 0, tag = "span", className }: KineticTextProps) => {
+  const MotionTag = motion[tag as keyof typeof motion];
+  const Tag = MotionTag as React.ElementType;
   return (
     <Tag
       initial={{ opacity: 0, y: -10, color: "#999" }}

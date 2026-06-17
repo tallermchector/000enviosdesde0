@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Zap, Percent, Boxes, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface CardData {
@@ -112,9 +113,11 @@ export default function ServiciosSectionNew() {
             >
               {/* Image Header */}
               <div className="relative h-48 w-full overflow-hidden">
-                <img
+                <Image
                   src={card.imageSrc}
                   alt={card.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />

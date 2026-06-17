@@ -5,6 +5,7 @@ import {
   GalleryGridCell,
 } from "@/components/ui/cta-section-with-gallery"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const IMAGES = [
   "https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=2338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -37,10 +38,10 @@ export const AboutDemo = () => {
         <GalleryGrid>
           {IMAGES.map((imageUrl, index) => (
             <GalleryGridCell index={index} key={index}>
-              <img
+              <Image
                 className="size-full object-cover object-center"
-                width="100%"
-                height="100%"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 src={imageUrl}
                 alt=""
               />
