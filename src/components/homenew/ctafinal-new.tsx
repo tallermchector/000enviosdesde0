@@ -7,14 +7,39 @@ import { MessageSquare, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export default function CTAFinalSectionNew() {
-  const whatsappUrl = "https://wa.me/5492236602699?text=Hola%20Envios%20DosRuedas%2C%20vengo%20desde%20la%20web.";
+const WHATSAPP_URL = "https://wa.me/5492236602699?text=Hola%20Envios%20DosRuedas%2C%20vengo%20desde%20la%20web.";
 
+// Create a motion-enabled Link component
+const MotionLink = motion(Link);
+
+export default function CTAFinalSectionNew() {
   return (
     <section className="relative py-24 overflow-hidden bg-[#2D3277] text-white">
       {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFE600]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <motion.div
+        animate={{
+          x: [0, 30, 0],
+          y: [0, 50, 0]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFE600]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          x: [0, -40, 0],
+          y: [0, -30, 0]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none"
+      />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-6">
         <motion.div
@@ -43,14 +68,20 @@ export default function CTAFinalSectionNew() {
               size="lg"
               className="w-full sm:w-auto h-14 px-8 text-lg font-bold rounded-xl bg-[#25D366] text-white hover:bg-[#1ebe57] shadow-lg shadow-[#25D366]/20 transition-all duration-200"
             >
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+              <motion.a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-3"
+              >
                 <span className="relative flex h-3 w-3 mr-1">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
                 </span>
                 <MessageSquare className="w-6 h-6 shrink-0" />
                 <span>Contactar Asesor</span>
-              </a>
+              </motion.a>
             </Button>
 
             <Button
@@ -59,10 +90,14 @@ export default function CTAFinalSectionNew() {
               variant="outline"
               className="w-full sm:w-auto h-14 px-8 text-lg font-bold rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all duration-200"
             >
-              <Link href="/servicios/plan-emprendedores" className="flex items-center gap-2">
+              <MotionLink
+                href="/servicios/plan-emprendedores"
+                className="flex items-center gap-2"
+                whileTap={{ scale: 0.97 }}
+              >
                 <span>Ver Planes</span>
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </MotionLink>
             </Button>
           </div>
         </motion.div>

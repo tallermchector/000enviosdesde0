@@ -10,7 +10,6 @@ interface Solution {
   badge: string;
   desc: string;
   icon: React.ElementType;
-  accentColor: string;
   items: string[];
 }
 
@@ -20,7 +19,6 @@ const SOLUTIONS: Solution[] = [
     badge: "Corporativo",
     desc: "Optimización logística para empresas con Cuenta Corriente Flexible y beneficios de escala.",
     icon: Building2,
-    accentColor: "text-[#2D3277]",
     items: [
       "Cuenta Corriente Flexible",
       "Facturación simplificada",
@@ -33,7 +31,6 @@ const SOLUTIONS: Solution[] = [
     badge: "MercadoLibre",
     desc: "Socio estratégico para potenciar tus ventas con entregas en el día.",
     icon: ShoppingBag,
-    accentColor: "text-[#2D3277]",
     items: [
       "Cumplimiento de SLAs",
       "Mejora tu reputación",
@@ -46,7 +43,6 @@ const SOLUTIONS: Solution[] = [
     badge: "PyMEs",
     desc: "Gestión integral de última milla para PyMEs en crecimiento.",
     icon: Store,
-    accentColor: "text-[#2D3277]",
     items: [
       "Integración tecnológica",
       "Rutas optimizadas",
@@ -85,6 +81,7 @@ export default function EmprendedoresSectionNew() {
                 key={sol.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -10 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex flex-col h-full bg-white rounded-[16px] p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"

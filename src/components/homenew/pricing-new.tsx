@@ -7,6 +7,9 @@ import { Check, Crown, Zap, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+// Create a motion-enabled Link component
+const MotionLink = motion(Link);
+
 interface PricingPlan {
   planName: string;
   description: string;
@@ -89,6 +92,7 @@ export default function PricingSectionNew() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={!plan.isPopular ? { scale: 1.02 } : {}}
               className={cn(
                 "relative flex flex-col w-full bg-white rounded-[24px] p-8 border transition-all duration-300",
                 plan.isPopular
@@ -97,7 +101,10 @@ export default function PricingSectionNew() {
               )}
             >
               {plan.isPopular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FFE600] text-[#2D3277] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                <div
+                  className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FFE600] text-[#2D3277] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm"
+                  aria-label="Plan más popular"
+                >
                   Más Popular
                 </div>
               )}
@@ -131,6 +138,7 @@ export default function PricingSectionNew() {
 
               <Button
                 asChild
+                whileTap={{ scale: 0.98 }}
                 className={cn(
                   "w-full h-12 rounded-xl font-bold uppercase tracking-wider transition-all duration-200",
                   plan.isPopular
@@ -138,9 +146,9 @@ export default function PricingSectionNew() {
                     : "bg-gray-50 text-[#2D3277] hover:bg-gray-100"
                 )}
               >
-                <Link href={plan.href} className="flex items-center justify-center gap-2">
+                <MotionLink href={plan.href} className="flex items-center justify-center gap-2">
                   {plan.buttonText}
-                </Link>
+                </MotionLink>
               </Button>
             </motion.div>
           ))}
