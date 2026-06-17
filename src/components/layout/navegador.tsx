@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -72,15 +73,15 @@ export default function Navegador({
   },
 }: NavegadorProps) {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Left side: Logo and Desktop Menu */}
           <div className="flex items-center gap-8">
-            <a href={logo.url} className="flex items-center space-x-2">
-              <img src={logo.src} className="h-8 w-auto" alt={logo.alt} />
-              <span className="text-lg font-bold font-heading tracking-tight text-[#2D3277]">
-                Envíos<span className="text-[#FFE600]">DosRuedas</span>
+            <a href={logo.url} className="flex items-center space-x-2 focus-visible:ring-2 focus-visible:ring-offset-2">
+              <Image src={logo.src} width={32} height={32} className="h-8 w-auto" alt={logo.alt} />
+              <span className="text-lg font-bold font-heading tracking-tight text-primary dark:text-foreground">
+                Envíos<span className="text-secondary">DosRuedas</span>
               </span>
             </a>
 
@@ -92,7 +93,7 @@ export default function Navegador({
                     <NavigationMenuItem key={index}>
                       {item.items ? (
                         <>
-                          <NavigationMenuTrigger className="bg-transparent text-[#2D3277] hover:text-[#FFE600] font-medium">
+                          <NavigationMenuTrigger className="bg-transparent text-primary hover:text-secondary dark:text-foreground dark:hover:text-secondary font-medium focus-visible:ring-2 focus-visible:ring-offset-2">
                             {item.title}
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
@@ -102,9 +103,9 @@ export default function Navegador({
                                   <NavigationMenuLink asChild>
                                     <a
                                       href={subItem.url}
-                                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
+                                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-offset-2"
                                     >
-                                      <div className="text-sm font-medium leading-none text-[#2D3277]">
+                                      <div className="text-sm font-medium leading-none text-primary dark:text-foreground">
                                         {subItem.title}
                                       </div>
                                       {subItem.description && (
@@ -123,7 +124,7 @@ export default function Navegador({
                         <NavigationMenuLink asChild>
                           <a
                             href={item.url}
-                            className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-[#2D3277] transition-colors hover:text-[#FFE600]"
+                            className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-primary transition-colors hover:text-secondary focus-visible:ring-2 focus-visible:ring-offset-2 dark:text-foreground dark:hover:text-secondary"
                           >
                             {item.title}
                           </a>
@@ -138,10 +139,10 @@ export default function Navegador({
 
           {/* Right side: Auth Buttons */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="ghost" asChild className="text-[#2D3277] hover:text-[#FFE600]">
+            <Button variant="ghost" asChild className="text-primary hover:text-secondary dark:text-foreground dark:hover:text-secondary focus-visible:ring-2 focus-visible:ring-offset-2">
               <a href={auth.login.url}>{auth.login.text}</a>
             </Button>
-            <Button asChild className="bg-[#FFE600] text-[#2D3277] hover:bg-[#FFD700] font-bold shadow-sm">
+            <Button asChild className="bg-secondary text-primary hover:bg-secondary/90 font-bold shadow-sm focus-visible:ring-2 focus-visible:ring-offset-2 dark:bg-secondary dark:text-primary">
               <a href={auth.signup.url}>{auth.signup.text}</a>
             </Button>
           </div>
@@ -150,15 +151,15 @@ export default function Navegador({
           <div className="flex lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-[#2D3277]">
+                <Button variant="ghost" size="icon" className="text-primary dark:text-foreground focus-visible:ring-2 focus-visible:ring-offset-2">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
                 <SheetHeader className="text-left">
                   <SheetTitle className="flex items-center gap-2">
-                    <img src={logo.src} className="h-6 w-auto" alt={logo.alt} />
-                    <span className="text-lg font-bold text-[#2D3277]">EnvíosDosRuedas</span>
+                    <Image src={logo.src} width={24} height={24} className="h-6 w-auto" alt={logo.alt} />
+                    <span className="text-lg font-bold text-primary dark:text-foreground">EnvíosDosRuedas</span>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="mt-8 flex flex-col gap-6">
@@ -168,7 +169,7 @@ export default function Navegador({
                         {item.items ? (
                           <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value={`item-${index}`} className="border-none">
-                              <AccordionTrigger className="text-[#2D3277] hover:text-[#FFE600] py-2 font-semibold">
+                              <AccordionTrigger className="text-primary hover:text-secondary py-2 font-semibold dark:text-foreground dark:hover:text-secondary focus-visible:ring-2 focus-visible:ring-offset-2">
                                 {item.title}
                               </AccordionTrigger>
                               <AccordionContent className="flex flex-col gap-2 pl-4">
@@ -176,7 +177,7 @@ export default function Navegador({
                                   <a
                                     key={subIndex}
                                     href={subItem.url}
-                                    className="py-2 text-sm text-muted-foreground hover:text-[#FFE600]"
+                                    className="py-2 text-sm text-muted-foreground hover:text-secondary dark:hover:text-secondary focus-visible:ring-2 focus-visible:ring-offset-2"
                                   >
                                     {subItem.title}
                                   </a>
@@ -187,7 +188,7 @@ export default function Navegador({
                         ) : (
                           <a
                             href={item.url}
-                            className="text-lg font-semibold text-[#2D3277] hover:text-[#FFE600] block py-2"
+                            className="text-lg font-semibold text-primary hover:text-secondary block py-2 dark:text-foreground dark:hover:text-secondary focus-visible:ring-2 focus-visible:ring-offset-2"
                           >
                             {item.title}
                           </a>
@@ -197,10 +198,10 @@ export default function Navegador({
                   </nav>
 
                   <div className="mt-auto flex flex-col gap-3 pt-6 border-t">
-                    <Button variant="outline" className="w-full border-[#2D3277] text-[#2D3277] hover:bg-[#2D3277]/5" asChild>
+                    <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/5 dark:border-foreground dark:text-foreground dark:hover:bg-foreground/5 focus-visible:ring-2 focus-visible:ring-offset-2" asChild>
                       <a href={auth.login.url}>{auth.login.text}</a>
                     </Button>
-                    <Button className="w-full bg-[#FFE600] text-[#2D3277] font-bold hover:bg-[#FFD700]" asChild>
+                    <Button className="w-full bg-secondary text-primary font-bold hover:bg-secondary/90 dark:bg-secondary dark:text-primary dark:hover:bg-secondary/90 focus-visible:ring-2 focus-visible:ring-offset-2" asChild>
                       <a href={auth.signup.url}>{auth.signup.text}</a>
                     </Button>
                   </div>

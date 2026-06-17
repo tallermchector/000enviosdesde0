@@ -65,18 +65,18 @@ const plans: PricingPlan[] = [
 
 export default function PricingSectionNew() {
   return (
-    <section className="relative py-24 overflow-hidden bg-white text-[#2D3277]">
+    <section className="relative py-24 overflow-hidden bg-background text-foreground">
       {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none bg-[radial-gradient(#2D3277_1px,transparent_1px)] [background-size:40px_40px]" />
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none bg-[radial-gradient(hsl(var(--primary))_1px,transparent_1px)] [background-size:40px_40px] dark:opacity-[0.1]" />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFE600]/10 text-[#2D3277] font-bold uppercase tracking-widest text-xs mb-6 rounded-full border border-[#FFE600]/30">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-secondary/10 text-primary dark:text-secondary font-bold uppercase tracking-widest text-xs mb-6 rounded-full border border-secondary/30">
             Tarifas
           </span>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold uppercase tracking-tight mb-6 text-[#2D3277]">
-            Esquemas y <span className="text-[#2D3277]/80">Tarifas Flexibles</span>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold uppercase tracking-tight mb-6 text-foreground">
+            Esquemas y <span className="text-foreground/80">Tarifas Flexibles</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Elegí el plan perfecto para los envíos de tu negocio. Sin costos ocultos, 100% transparente.
@@ -102,7 +102,7 @@ export default function PricingSectionNew() {
             >
               {plan.isPopular && (
                 <div
-                  className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FFE600] text-[#2D3277] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm"
+                  className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondary text-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm"
                   aria-label="Plan más popular"
                 >
                   Más Popular
@@ -110,7 +110,7 @@ export default function PricingSectionNew() {
               )}
 
               <div className="mb-8">
-                <h3 className="text-xl font-heading font-bold mb-2 text-[#2D3277]">
+                <h3 className="text-xl font-heading font-bold mb-2 text-foreground">
                   {plan.planName}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed min-h-[40px]">
@@ -120,7 +120,7 @@ export default function PricingSectionNew() {
 
               <div className="mb-8">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-heading font-black text-[#2D3277]">{plan.price}</span>
+                  <span className="text-4xl font-heading font-black text-foreground">{plan.price}</span>
                 </div>
                 <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mt-1">
                   Modalidad de cobro
@@ -130,23 +130,22 @@ export default function PricingSectionNew() {
               <div className="space-y-4 mb-10 flex-1">
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-3 text-sm">
-                    <Check className={cn("w-5 h-5 mt-0.5 flex-shrink-0", plan.isPopular ? "text-[#FFE600]" : "text-[#2D3277]/40")} />
-                    <span className="text-[#2D3277]/80 font-medium">{feature}</span>
+                    <Check className={cn("w-5 h-5 mt-0.5 flex-shrink-0", plan.isPopular ? "text-secondary" : "text-primary/40 dark:text-primary")} />
+                    <span className="text-foreground/80 font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <Button
                 asChild
-                whileTap={{ scale: 0.98 }}
                 className={cn(
-                  "w-full h-12 rounded-xl font-bold uppercase tracking-wider transition-all duration-200",
+                  "w-full h-12 rounded-xl font-bold uppercase tracking-wider transition-all duration-200 block focus-visible:ring-2 focus-visible:ring-offset-2",
                   plan.isPopular
-                    ? "bg-[#2D3277] text-white hover:bg-[#1a1e4d]"
-                    : "bg-gray-50 text-[#2D3277] hover:bg-gray-100"
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                    : "bg-muted text-foreground hover:bg-muted/80"
                 )}
               >
-                <MotionLink href={plan.href} className="flex items-center justify-center gap-2">
+                <MotionLink whileTap={{ scale: 0.98 }} href={plan.href} className="flex items-center justify-center gap-2 h-full w-full">
                   {plan.buttonText}
                 </MotionLink>
               </Button>

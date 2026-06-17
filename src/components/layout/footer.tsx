@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { DIcons } from "dicons";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import { logo as defaultLogo } from "../../lib/navegacion";
 import { cn } from "@/lib/utils";
 
@@ -125,7 +126,7 @@ const NavigationLink = ({ href, children, className = "" }: { href: string; chil
   <Link
     href={href}
     className={cn(
-      "text-sm text-white/70 hover:text-[#FFE600] transition-colors font-medium",
+      "text-sm text-primary-foreground/70 hover:text-secondary transition-colors font-medium focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none",
       className
     )}
   >
@@ -137,18 +138,18 @@ export default function Footer() {
   const logo = defaultLogo;
 
   return (
-    <footer className="w-full bg-[#2D3277] text-white">
+    <footer className="w-full bg-primary text-primary-foreground">
       {/* Brand & Description Section */}
       <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between">
         <div className="flex flex-col items-center gap-4 md:flex-row md:text-left">
-          <Link href="/" className="flex items-center gap-2">
-            <img src={logo.src} className="h-8 w-auto brightness-0 invert" alt={logo.alt} />
+          <Link href="/" className="flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none">
+            <Image src={logo.src} width={32} height={32} className="h-8 w-auto brightness-0 invert" alt={logo.alt} />
             <span className="text-xl font-bold font-heading uppercase tracking-wider">
               <span>Envíos</span>
-              <span className="text-[#FFE600] ml-1">DosRuedas</span>
+              <span className="text-secondary ml-1">DosRuedas</span>
             </span>
           </Link>
-          <p className="max-w-xl text-center text-sm leading-relaxed text-white/70 md:text-left">
+          <p className="max-w-xl text-center text-sm leading-relaxed text-primary-foreground/70 md:text-left">
             <strong>Dos Ruedas Pro</strong> es la plataforma líder de logística y mensajería urbana en Mar del Plata.
             Optimizamos tus envíos con soluciones en tiempo real para envíos Express inmediatos, opciones
             programadas LowCost de bajo costo, y servicios especiales de MercadoLibre Flex y Fulfillment (3PL) para potenciar tu comercio.
@@ -157,17 +158,17 @@ export default function Footer() {
       </div>
 
       {/* Navigation Links Columns */}
-      <div className="border-t border-white/10 mx-auto max-w-7xl px-6 py-12">
+      <div className="border-t border-primary-foreground/10 mx-auto max-w-7xl px-6 py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {navigation.categories.map((category) => (
             <div key={category.name} className="col-span-2 md:col-span-1">
-              <h3 className="text-sm font-bold font-heading uppercase tracking-wider text-[#FFE600] mb-6">
+              <h3 className="text-sm font-bold font-heading uppercase tracking-wider text-secondary mb-6">
                 {category.name}
               </h3>
               <ul className="flex flex-col space-y-4">
                 {category.sections.map((section) => (
                   <li key={section.name} className="flex flex-col">
-                    <p className="text-xs font-semibold text-white/40 uppercase mb-2">{section.name}</p>
+                    <p className="text-xs font-semibold text-primary-foreground/40 uppercase mb-2">{section.name}</p>
                     <ul className="space-y-2">
                       {section.items.map((item) => (
                         <li key={item.name}>
@@ -184,13 +185,13 @@ export default function Footer() {
       </div>
 
       {/* Social Icons & Theme Toggle */}
-      <div className="border-t border-white/10 mx-auto max-w-7xl px-6 py-8">
+      <div className="border-t border-primary-foreground/10 mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Link
               aria-label="Correo de contacto"
               href="mailto:contacto@enviosdosruedas.com"
-              className="text-white/70 hover:text-[#FFE600] transition-colors"
+              className="text-primary-foreground/70 hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none rounded-sm"
             >
               <DIcons.Mail className="h-5 w-5" />
             </Link>
@@ -199,7 +200,7 @@ export default function Footer() {
               href="https://x.com/enviosdosruedas"
               target="_blank"
               rel="noreferrer"
-              className="text-white/70 hover:text-[#FFE600] transition-colors"
+              className="text-primary-foreground/70 hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none rounded-sm"
             >
               <DIcons.X className="h-5 w-5" />
             </Link>
@@ -208,7 +209,7 @@ export default function Footer() {
               href="https://instagram.com/enviosdosruedas"
               target="_blank"
               rel="noreferrer"
-              className="text-white/70 hover:text-[#FFE600] transition-colors"
+              className="text-primary-foreground/70 hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none rounded-sm"
             >
               <DIcons.Instagram className="h-5 w-5" />
             </Link>
@@ -217,7 +218,7 @@ export default function Footer() {
               href="https://wa.me/5492236602699"
               target="_blank"
               rel="noreferrer"
-              className="text-white/70 hover:text-[#FFE600] transition-colors"
+              className="text-primary-foreground/70 hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none rounded-sm"
             >
               <DIcons.WhatsApp className="h-5 w-5" />
             </Link>
@@ -226,7 +227,7 @@ export default function Footer() {
               href="https://facebook.com/enviosdosruedas"
               target="_blank"
               rel="noreferrer"
-              className="text-white/70 hover:text-[#FFE600] transition-colors"
+              className="text-primary-foreground/70 hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none rounded-sm"
             >
               <DIcons.Facebook className="h-5 w-5" />
             </Link>
@@ -236,7 +237,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright & Made By */}
-      <div className="border-t border-white/5 mx-auto max-w-7xl px-6 py-6 text-center text-xs text-white/40">
+      <div className="border-t border-primary-foreground/5 mx-auto max-w-7xl px-6 py-6 text-center text-xs text-primary-foreground/40">
         <div className="flex flex-col items-center justify-center gap-1 md:flex-row">
           <span> © </span>
           <span>{new Date().getFullYear()}</span>
@@ -246,7 +247,7 @@ export default function Footer() {
           <Link
             aria-label="Dos Ruedas Pro"
             href="/"
-            className="font-bold text-white hover:text-[#FFE600] transition-colors"
+            className="font-bold text-primary-foreground hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary outline-none rounded-sm"
           >
             Dos Ruedas Pro
           </Link>
